@@ -8,7 +8,7 @@
 }
 body{
   font-family: 'Neue Machina';
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .hero-section{
   background-image: linear-gradient(0deg, #191f3ff7, #191f3f75), url(/src/assets/Images/hero-bg.jpg);
@@ -16,4 +16,29 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+}
+.font-main{
+  font-family: 'Lobster';
+}
+.text-hot-pink{
+  color: #ff0088;
+}
+.search-input{
+  outline: none;
+  background-color: transparent;
+  border: none;
+  color: #0f1432 !important;
+}
+.btn-hot-pink{
+  background-color: #ff0088;
+}
+.btn-hot-pink:hover{
+  background-color: #ff0088;
+}
+.trending{
+  background-image: linear-gradient(0deg, #191f3f, #191f3f00), url(/src/assets/Images/wednesday.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
 }
