@@ -1,1 +1,19 @@
- 
+@font-face {
+  font-family: 'Neue Machina';
+  src: url(./assets/Font/PPNeueMachina-InktrapRegular.otf);
+}
+@font-face {
+  font-family: 'Lobster';
+  src: url(./assets/Font/Lobster-Regular.ttf);
+}
+body{
+  font-family: 'Neue Machina';
+  overflow: hidden;
+}
+.hero-section{
+  background-image: linear-gradient(0deg, #191f3ff7, #191f3f75), url(/src/assets/Images/hero-bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
