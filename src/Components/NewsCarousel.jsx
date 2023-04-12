@@ -1,8 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import dPoster from '../assets/Images/divergent.jpg'
-import phPoster from '../assets/Images/purple-hearts.jpg'
-import NaijaMeritFeed from './NaijaMeritFeed';
+import phPoster from '../assets/Images/purple-hearts.jpg' 
 
 export default function NewsCarousel() {
     return (

@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Header from './Header';
 import NewsCarousel from './NewsCarousel';
-import aboutSectionImg from '../assets/Images/about-img.jpg'
+import sectionImg from '../assets/Images/posters_collection.jpg'
 
 export default function LandingPage() {
     return (
@@ -159,15 +159,10 @@ export default function LandingPage() {
             </Container>
             <Container fluid className='p-xl-5 text-white' style={{ background: 'linear-gradient(to bottom, black, #191f3f)'}} >
                 <Row>
-                    <Col xl={6} className="container d-flex flex-column justify-content-center">
-                       <h4 className='display-3'>About</h4> 
-                       <p className='lead'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum totam consectetur ex, fugiat libero dignissimos animi ipsa.
-                         Cum fugiat sed amet eveniet qui mollitia quo et, accusamus culpa illum praesentium.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda repudiandae sunt ipsa. Atque, mollitia fuga.</p>
+                    <Col xl={12} className="container d-flex flex-column justify-content-center text-center px-xl-6">
+                      <img src={sectionImg} alt="posters" />
                     </Col>
-                    <Col xl={6} className="container">
-                    <img src={aboutSectionImg} alt="" className='img-fluid rounded-3'/>
-                    </Col>
+                   
                 </Row>
             </Container>
         </>
