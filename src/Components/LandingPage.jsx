@@ -4,10 +4,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Header from './Header';
-import TrendingMovies from './TrendingMovies';
-import TopRatedMovies from './TopRatedMovies';
-import NewsCarousel from './NewsCarousel';
-import sectionImg from '../assets/Images/posters_collection.jpg'
+// import TrendingMovies from './TrendingMovies';
+// import TopRatedMovies from './TopRatedMovies';
+// import NewsCarousel from './NewsCarousel';
+// import sectionImg from '../assets/Images/posters_collection.jpg'
 
 
 export default function LandingPage() {
@@ -28,8 +28,8 @@ export default function LandingPage() {
                     </Col>
                 </Row>
             </Container>
-            <TrendingMovies />
-            <TopRatedMovies />
+            {/* <TrendingMovies />
+            <TopRatedMovies /> */}
             <Container fluid className='p-xl-5 pb-xl-0' style={{ background: 'linear-gradient(to bottom, #191f3f, black)' }} >
                 <Row>
                     <Col xl={12} className="container p-xl-5 ">
@@ -39,14 +39,14 @@ export default function LandingPage() {
                     </Col>
                 </Row>
             </Container>
-            <Container fluid className='p-xl-5 text-white' style={{ background: 'linear-gradient(to bottom, black, #191f3f)' }} >
+            {/* <Container fluid className='p-xl-5 text-white' style={{ background: 'linear-gradient(to bottom, black, #191f3f)' }} >
                 <Row>
                     <Col xl={12} className="container d-flex flex-column justify-content-center text-center px-xl-6">
                         <img src={sectionImg} alt="posters" />
                     </Col>
 
                 </Row>
-            </Container>
+            </Container> */}
         </>
     );
 }
