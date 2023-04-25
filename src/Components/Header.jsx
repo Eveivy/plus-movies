@@ -17,8 +17,8 @@ export default function Header() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav"> 
                     <Nav className='ms-auto d-flex align-items-center justify-content-between'>
-                        <Button size='md' className='rounded-pill'>Sign In</Button>
-                        <Button size='md' className='rounded-pill'>Sign Up</Button>
+                        <Button size='md' className='rounded-pill btn-hot-pink py-2 px-3 me-4'>Sign In</Button>
+                        <Button size='md' className='rounded-pill btn-hot-pink-outline py-2 px-3 me-4'>Sign Up</Button>
                         {/* <div className='bg-white rounded-3 d-flex align-items-center p-2'>
                             <span className='mx-2 d-flex align-items-center justify-content-center'>
                                  <box-icon name='search-alt-2' color="#ff0088" size="25px"></box-icon> 
