@@ -2,63 +2,76 @@
   font-family: 'Neue Machina';
   src: url(./assets/Font/PPNeueMachina-InktrapRegular.otf);
 }
+
 @font-face {
   font-family: 'Lobster';
   src: url(./assets/Font/Lobster-Regular.ttf);
 }
-body{
+
+body {
   font-family: 'Neue Machina';
   /* overflow: hidden; */
 }
-.hero-section{
+
+.hero-section {
   background-image: linear-gradient(0deg, #191f3ff7, #191f3f75), url(/src/assets/Images/hero-bg.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
 }
-.font-main{
+
+.font-main {
   font-family: 'Lobster';
 }
-.text-hot-pink{
+
+.text-hot-pink {
   color: #ff0088;
 }
-.search-input{
+
+.search-input {
   outline: none;
   background-color: transparent;
   border: none;
   color: #0f1432 !important;
 }
-.btn-hot-pink{
+
+.btn-hot-pink {
   background-color: #ff0088;
-  border: 2px solid #ff0088 ;
+  border: 2px solid #ff0088;
 }
-.btn-hot-pink:hover{
+
+.btn-hot-pink:hover {
   background-color: transparent;
-  border: 2px solid #ff0088 ;
+  border: 2px solid #ff0088;
 }
-.btn-hot-pink-outline{
+
+.btn-hot-pink-outline {
   background-color: transparent;
-  border: 2px solid #ff0088 ;
+  border: 2px solid #ff0088;
 }
-.btn-hot-pink-outline:hover{
+
+.btn-hot-pink-outline:hover {
   background-color: #ff0088;
-  border: 2px solid #ff0088 ;
+  border: 2px solid #ff0088;
 }
-.btn-light-pink{
+
+.btn-light-pink {
   background-color: #820e21;
 }
-.btn-light-pink:hover{
+
+.btn-light-pink:hover {
   background-color: #820e21;
 }
+
 .gradient-border {
   /* border-width: 3px;
   border-style: solid; */
   border-right: 3px solid;
-  border-image: linear-gradient(to bottom, #ff0088 , #820e21) 1 100%;
+  border-image: linear-gradient(to bottom, #ff0088, #820e21) 1 100%;
 }
 
-.trending{
+.trending {
   background-image: linear-gradient(0deg, #191f3f, #191f3f00), url(/src/assets/Images/wednesday.jpg);
   background-position: center;
   background-size: cover;
