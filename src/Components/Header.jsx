@@ -14,17 +14,12 @@ export default function Header({redirect}) {
                     <img src={logo} alt="" style={{ width: '70px', height: '55px' }} className="mb-0" />
                     <span className='d-block font-main' style={{ marginTop: '-13px' }}>Plus Movies</span>
                 </Navbar.Brand>
+                <Nav.Link href="movies">Movies</Nav.Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav"> 
                     <Nav className='ms-auto d-flex align-items-center justify-content-between'>
                         {/* <Button size='md' className='rounded-pill btn-hot-pink py-2 px-3 me-4'>Sign In</Button> */}
-                        <a href={redirect} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-4'>Log In</a>
-                        {/* <div className='bg-white rounded-3 d-flex align-items-center p-2'>
-                            <span className='mx-2 d-flex align-items-center justify-content-center'>
-                                 <box-icon name='search-alt-2' color="#ff0088" size="25px"></box-icon> 
-                            </span>
-                            <Form as='input' className='search-input fs-6' id='search_input' placeholder='Search'/>
-                        </div> */}
+                        <a href={redirect} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-4 text-white'>Log In</a>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -15,7 +15,7 @@ export default function LandingPage() {
 return (
     <>
         <Container fluid className='hero-section'>
-            <Header redirect={`https://www.themoviedb.org/authenticate/${props.requestToken}?redirect_to=https://plus-movies.onrender.com/`} />
+            <Header redirect={`https://www.themoviedb.org/authenticate/${props.requestToken}?redirect_to=https://plus-movies.onrender.com/movies`} />
             <Row className='h-75'>
                 <Col xl={8} className='d-flex justify-content-center flex-column text-white ms-xl-5 mt-xl-5'>
                     <h1 className='display-2 fw-bold'>Unlimited movies, <br /> TV shows and more</h1>
