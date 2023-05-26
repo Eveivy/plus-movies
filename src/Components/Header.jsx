@@ -15,8 +15,7 @@ export default function Header({ requestToken }) {
                     <img src={logo} alt="" style={{ width: '70px', height: '55px' }} className="mb-0" />
                     <span className='d-block font-main' style={{ marginTop: '-13px' }}>Plus Movies</span>
                 </Navbar.Brand>
-                 <Link to="/movies">Movies</Link>
-                {/* <Nav.Link href="movies"></Nav.Link> */}
+                 <Link to="/movies">Movies</Link> 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className='ms-auto d-flex align-items-center justify-content-between'>

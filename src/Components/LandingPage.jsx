@@ -9,7 +9,6 @@ import Header from './Header';
 
 export default function LandingPage() {
     const props = useContext(AppContext);
- 
 
     return (
         <>
@@ -42,15 +41,7 @@ export default function LandingPage() {
                     </Col>
                 </Row>
             </Container>
-
-            {/* <Container fluid className='p-xl-5 text-white' style={{ background: 'linear-gradient(to bottom, black, #191f3f)' }} >
-                <Row>
-                    <Col xl={12} className="container d-flex flex-column justify-content-center text-center px-xl-6">
-                        <img src={sectionImg} alt="posters" />
-                    </Col>
-
-                </Row>
-            </Container> */}
+ 
         </>
     );
 }
