@@ -1,19 +1,19 @@
 import { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './Components/LandingPage'; 
-import Movies from './Components/Movies';
+import Overview from './Components/Overview';
 
 export const AppContext = createContext(null)
 
 function App() {
-  const [requestToken, setRequestToken] = useState(null);
+  const [requestToken, setRequestToken] = useState(""); 
 
   const getRequestToken = async () => {
     const options = {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YjVjMTAyMzFhNjkzYmVjMTY5ZWM0Yjg1YzUwNDU0OCIsInN1YiI6IjY0MzZkZWM1OTQ1ZDM2MDEwMjFiY2NjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.owofA-ly4ebTa7JmEYEcCePB85_LJSSuxyGIT4o6-ME'
+        Authorization: import.meta.env.VITE_ACCESS_TOKEN 
       }
     };
     try {
@@ -21,15 +21,17 @@ function App() {
       const data = await response.json();
       if (data.success === true) {
         setRequestToken(data.request_token); 
+        localStorage.setItem('requestToken', data.request_token);
       }else{
         throw new Error('Ooopss...')
       }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  }; 
+  };  
+
   useEffect(() => {
-    getRequestToken();
+    getRequestToken(); 
   }, []); 
 
   return (
@@ -37,7 +39,7 @@ function App() {
       <Router>
         <Routes>
             <Route index element={<LandingPage />} />
-            <Route path="/movies" element={<Movies />} /> 
+            <Route path="/overview" element={<Overview />} /> 
         </Routes>
       </Router>
     </AppContext.Provider>
