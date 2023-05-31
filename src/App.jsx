@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './Components/LandingPage'; 
+// import Layout from './Layout'
 import Overview from './Components/Overview';
 
 export const AppContext = createContext(null)
@@ -41,8 +42,8 @@ function App() {
     <AppContext.Provider value={{ requestToken }}>
       <Router>
         <Routes>
-            <Route index element={<LandingPage />} />
-            <Route path="/overview" element={<Overview />} /> 
+            <Route exact path="/" element={<LandingPage />} />
+            <Route exact path="/overview" element={<Overview />} /> 
         </Routes>
       </Router>
     </AppContext.Provider>
