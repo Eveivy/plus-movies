@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from 'react';
-import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Route, Routes, useParams } from 'react-router-dom';
 import LandingPage from './Components/LandingPage'; 
 import Layout from './Layout'
 import Overview from './Components/Overview';
@@ -7,8 +7,18 @@ import Overview from './Components/Overview';
 export const AppContext = createContext(null)
 
 function App() {
-  const {path} = useParams()
   const [requestToken, setRequestToken] = useState(""); 
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LandingPage />,
+    },
+    {
+      path: "/overview",
+      element: <Overview />,
+    },
+  ]);
 
   const getRequestToken = async () => {
     const access_token = import.meta.env.VITE_ACCESS_TOKEN
@@ -40,14 +50,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ requestToken }}>
-      <Router>
-        <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route path='/' element={<LandingPage />} />
-              <Route path=":path" element={<Overview />} /> 
-            </Route>
-        </Routes>
-      </Router>
+      <RouterProvider router={router} />
     </AppContext.Provider>
   )
 }
