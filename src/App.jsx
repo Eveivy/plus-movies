@@ -9,6 +9,7 @@ function App() {
   const [requestToken, setRequestToken] = useState(""); 
 
   const getRequestToken = async () => {
+    console.log(process.env)
     const access_token = process.env.NODE_ENV === 'development' ? import.meta.env.VITE_ACCESS_TOKEN : process.env.access_token
     const options = {
       method: 'GET',
@@ -23,7 +24,7 @@ function App() {
       if (data.success === true) {
         setRequestToken(data.request_token); 
         localStorage.setItem('requestToken', data.request_token);
-        console.log(process.env)
+        
       }else{
         throw new Error('Ooopss...')
       }
