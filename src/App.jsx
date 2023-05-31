@@ -42,7 +42,7 @@ function App() {
       <Router>
         <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<LandingPage />} />
+              <Route path='/' element={<LandingPage />} />
               <Route path="/overview" element={<Overview />} /> 
             </Route>
         </Routes>
