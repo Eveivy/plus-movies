@@ -13,7 +13,7 @@ function App() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: import.meta.env.VITE_ACCESS_TOKEN 
+        Authorization: `Bearer ${process.env.access_token}` 
       }
     };
     try {
