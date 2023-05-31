@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './Components/LandingPage'; 
-// import Layout from './Layout'
+import Layout from './Layout'
 import Overview from './Components/Overview';
 
 export const AppContext = createContext(null)
@@ -11,7 +11,6 @@ function App() {
 
   const getRequestToken = async () => {
     const access_token = import.meta.env.VITE_ACCESS_TOKEN
-    // console.log(process.env)
     const options = {
       method: 'GET',
       headers: {
@@ -42,8 +41,10 @@ function App() {
     <AppContext.Provider value={{ requestToken }}>
       <Router>
         <Routes>
-            <Route exact path="/" element={<LandingPage />} />
-            <Route exact path="/overview" element={<Overview />} /> 
+            <Route path="/" element={<Layout />}>
+              <Route index element={<LandingPage />} />
+              <Route path="/overview" element={<Overview />} /> 
+            </Route>
         </Routes>
       </Router>
     </AppContext.Provider>
