@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import LandingPage from './Components/LandingPage'; 
 import Layout from './Layout'
 import Overview from './Components/Overview';
@@ -7,6 +7,7 @@ import Overview from './Components/Overview';
 export const AppContext = createContext(null)
 
 function App() {
+  const {path} = useParams()
   const [requestToken, setRequestToken] = useState(""); 
 
   const getRequestToken = async () => {
@@ -43,7 +44,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Layout />}>
               <Route path='/' element={<LandingPage />} />
-              <Route path="/overview" element={<Overview />} /> 
+              <Route path=":path" element={<Overview />} /> 
             </Route>
         </Routes>
       </Router>
