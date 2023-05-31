@@ -10,6 +10,7 @@ function App() {
 
   const getRequestToken = async () => {
     const access_token = process.env.NODE_ENV === 'development' ? import.meta.env.VITE_ACCESS_TOKEN : process.env.access_token
+    console.log(process.env)
     const options = {
       method: 'GET',
       headers: {
