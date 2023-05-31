@@ -10,7 +10,7 @@ function App() {
 
   const getRequestToken = async () => {
     const access_token = import.meta.env.VITE_ACCESS_TOKEN
-    console.log(process.env)
+    // console.log(process.env)
     const options = {
       method: 'GET',
       headers: {
