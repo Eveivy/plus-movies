@@ -41,7 +41,7 @@ function App() {
     <AppContext.Provider value={{ requestToken }}>
       <Router>
         <Routes>
-            <Route path="/" element={<LandingPage />} />
+            <Route index element={<LandingPage />} />
             <Route path="/overview" element={<Overview />} /> 
         </Routes>
       </Router>
