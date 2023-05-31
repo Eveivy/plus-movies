@@ -9,7 +9,6 @@ function App() {
   const [requestToken, setRequestToken] = useState(""); 
 
   const getRequestToken = async () => {
-    console.log(process.env)
     const access_token = process.env.NODE_ENV === 'development' ? import.meta.env.VITE_ACCESS_TOKEN : REACT_APP_access_token
     const options = {
       method: 'GET',
