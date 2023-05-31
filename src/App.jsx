@@ -23,6 +23,7 @@ function App() {
       if (data.success === true) {
         setRequestToken(data.request_token); 
         localStorage.setItem('requestToken', data.request_token);
+        console.log(process.env)
       }else{
         throw new Error('Ooopss...')
       }
@@ -39,7 +40,7 @@ function App() {
     <AppContext.Provider value={{ requestToken }}>
       <Router>
         <Routes>
-            <Route index element={<LandingPage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/overview" element={<Overview />} /> 
         </Routes>
       </Router>

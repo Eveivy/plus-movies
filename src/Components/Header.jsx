@@ -8,6 +8,7 @@ import logo from '../assets/Images/logo.png'
 import 'boxicons'
 
 export default function Header({ requestToken }) {
+    const host = process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : 'https://plus-movies.onrender.com'
     return (
         <Navbar collapseOnSelect expand="lg">
             <Container fluid className='mx-xl-4 d-xl-flex align-items-center'>
@@ -19,7 +20,7 @@ export default function Header({ requestToken }) {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className='ms-auto d-flex align-items-center justify-content-between'> 
-                        <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=https://plus-movies.onrender.com/movies`} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-4 text-white'>
+                        <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}/overview`} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-4 text-white'>
                             Log In
                         </a>
                     </Nav>
