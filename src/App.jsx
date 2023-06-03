@@ -3,11 +3,14 @@ import { createBrowserRouter, RouterProvider, Route, Routes, useParams } from 'r
 import LandingPage from './Components/LandingPage'; 
 import Layout from './Layout'
 import Overview from './Components/Overview';
+import Explore from './Components/NotLoggedIn/Explore';
 
 export const AppContext = createContext(null)
 
 function App() {
   const [requestToken, setRequestToken] = useState(""); 
+  const host = process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : 'https://plus-movies.onrender.com'
+
 
   const router = createBrowserRouter([
     {
@@ -15,8 +18,8 @@ function App() {
       element: <LandingPage />
     },
     {
-      path: "/overview",
-      element: <Overview />
+      path: "/explore",
+      element: <Explore />
     },
   ]);
 
@@ -49,7 +52,7 @@ function App() {
   }, []); 
 
   return (
-    <AppContext.Provider value={{ requestToken }}>
+    <AppContext.Provider value={{ requestToken, host }}>
       <RouterProvider router={router} />
     </AppContext.Provider>
   )

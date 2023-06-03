@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom'
 import { AppContext } from "../App"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,19 +9,19 @@ import Header from './Header';
 
 
 export default function LandingPage() {
-    const props = useContext(AppContext);
+    const contexts = useContext(AppContext);
 
     return (
         <>
             <Container fluid className='hero-section'>
-                <Header requestToken={props.requestToken}/>
+                <Header requestToken={contexts.requestToken} host={contexts.host}/>
                 <Row className='h-75'>
                     <Col xl={8} className='d-flex justify-content-center flex-column text-white ms-xl-5 mt-xl-5'>
                         <h1 className='display-2 fw-bold'>Unlimited movies, <br /> TV shows and more</h1>
                         <p className='lead'>Plus movies utilizes the expansive library of TMDb to provide users with access to a vast collection
                             of movies and TV shows. It features search and browse functionalities, personalized recommendations, user reviews, and watchlists. This app is a one-stop-shop for all things film and television.</p>
                         <div className='my-3'>
-                            <Button className='btn-hot-pink px-5 py-3 rounded-pill'>Explore Movies</Button>
+                            <Link className='nav-link' to="/explore"> <Button className='btn-hot-pink px-5 py-3 rounded-pill'>Explore Movies</Button></Link>
                         </div>
                     </Col>
                 </Row>
@@ -41,7 +42,7 @@ export default function LandingPage() {
                     </Col>
                 </Row>
             </Container>
- 
+
         </>
     );
 }

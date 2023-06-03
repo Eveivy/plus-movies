@@ -20,6 +20,10 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
 }
+.nav-bg {
+  /* background: linear-gradient(to bottom, #191f3ff7, #191f3f75) !important; */
+  background-color: #191f3ff7 !important;
+}
 
 .font-main {
   font-family: 'Lobster';
@@ -28,14 +32,18 @@ body {
 .text-hot-pink {
   color: #ff0088;
 }
-
+.bg-hot-pink{
+  background-color: #ff0088;
+}
 .search-input {
   outline: none;
   background-color: transparent;
   border: none;
   color: #0f1432 !important;
 }
-
+.pointer{
+  cursor: pointer;
+}
 .btn-hot-pink {
   background-color: #ff0088;
   border: 2px solid #ff0088;
@@ -64,9 +72,7 @@ body {
   background-color: #820e21;
 }
 
-.gradient-border {
-  /* border-width: 3px;
-  border-style: solid; */
+.gradient-border { 
   border-right: 3px solid;
   border-image: linear-gradient(to bottom, #ff0088, #820e21) 1 100%;
 }

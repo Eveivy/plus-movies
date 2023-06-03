@@ -8,10 +8,10 @@ import Button from 'react-bootstrap/Button';
 export default function Movies() {
 
   const [sessionId, setSessionId] = useState(null); 
-  
+
     return (
         <>
-           <div>Movies Here</div>
+           <div>Hello</div>
         </>
     );
 }
