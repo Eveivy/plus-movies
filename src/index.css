@@ -24,7 +24,9 @@ body {
   /* background: linear-gradient(to bottom, #191f3ff7, #191f3f75) !important; */
   background-color: #191f3ff7 !important;
 }
-
+.text-dark-blue{
+  color: #191f3ff7;
+}
 .font-main {
   font-family: 'Lobster';
 }
@@ -63,24 +65,34 @@ body {
   background-color: #ff0088;
   border: 2px solid #ff0088;
 }
-
-.btn-light-pink {
-  background-color: #820e21;
-}
-
-.btn-light-pink:hover {
-  background-color: #820e21;
-}
-
+  
 .gradient-border { 
   border-right: 3px solid;
   border-image: linear-gradient(to bottom, #ff0088, #820e21) 1 100%;
+} 
+.scroll-container {
+  width:  900px; /* Set the desired width */
+  height: 250px; /* Set the desired height */
+  overflow-x: auto; /* Enable horizontal scrolling */
+} 
+.content {
+  width: 1000px; /* Set the width of the content */
+  height: 100%; /* Set the height of the content */
+} 
+/* Styles for the scrollbar track */
+.scroll-container::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+  height: 6px;
 }
 
-.trending {
-  background-image: linear-gradient(0deg, #191f3f, #191f3f00), url(/src/assets/Images/wednesday.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 250px;
+/* Styles for the scrollbar thumb */
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #dbdbdb; /* Color of the thumb */
+  border-radius: 10px; /* Adjust the border radius as needed */
+}
+ 
+
+/* Styles for the scrollbar thumb when being hovered */
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #ebdddd;/* Color of the thumb when hovered */
 }

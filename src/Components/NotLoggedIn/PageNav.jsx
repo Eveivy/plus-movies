@@ -19,7 +19,7 @@ export default function PageNav({ host, requestToken }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
             <Nav.Link className="text-white" href="#movies">Movies</Nav.Link>
-            <Nav.Link className="text-white" href="#tvshows">TV Shows</Nav.Link>
+            <Nav.Link className="text-white mx-xl-4" href="#tvshows">TV Shows</Nav.Link>
             <Nav.Link className="text-white" href="#people">People</Nav.Link>
           </Nav>
           <Nav className="d-flex align-items-center">
