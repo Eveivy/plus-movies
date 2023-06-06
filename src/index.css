@@ -72,12 +72,13 @@ body {
 } 
 .scroll-container {
   width:  900px; /* Set the desired width */
-  height: 250px; /* Set the desired height */
+  height: 400px; /* Set the desired height */
   overflow-x: auto; /* Enable horizontal scrolling */
 } 
 .content {
   width: 1000px; /* Set the width of the content */
   height: 100%; /* Set the height of the content */
+  overflow-y: hidden;
 } 
 /* Styles for the scrollbar track */
 .scroll-container::-webkit-scrollbar {
