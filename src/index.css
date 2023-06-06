@@ -71,7 +71,7 @@ body {
   border-image: linear-gradient(to bottom, #ff0088, #820e21) 1 100%;
 } 
 .scroll-container {
-  width:  900px; /* Set the desired width */
+  width:  95%; /* Set the desired width */
   height: 400px; /* Set the desired height */
   overflow-x: auto; /* Enable horizontal scrolling */
 } 

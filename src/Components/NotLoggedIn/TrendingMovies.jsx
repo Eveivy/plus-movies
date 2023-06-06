@@ -4,34 +4,49 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import img from "../../assets/Images/wednesday-poster.jpg"
 
 export default function TrendingMovies() {
     const [tmvs, setTmvs] = useState([]);
     const apiKey = import.meta.env.VITE_API_KEY;
     const access_token = import.meta.env.VITE_ACCESS_TOKEN;
 
-    // const trendingMvs = async () => {
-    //     const options = {
-    //         method: 'GET',
-    //         headers: {
-    //             accept: 'application/json',
-    //             Authorization: `Bearer ${access_token}`
-    //         }
-    //     };
-    //     fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
-    //         .then(response => response.json())
-    //         .then(data => 
-    //             setTmvs(data.results)
-    //         )
-    //         .catch(err => console.error(err));
+    const trendingMvs = async () => {
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${access_token}`
+            }
+        };
+        fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
+            .then(response => response.json())
+            .then(data => 
+                setTmvs(data.results)
+            )
+            .catch(err => console.error(err));
 
 
-    // };
+    };
 
-    // useEffect(() => {
-    //     trendingMvs();
-    // }, []); 
+    useEffect(() => {
+        trendingMvs();
+    }, []); 
+
+    const list = tmvs.map(movie => {
+        console.log(movie)
+        return(
+            <h1>Hello</h1>
+        //     <Card style={{ width: '15rem' }} className='p-3 shadow border-0 bg-white ms-3'>
+        //     <Card.Img variant="top" src={img} className='rounded-3 '/>
+        //     <Card.Body>
+        //         <Card.Title>Card Title</Card.Title>
+        //         <Card.Text> 
+        //         </Card.Text> 
+        //     </Card.Body>
+        // </Card>
+        )
+    })
 
     return (
         <Container className='p-4'>
@@ -41,16 +56,7 @@ export default function TrendingMovies() {
             <div className=''>
                 <div className="scroll-container">
                     <div className="content d-flex align-items-center">
-                        <Card style={{ width: '15rem' }} className='p-3 shadow border-0 bg-white'>
-                            <Card.Img variant="top" src="holder.js/100px180" />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.
-                                </Card.Text> 
-                            </Card.Body>
-                        </Card>
+                       {list}
                     </div>
                 </div>
 
