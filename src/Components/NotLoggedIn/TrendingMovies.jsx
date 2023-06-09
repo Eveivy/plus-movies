@@ -21,7 +21,7 @@ export default function TrendingMovies() {
         };
         fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
             .then(response => response.json())
-            .then(data => 
+            .then(data =>
                 setTmvs(data.results)
             )
             .catch(err => console.error(err));
@@ -31,33 +31,37 @@ export default function TrendingMovies() {
 
     useEffect(() => {
         trendingMvs();
-    }, []); 
+    }, []);
 
-    const list = tmvs.map(movie => {
-        console.log(movie)
-        return(
-            <h1>Hello</h1>
-        //     <Card style={{ width: '15rem' }} className='p-3 shadow border-0 bg-white ms-3'>
-        //     <Card.Img variant="top" src={img} className='rounded-3 '/>
-        //     <Card.Body>
-        //         <Card.Title>Card Title</Card.Title>
-        //         <Card.Text> 
-        //         </Card.Text> 
-        //     </Card.Body>
-        // </Card>
-        )
-    })
+    // const list = 
 
     return (
-        <Container className='p-4'>
+        <Container className='p-4 w-100'>
             <div className="d-flex align-items-center mb-4">
                 <h3 className='font-main text-dark-blue'>Trending</h3>
             </div>
-            <div className=''>
-                <div className="scroll-container">
-                    <div className="content d-flex align-items-center">
-                       {list}
-                    </div>
+            <div className='d-flex scroll-container'>
+                <div className="d-flex justify-content-between align-items-center">
+                    {
+                        tmvs.map(movie => {
+                            console.log(movie)
+                            return (
+                                <div className="rounded-3" key={movie.id}>
+                                    <div className="mx-2 mb-5 pointer image-container">
+                                        <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title
+                                        } loading="lazy" />
+                                        <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-end align-items-start">
+                                            <h5 className="text-capitalize">{movie.original_title}</h5>
+                                            <div className="d-flex align-items-start justify-content-between">
+                                                <small>{movie.release_date}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+
+                        })
+                    }
                 </div>
 
             </div>
