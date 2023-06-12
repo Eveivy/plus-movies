@@ -18,7 +18,7 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
 }
-.nav-bg { 
+.dark-bg { 
   background-color: #191f3ff7 !important;
 }
 .text-dark-blue{
@@ -88,12 +88,13 @@ body {
   background-color: rgba(0, 0, 0, 0.577);
   object-fit: cover;
 } 
+
 .image-container {
   position: relative;
   display: inline-block;
   height: 400px; 
   width: 250px;
-  overflow: hidden;
+  overflow: hidden; 
 }
 .overlay {
   position: absolute;
@@ -108,5 +109,14 @@ body {
 }
 
 .image-container:hover .overlay {
-  opacity: 1;
+  opacity: 1; 
+}
+.text-hover-color:hover{
+  color: #ff0088d4 !important;
+  transition: all 0.2s;
+}
+.active{
+  background-color: #191f3f;
+  color: white;
+  border-radius: 50rem;
 }

@@ -7,7 +7,7 @@ import logo from '../../assets/Images/logo.png'
 
 export default function PageNav({ host, requestToken }) {
   return (
-    <Navbar collapseOnSelect expand="lg" className='nav-bg text-white pb-0'>
+    <Navbar collapseOnSelect expand="lg" className='dark-bg text-white pb-0'>
       <Container fluid className='mx-xl-4 d-xl-flex align-items-center justify-content-between'>
         <Link className='nav-link' to="/">
           <Navbar.Brand>
