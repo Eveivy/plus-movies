@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'; 
 
-export default function TrendingMovies() {
+export default function Trending() {
     const [tmvs, setTmvs] = useState([]);
     const [tWMovies, setTWMovies] = useState([])
     const [showTWMovies, setShowTWMovies] = useState(false)
     const apiKey = import.meta.env.VITE_API_KEY;
     const access_token = import.meta.env.VITE_ACCESS_TOKEN;
 
-    const trendingMvsT = async () => {
+    const getTrendingMvsT = async () => {
         const options = {
             method: 'GET',
             headers: {
@@ -20,7 +20,6 @@ export default function TrendingMovies() {
         fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
             .then(response => response.json())
             .then(data =>{
-                console.log(data)
                 setTmvs(data.results)
             }
             )
@@ -29,7 +28,7 @@ export default function TrendingMovies() {
 
     };
 
-    const trendingMvsTW = async () => {
+    const getTrendingMvsTW = async () => {
         const options = {
             method: 'GET',
             headers: {
@@ -40,7 +39,6 @@ export default function TrendingMovies() {
         fetch('https://api.themoviedb.org/3/trending/all/week?language=en-US', options)
             .then(response => response.json())
             .then(data => { 
-                console.log(data)
                 setTWMovies(data.results)
             }
             )
@@ -50,18 +48,18 @@ export default function TrendingMovies() {
     };
 
     useEffect(() => {
-        trendingMvsT();
-        trendingMvsTW()
+        getTrendingMvsT();
+        getTrendingMvsTW()
     }, []); 
 
 
     return (
-        <Container className='p-4 w-100'>
+        <Container className='p-4 w-100 mb-4'>
             <div className="d-flex align-items-center justify-content-between mb-4">
                 <h3 className='font-main text-dark-blue'>Trending</h3>
                 <div className="d-flex align-items-center justify-content-between border rounded-pill">
-                   <span onClick={() => setShowTWMovies(false)} className={`pointer px-3 py-2 ${!showTWMovies && "active"}`}>Movies</span>
-                   <span onClick={() => setShowTWMovies(true)}  className={`pointer px-3 py-2 ${showTWMovies && "active"}`}>This week</span>
+                   <span onClick={() => setShowTWMovies(false)} className={`pointer px-3 py-2 ${!showTWMovies && "active"}`}>Today</span>
+                   <span onClick={() => setShowTWMovies(true)}  className={`pointer px-3 py-2 ${showTWMovies && "active"}`}>This Week</span>
                 </div>
             </div>
             <div className='d-flex scroll-container'>
@@ -70,7 +68,7 @@ export default function TrendingMovies() {
                         showTWMovies ? tWMovies.map(movie => { 
                             return (
                                 <div className="rounded-3" key={movie.id}>
-                                    <div className="mx-2 mb-5 pointer image-container">
+                                    <div className="mx-2 mb-5 image-container">
                                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title
                                         } loading="lazy" />
                                         <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-end align-items-start">
@@ -87,7 +85,7 @@ export default function TrendingMovies() {
                         tmvs.map(movie => { 
                             return (
                                 <div className="rounded-3" key={movie.id}>
-                                    <div className="mx-2 mb-5 pointer image-container">
+                                    <div className="mx-2 mb-5 image-container">
                                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title
                                         } loading="lazy" />
                                         <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-end align-items-start">
