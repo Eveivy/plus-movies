@@ -120,3 +120,19 @@ body {
   color: white;
   border-radius: 50rem;
 }
+ 
+.radial-progress-background {
+  transition: stroke-dashoffset 0.35s;
+}
+
+.radial-progress-bar {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s; 
+}
+
+.radial-progress-text {
+  font-size: 10px;
+  font-weight: bold;
+  fill: white;
+  font-family: sans-serif;
+}
