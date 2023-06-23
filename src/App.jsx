@@ -1,14 +1,15 @@
 import { useState, useEffect, createContext } from 'react';
 import { createBrowserRouter, RouterProvider, Route, Routes, useParams } from 'react-router-dom';
-import LandingPage from './Components/LandingPage'; 
+import LandingPage from './Components/LandingPage';
 import Layout from './Layout'
 import Overview from './Components/Overview';
 import Explore from './Components/NotLoggedIn/Explore';
+import Details from './Components/Details';
 
 export const AppContext = createContext(null)
 
 function App() {
-  const [requestToken, setRequestToken] = useState(""); 
+  const [requestToken, setRequestToken] = useState("");
   const host = process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : 'https://plus-movies.onrender.com'
 
 
@@ -21,6 +22,10 @@ function App() {
       path: "/explore",
       element: <Explore />
     },
+    {
+      path: "/:id/:name",
+      element: <Details />
+    }
   ]);
 
   const getRequestToken = async () => {
@@ -29,27 +34,27 @@ function App() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${access_token}` 
+        Authorization: `Bearer ${access_token}`
       }
     };
     try {
       const response = await fetch('https://api.themoviedb.org/3/authentication/token/new', options);
       const data = await response.json();
       if (data.success === true) {
-        setRequestToken(data.request_token); 
+        setRequestToken(data.request_token);
         localStorage.setItem('requestToken', data.request_token);
-        
-      }else{
+
+      } else {
         throw new Error('Ooopss...')
       }
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  };  
+  };
 
   useEffect(() => {
-    getRequestToken(); 
-  }, []); 
+    getRequestToken();
+  }, []);
 
   return (
     <AppContext.Provider value={{ requestToken, host }}>

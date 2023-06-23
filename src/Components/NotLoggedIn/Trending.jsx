@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
-import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container'; 
 import RadialProgressBar from './ProgressBar';
 
 
-export default function Trending() {
+export default function Trending() { 
     const [tmvs, setTmvs] = useState([]);
     const [tWMovies, setTWMovies] = useState([])
     const [showTWMovies, setShowTWMovies] = useState(false)
@@ -21,8 +21,7 @@ export default function Trending() {
         };
         fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
             .then(response => response.json())
-            .then(data => {
-                console.log(data.results)
+            .then(data => { 
                 setTmvs(data.results)
             }
             )
@@ -53,9 +52,7 @@ export default function Trending() {
     useEffect(() => {
         getTrendingMvsT();
         getTrendingMvsTW()
-    }, []);
-
-    const progressPercentage = 10; // Example percentage value
+    }, []); 
 
     return (
         <Container className='p-4 w-100 mb-4'>
@@ -80,7 +77,7 @@ export default function Trending() {
                                                 <RadialProgressBar percentage={Math.floor(movie.vote_average * 10)} />
                                             </div>
                                             <div className="">
-                                                <h5 className="text-capitalize"><Link className='text-decoration-none text-white text-hover-color'>{movie.original_name || movie.name}</Link></h5>
+                                                <h5 className="text-capitalize"><Link to={`/${movie.id}/${movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.original_name || movie.name}</Link></h5>
                                                 <div className="d-flex align-items-start justify-content-between">
                                                     <small>{movie.first_air_date}</small>
                                                 </div>
@@ -102,7 +99,7 @@ export default function Trending() {
                                                     <RadialProgressBar percentage={Math.floor(movie.vote_average * 10)} />
                                                 </div>
                                                 <div className="">
-                                                    <h5 className="text-capitalize"><Link className='text-decoration-none text-white text-hover-color'>{movie.original_title || movie.original_name}</Link></h5>
+                                                    <h5 className="text-capitalize"><Link to={`/${movie.id}/${movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.original_title || movie.original_name}</Link></h5>
                                                     <div className="d-flex align-items-start justify-content-between">
                                                         <small>{movie.release_date}</small>
                                                     </div>
