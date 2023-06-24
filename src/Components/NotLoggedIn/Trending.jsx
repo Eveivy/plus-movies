@@ -21,7 +21,7 @@ export default function Trending() {
         };
         fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
             .then(response => response.json())
-            .then(data => { 
+            .then(data => {  
                 setTmvs(data.results)
             }
             )
@@ -77,7 +77,7 @@ export default function Trending() {
                                                 <RadialProgressBar percentage={Math.floor(movie.vote_average * 10)} />
                                             </div>
                                             <div className="">
-                                                <h5 className="text-capitalize"><Link to={`/${movie.id}/${movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.original_name || movie.name}</Link></h5>
+                                                <h5 className="text-capitalize"><Link to={`/${movie.id}-${movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.original_name || movie.name}</Link></h5>
                                                 <div className="d-flex align-items-start justify-content-between">
                                                     <small>{movie.first_air_date}</small>
                                                 </div>
@@ -99,9 +99,9 @@ export default function Trending() {
                                                     <RadialProgressBar percentage={Math.floor(movie.vote_average * 10)} />
                                                 </div>
                                                 <div className="">
-                                                    <h5 className="text-capitalize"><Link to={`/${movie.id}/${movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.original_title || movie.original_name}</Link></h5>
+                                                    <h5 className="text-capitalize"><Link to={`/${movie.id}-${movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.original_title || movie.original_name}</Link></h5>
                                                     <div className="d-flex align-items-start justify-content-between">
-                                                        <small>{movie.release_date}</small>
+                                                        <small>{movie.release_date || movie.first_air_date}</small>
                                                     </div>
                                                 </div>
                                             </div>

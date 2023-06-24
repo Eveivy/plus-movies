@@ -23,7 +23,7 @@ function App() {
       element: <Explore />
     },
     {
-      path: "/:id/:name",
+      path: "/:id-:name",
       element: <Details />
     }
   ]);
