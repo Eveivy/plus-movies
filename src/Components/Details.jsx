@@ -83,10 +83,11 @@ export default function Details() {
                                     </div>
                                     <div className="mt-3 d-flex align-items-center">
                                         <div className="d-flex align-items-center">
-                                            <RadialProgressBar percentage={Math.floor(details.vote_average * 10)} rad={45} strokeW={7} /> 
+                                            <RadialProgressBar percentage={Math.floor(details.vote_average * 10)} rad={45} strokeW={7} />
+                                            <span>Movie <br /> Rating</span>
                                         </div>
                                         <div className="d-flex align-items-center ms-3">
-                                            <span title='Add to list' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer'><box-icon name='list-plus' color="white"></box-icon></span>
+                                            <span title='Add to list' className='bg-lighter-pink rounded-circle p-2 d-flex align-items-center pointer'><box-icon name='list-plus' color="white"></box-icon></span>
                                         </div>
                                     </div>
                                 </div>
