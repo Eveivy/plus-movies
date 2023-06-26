@@ -107,9 +107,12 @@ body {
   background: linear-gradient(to bottom, #191f3f97, #191f3f);
   color: #fff;
 }
-
+.bg-lighter-pink{
+  background-color: #ff008871;
+  color: white;
+}
 .image-container:hover .overlay {
-  opacity: 1; 
+  opacity: 1;  
 }
 .text-hover-color:hover{
   color: #ff0088d4 !important;
@@ -135,4 +138,14 @@ body {
   font-weight: bold;
   fill: white;
   font-family: sans-serif;
+}
+.inner-content{
+  padding-left: 40px;
+  padding-right: 40px;
+  /* max-width: 400px;  */
+  width: 100%;
+  padding-top: 30px; 
+  padding-bottom: 30px;
+  z-index: 0;
+  box-sizing: border-box;
 }

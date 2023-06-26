@@ -1,8 +1,8 @@
 import React from 'react'; 
 
-const RadialProgressBar = ({ percentage }) => {
-  const strokeWidth = 5;  
-  const radius = 30;
+const RadialProgressBar = ({ percentage, rad, strokeW }) => {
+  const strokeWidth = strokeW;  
+  const radius = rad;
   const normalizedRadius = radius - strokeWidth * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
   const offset = circumference - (percentage / 100) * circumference;
