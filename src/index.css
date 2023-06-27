@@ -96,6 +96,12 @@ body {
   width: 250px;
   overflow: hidden; 
 }
+.symbol{
+  display: inline-block;
+  height: 80px; 
+  width: 80px;
+  border-radius: 50%;
+}
 .overlay {
   position: absolute;
   bottom: 0;
@@ -108,7 +114,7 @@ body {
   color: #fff;
 }
 .bg-lighter-pink{
-  background-color: #ff008871;
+  background-color: #ff008891;
   color: white;
 }
 .image-container:hover .overlay {
