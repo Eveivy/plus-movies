@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
 import PageNav from './NotLoggedIn/PageNav';
+import Videos from './Videos';
 import RadialProgressBar from './NotLoggedIn/ProgressBar';
 import maleProfile from '../assets/Images/no-profile-male.jpg'
 import femaleProfile from '../assets/Images/no-profile-female.jpg' 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+ 
 
 export default function Details() {
     const access_token = import.meta.env.VITE_ACCESS_TOKEN;
@@ -56,8 +56,7 @@ export default function Details() {
 
         fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`, options)
             .then(response => response.json())
-            .then(data => {
-                console.log(data)
+            .then(data => { 
                 setCasts(data.cast);
                 setCrews(data.crew);
             })
@@ -65,9 +64,27 @@ export default function Details() {
 
     }
 
+    const getReviews = () => {
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${access_token}`
+            }
+        };
+
+        fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`, options)
+            .then(response => response.json())
+            .then(data => { 
+                console.log(data)
+            })
+            .catch(err => console.error(err));
+    }
+
     useEffect(() => {
         getMovieDetails();
         getCharacters();
+        getReviews();
     }, []); 
 
     const sortedCharacters = casts.sort((a, b) => a.order - b.order); 
@@ -100,7 +117,7 @@ export default function Details() {
                                         <span className='text-white px-2'>{moment(details.release_date).format('L')} ({
                                             prodCountries.map(el => <span key={el.iso_3166_1}>{el.iso_3166_1}</span>)
                                         })</span>
-                                        <span>| {genres.map((el) => {
+                                        <span>| {genres.map((el) => { 
                                             return <span key={el.id} className='px-1 text-hot-pink'>{el.name} <span className='text-white'>*</span></span>
                                         })}</span>
                                         <span className='mx-2'> |  {Math.floor(details.runtime / 60)}h {details.runtime % 60}m</span>
@@ -164,9 +181,9 @@ export default function Details() {
                     <div className="d-flex justify-content-between align-items-center">
                         {
                             sortedCharacters.map(el => { 
-                                return <div key={el.cast_id} class="card bg-white shadow mx-2 border-0 rounded-3 p-2 my-5 h-100 pointer" style={{width: "18rem"}}>
+                                return <div key={el.id} className="card bg-white shadow mx-2 border-0 rounded-3 p-2 my-5 h-100 pointer" style={{width: "18rem"}}>
                                     <div className="d-flex align-items-center justify-content-center" >
-                                        <img style={{ height: "250px" }} src={el.profile_path ? `https://image.tmdb.org/t/p/original/${el.profile_path}`: el.gender === 2 ? maleProfile : femaleProfile} class="rounded-3" alt={el.name} />
+                                        <img style={{ height: "250px" }} src={el.profile_path ? `https://image.tmdb.org/t/p/original/${el.profile_path}`: el.gender === 2 ? maleProfile : femaleProfile} className="rounded-3" alt={el.name} />
                                     </div>
                                     <div className="py-2 text-center">
                                         <p className='fw-bold mb-0'>{el.name || "-"}</p>
@@ -179,18 +196,17 @@ export default function Details() {
                     </div>
                 </div>
             </Container>
-            <Container className='p-4 w-100 mb-4'>
+            <Container className='p-4 w-100'>
                 <div className="d-flex align-items-center justify-content-between">
                     <h4 className='text-dark-blue font-main'>Crew <span className='text-muted fs-3'>{crews.length}</span></h4>
                 </div>
                 <div className='d-flex align-items-center scroll-container mb-5' style={{}}>
                     <div className="d-flex justify-content-between align-items-center">
                         {
-                            crews.map(el => { 
-                                console.log(el)
-                                return <div key={el.id} class="card bg-white shadow mx-2 border-0 rounded-3 p-2 my-5 h-100 pointer" style={{width: "18rem"}}>
+                            crews.map(el => {   
+                                return <div key={el.credit_id} className="card bg-white shadow mx-2 border-0 rounded-3 p-2 my-5 h-100 pointer" style={{width: "18rem"}}>
                                     <div className="d-flex align-items-center justify-content-center" >
-                                        <img style={{ height: "250px" }} src={el.profile_path ? `https://image.tmdb.org/t/p/original/${el.profile_path}`: el.gender === 2 ? maleProfile : femaleProfile} class="rounded-3" alt={el.name} />
+                                        <img style={{ height: "250px" }} src={el.profile_path ? `https://image.tmdb.org/t/p/original/${el.profile_path}`: el.gender === 2 ? maleProfile : femaleProfile} className="rounded-3" alt={el.name} />
                                     </div>
                                     <div className="py-2 text-center">
                                         <p className='fw-bold mb-0'>{el.name || "-"}</p>
@@ -203,6 +219,7 @@ export default function Details() {
                     </div>
                 </div>
             </Container>
+            <Videos movieId={id}/>
         </>
 
     )

@@ -1,0 +1,59 @@
+import { useEffect, useState } from 'react';
+import ReactPlayer from 'react-player';
+import Container from 'react-bootstrap/Container';
+
+
+export default function Videos({ movieId }) {
+    const access_token = import.meta.env.VITE_ACCESS_TOKEN;
+    const [videos, setVideos] = useState([])
+    const getVideos = () => {
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${access_token}`
+            }
+        };
+
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, options)
+            .then(response => response.json())
+            .then(data => {
+                setVideos(data.results); 
+            })
+            .catch(err => console.error(err));
+
+    }
+
+    useEffect(() => {
+        getVideos();
+    }, []);
+    return (
+        <>
+            {videos.length && <Container className='p-4 w-100 mb-4'>
+                <div className="d-flex align-items-center justify-content-between">
+                    <h4 className='text-dark-blue font-main'> Videos <span className='text-muted fs-3'>{videos.length}</span></h4>
+                </div>
+                <div className='d-flex align-items-center scroll-container mb-5' style={{}}>
+                    <div className="d-flex justify-content-between align-items-center">
+                        {
+                            videos.map(el => { 
+                                return <div key={el.id} className='me-5'>
+                                    {videos.length > 0 && (
+                                        <ReactPlayer
+                                            url={`https://www.youtube.com/watch?v=${el.key}`}
+                                            controls
+                                            width="600px"
+                                            height="360px"
+                                        />
+                                    )}
+                                </div>
+                            })
+                        }
+                    </div>
+                </div>
+            </Container>
+            }
+
+        </>
+    )
+}

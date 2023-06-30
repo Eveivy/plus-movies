@@ -15,8 +15,8 @@ const RadialProgressBar = ({ percentage, rad, strokeW }) => {
         strokeWidth={strokeWidth}
         fill="#0f143"
         r={normalizedRadius}
-        cx={radius}
-        cy={radius}
+        cx={radius ? radius : 0}
+        cy={radius ? radius : 0}
       />
       <circle
         className="radial-progress-bar"
@@ -24,8 +24,8 @@ const RadialProgressBar = ({ percentage, rad, strokeW }) => {
         strokeWidth={strokeWidth}
         fill="transparent"
         r={normalizedRadius}
-        cx={radius}
-        cy={radius}
+        cx={radius ? radius : 0}
+        cy={radius ? radius : 0}
         style={{
           strokeDasharray: circumference,
           strokeDashoffset: offset,
