@@ -1,7 +1,6 @@
 import { useState, useEffect, createContext } from 'react';
 import { createBrowserRouter, RouterProvider, Route, Routes, useParams } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
-import Layout from './Layout'
 import Overview from './Components/Overview';
 import Explore from './Components/NotLoggedIn/Explore';
 import Details from './Components/Details';

@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import moment from 'moment';
 import PageNav from './NotLoggedIn/PageNav';
 import Videos from './Videos';
+import MovieReviews from './MovieReviews';
 import RadialProgressBar from './NotLoggedIn/ProgressBar';
 import maleProfile from '../assets/Images/no-profile-male.jpg'
 import femaleProfile from '../assets/Images/no-profile-female.jpg' 
@@ -64,27 +65,11 @@ export default function Details() {
 
     }
 
-    const getReviews = () => {
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${access_token}`
-            }
-        };
-
-        fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`, options)
-            .then(response => response.json())
-            .then(data => { 
-                console.log(data)
-            })
-            .catch(err => console.error(err));
-    }
+   
 
     useEffect(() => {
         getMovieDetails();
         getCharacters();
-        getReviews();
     }, []); 
 
     const sortedCharacters = casts.sort((a, b) => a.order - b.order); 
@@ -220,6 +205,7 @@ export default function Details() {
                 </div>
             </Container>
             <Videos movieId={id}/>
+            <MovieReviews movieId={id}/>
         </>
 
     )

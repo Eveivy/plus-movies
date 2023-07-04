@@ -2,7 +2,6 @@ import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../../assets/Images/logo.png'
 
 export default function PageNav({ host, requestToken }) {
@@ -18,7 +17,9 @@ export default function PageNav({ host, requestToken }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link className="text-white" href="#movies">Movies</Nav.Link>
+            <Link className='nav-link' to="/explore">
+              <span className="text-white" href="#movies">Movies</span>
+            </Link>
             <Nav.Link className="text-white mx-xl-4" href="#tvshows">TV Shows</Nav.Link>
             <Nav.Link className="text-white" href="#people">People</Nav.Link>
           </Nav>

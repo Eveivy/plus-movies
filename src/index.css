@@ -70,7 +70,8 @@ body {
   height: 400px;  
   overflow-x: scroll;  
   overflow-y: hidden; 
-}  
+} 
+
 .scroll-container::-webkit-scrollbar {
   width: 8px; 
   height: 6px;
@@ -98,8 +99,8 @@ body {
 }
 .symbol{
   display: inline-block;
-  height: 80px; 
-  width: 80px;
+  height: 60px; 
+  width: 60px;
   border-radius: 50%;
 }
 .overlay {
