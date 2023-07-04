@@ -172,8 +172,8 @@ export default function Details() {
                                     </div>
                                     <div className="py-2 text-center">
                                         <p className='fw-bold mb-0'>{el.name || "-"}</p>
-                                        <span className='text-muted d-block my-0'>{el.character || "-"}</span>
-                                        <small className='text-muted'>{el.known_for_department || "-"}</small>
+                                        <span className='text-muted d-block my-0 fs-7'>{el.character || "-"}</span>
+                                        <small className='text-muted fs-7'>{el.known_for_department || "-"}</small>
                                     </div>
                                 </div>
                             })

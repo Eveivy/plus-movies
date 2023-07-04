@@ -121,6 +121,9 @@ body {
 .image-container:hover .overlay {
   opacity: 1;  
 }
+.fs-7{
+  font-size: 0.8rem ;
+}
 .text-hover-color:hover{
   color: #ff0088d4 !important;
   transition: all 0.2s;

@@ -25,7 +25,7 @@ export default function PageNav({ host, requestToken }) {
           </Nav>
           <Nav className="d-flex align-items-center">
             <Nav className="text-white">
-              <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}/overview`} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-xl-4 text-white'>
+              <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}`} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-xl-4 text-white'>
                 Log In
               </a>
             </Nav>
