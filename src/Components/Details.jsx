@@ -5,6 +5,7 @@ import moment from 'moment';
 import PageNav from './NotLoggedIn/PageNav';
 import Videos from './Videos';
 import MovieReviews from './MovieReviews';
+import Recommendations from './Recommendations';
 import RadialProgressBar from './NotLoggedIn/ProgressBar';
 import maleProfile from '../assets/Images/no-profile-male.jpg'
 import femaleProfile from '../assets/Images/no-profile-female.jpg' 
@@ -204,8 +205,9 @@ export default function Details() {
                     </div>
                 </div>
             </Container>
-            <Videos movieId={id}/>
-            <MovieReviews movieId={id}/>
+            <Videos movieId={id} accessTkns={access_token}/>
+            <MovieReviews movieId={id} accessTkns={access_token}/>
+            <Recommendations movieId={id} accessTkns={access_token}/>
         </>
 
     )

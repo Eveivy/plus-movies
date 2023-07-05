@@ -3,15 +3,14 @@ import ReactPlayer from 'react-player';
 import Container from 'react-bootstrap/Container';
 
 
-export default function Videos({ movieId }) {
-    const access_token = import.meta.env.VITE_ACCESS_TOKEN;
+export default function Videos({ movieId, accessTkns}) { 
     const [videos, setVideos] = useState([])
     const getVideos = () => {
         const options = {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${access_token}`
+                Authorization: `Bearer ${accessTkns}`
             }
         };
 
@@ -33,7 +32,7 @@ export default function Videos({ movieId }) {
                 <div className="d-flex align-items-center justify-content-between">
                     <h4 className='text-dark-blue font-main'> Videos <span className='text-muted fs-3'>{videos.length}</span></h4>
                 </div>
-                <div className='d-flex align-items-center scroll-container mb-5' style={{}}>
+                <div className='d-flex align-items-center scroll-container' style={{}}>
                     <div className="d-flex justify-content-between align-items-center">
                         {
                             videos.map(el => { 

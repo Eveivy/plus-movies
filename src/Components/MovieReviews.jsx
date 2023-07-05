@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 
 
-export default function MovieReviews({ movieId }) {
-    const access_token = import.meta.env.VITE_ACCESS_TOKEN;
+export default function MovieReviews({ movieId, accessTkns}) { 
     const [reviews, setReviews] = useState([])
     const [currentIdx, setCurrentIdx] = useState(0)
 
@@ -12,14 +11,13 @@ export default function MovieReviews({ movieId }) {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${access_token}`
+                Authorization: `Bearer ${accessTkns}`
             }
         };
 
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`, options)
             .then(response => response.json())
-            .then(data => {
-                console.log(data)
+            .then(data => { 
                 setReviews(data.results)
             })
             .catch(err => console.error(err));
@@ -47,7 +45,7 @@ export default function MovieReviews({ movieId }) {
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className='text-dark-blue font-main'> Reviews <span className='text-muted fs-3'>{reviews.length}</span></h4>
                     </div>
-                    <div className='d-flex align-items-center justify-content-center mb-5 mt-3' style={{}}>
+                    <div className='d-flex align-items-center justify-content-center mt-3' style={{}}>
 
                         <div className="w-100">
                             <div className="card m-4 border-0 shadow" style={{ width: "90%" }}>
