@@ -28,9 +28,9 @@ export default function Videos({ movieId, accessTkns}) {
     }, []);
     return (
         <>
-            {videos.length && <Container className='p-4 w-100 mb-4'>
+            {videos.length && <Container className='p-xl-4 w-100 mb-4'>
                 <div className="d-flex align-items-center justify-content-between">
-                    <h4 className='text-dark-blue font-main'> Videos <span className='text-muted fs-3'>{videos.length}</span></h4>
+                    <h4 className='text-dark-blue font-main'> Videos</h4>
                 </div>
                 <div className='d-flex align-items-center scroll-container' style={{}}>
                     <div className="d-flex justify-content-between align-items-center">

@@ -40,7 +40,6 @@ export default function Trending() {
         fetch('https://api.themoviedb.org/3/trending/all/week?language=en-US', options)
             .then(response => response.json())
             .then(data => {
-                console.log(data.results)
                 setThisWeekMovies(data.results)
             }
             )
@@ -55,12 +54,12 @@ export default function Trending() {
     }, []);
 
     return (
-        <Container className='p-4 w-100 mb-4'>
-            <div className="d-flex align-items-center justify-content-between mb-4">
-                <h3 className='font-main text-dark-blue'>Trending</h3>
-                <div className="d-flex align-items-center justify-content-between border rounded-pill">
-                    <span onClick={() => setShowThisWeekMovies(false)} className={`pointer px-3 py-2 ${!showThisWeekMovies && "active"}`}>Today</span>
-                    <span onClick={() => setShowThisWeekMovies(true)} className={`pointer px-3 py-2 ${showThisWeekMovies && "active"}`}>This Week</span>
+        <Container className='p-xl-4 w-100 mb-4'>
+            <div className="d-xl-flex align-items-center justify-content-between mb-4">
+                <h3 className='font-main text-dark-blue py-3 py-xl-0'>Trending</h3>
+                <div className="d-flex align-items-center justify-content-between border rounded-pill p-2 p-xl-0">
+                    <span onClick={() => setShowThisWeekMovies(false)} className={`pointer px-3 py-2 fs-8 ${!showThisWeekMovies && "active"}`}>Today</span>
+                    <span onClick={() => setShowThisWeekMovies(true)} className={`pointer px-3 py-2 fs-8 ${showThisWeekMovies && "active"}`}>This Week</span>
                 </div>
             </div>
             <div className='d-flex scroll-container'>

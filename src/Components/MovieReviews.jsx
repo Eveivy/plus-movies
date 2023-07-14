@@ -41,14 +41,14 @@ export default function MovieReviews({ movieId, accessTkns}) {
         <>
             {
                 reviews.length &&
-                <Container className='p-4 w-100 mb-4'>
+                <Container className='p-xl-4 w-100 my-4'>
                     <div className="d-flex align-items-center justify-content-between">
-                        <h4 className='text-dark-blue font-main'> Reviews <span className='text-muted fs-3'>{reviews.length}</span></h4>
+                        <h4 className='text-dark-blue font-main'> Reviews</h4>
                     </div>
                     <div className='d-flex align-items-center justify-content-center mt-3' style={{}}>
 
                         <div className="w-100">
-                            <div className="card m-4 border-0 shadow" style={{ width: "90%" }}>
+                            <div className="card m-xl-4 border-0 shadow w-90">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center py-3">
                                         <div className="symbol">
@@ -64,7 +64,7 @@ export default function MovieReviews({ movieId, accessTkns}) {
                             </div>
                             {
                                 reviews.length > 1 &&
-                                <div className="d-flex align-items-center justify-content-end" style={{ width: "90%" }}>
+                                <div className="d-flex align-items-center justify-content-end w-90 my-3 my-xl-0">
                                     <span onClick={prev} className='d-flex align-items-center pointer me-4'><box-icon name='left-arrow-alt'></box-icon> Previous</span>
                                     {/* <span className='mx-4 fs-5 d-flex align-items-center pt-2'>{currentIdx}</span> */}
                                     <span onClick={next} className='d-flex align-items-center pointer'>Next <box-icon name='right-arrow-alt' color=""></box-icon> </span>

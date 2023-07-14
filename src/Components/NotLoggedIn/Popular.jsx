@@ -96,14 +96,14 @@ export default function Popular() {
 
 
     return (
-        <Container className='p-4 w-100'>
-            <div className="d-flex align-items-center justify-content-between mb-4">
-                <h3 className='font-main text-dark-blue'>What's Popular</h3>
-                <div className="d-flex align-items-center justify-content-between border rounded-pill">
-                    <span onClick={() => setNumber(0)} className={`pointer px-3 py-2 ${number === 0 && "active"}`}>Now Playing</span>
-                    <span onClick={() => setNumber(1)} className={`pointer px-3 py-2 ${number === 1 && "active"}`}>Top Rated</span>
-                    <span onClick={() => setNumber(2)} className={`pointer px-3 py-2 ${number === 2 && "active"}`}>Most Watched</span>
-                    <span onClick={() => setNumber(3)} className={`pointer px-3 py-2 ${number === 3 && "active"}`}>Discover</span>
+        <Container className='p-xl-4 w-100'>
+            <div className="d-xl-flex align-items-center justify-content-between mb-4">
+                <h3 className='font-main text-dark-blue py-3 py-xl-0'>What's Popular</h3>
+                <div className="d-flex align-items-center justify-content-between border px-2 px-xl-0 rounded-pill ">
+                    <span onClick={() => setNumber(0)} className={`pointer px-xl-3 px-2 py-2 fs-8 ${number === 0 && "active"}`}>Now Playing</span>
+                    <span onClick={() => setNumber(1)} className={`pointer px-xl-3 px-2 py-2 fs-8 ${number === 1 && "active"}`}>Top Rated</span>
+                    <span onClick={() => setNumber(2)} className={`pointer px-xl-3 px-2 py-2 fs-8 ${number === 2 && "active"}`}>Most Watched</span>
+                    <span onClick={() => setNumber(3)} className={`pointer px-xl-3 px-2 py-2 fs-8 ${number === 3 && "active"}`}>Discover</span>
                 </div>
             </div>
             <div className='d-flex scroll-container'>

@@ -33,9 +33,9 @@ const Recommendations = ({ movieId, accessTkns }) => {
     <>
       {
         rMovies.length &&
-        <Container className='p-4 w-100 mb-4'>
+        <Container className='p-xl-4 w-100 mb-4'>
           <div className="d-flex align-items-center justify-content-between mb-5">
-            <h4 className='text-dark-blue font-main'> Recommendations <span className='text-muted fs-3'>{rMovies.length}</span></h4>
+            <h4 className='text-dark-blue font-main'> Recommendations</h4>
           </div>
           <div className='d-flex align-items-center scroll-container mb-5' style={{ height: "200px" }}>
             <div className="d-flex justify-content-between align-items-center">
