@@ -123,7 +123,7 @@ export default function Details() {
                                                 <span title='Add to watchlist' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='bookmark' color="white" size="18px"></box-icon></span>
                                                 <span title='Rate it' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='star' color="white" size="18px"></box-icon></span>
                                             </div>
-                                            <div className="ms-xl-3 d-flex align-items-center pointer pt-xl-1 d-none d-xl-block">
+                                            <div className="ms-xl-3 d-xl-flex align-items-center pointer pt-xl-1 d-none">
                                                 <span className='d-flex align-items-center'><box-icon name='play' color="white" size="25px"></box-icon></span>
                                                 <span>Play Trailer</span>
                                             </div>

@@ -17,6 +17,7 @@ export default function Videos({ movieId, accessTkns}) {
         fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, options)
             .then(response => response.json())
             .then(data => {
+                console.log(data.results)
                 setVideos(data.results); 
             })
             .catch(err => console.error(err));
@@ -28,7 +29,7 @@ export default function Videos({ movieId, accessTkns}) {
     }, []);
     return (
         <>
-            {videos.length && <Container className='p-xl-4 w-100 mb-4'>
+            {videos.length > 0 && <Container className='p-xl-4 w-100 mb-4'>
                 <div className="d-flex align-items-center justify-content-between">
                     <h4 className='text-dark-blue font-main'> Videos</h4>
                 </div>

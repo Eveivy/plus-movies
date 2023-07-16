@@ -40,7 +40,7 @@ export default function MovieReviews({ movieId, accessTkns}) {
     return (
         <>
             {
-                reviews.length &&
+                reviews.length > 0 &&
                 <Container className='p-xl-4 w-100 my-4'>
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className='text-dark-blue font-main'> Reviews</h4>

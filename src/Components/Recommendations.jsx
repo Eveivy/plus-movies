@@ -37,17 +37,14 @@ const Recommendations = ({ movieId, accessTkns }) => {
           <div className="d-flex align-items-center justify-content-between mb-5">
             <h4 className='text-dark-blue font-main'> Recommendations</h4>
           </div>
-          <div className='d-flex align-items-center scroll-container mb-5' style={{ height: "200px" }}>
+          <div className='d-flex align-items-center scroll-container mb-5' style={{ height: "250px" }}>
             <div className="d-flex justify-content-between align-items-center">
               {
                 rMovies.map(el => {
                   return (
                     <div className="rounded-3" key={el.id}>
-                      {/* <Link to={`/${movie.id}-${movie.title || movie.original_title || movie.original_name}`}
-                        className='text-decoration-none text-white text-hover-color'>
-                          
-                        </Link> */}
-                      <div className="mx-2 mb-5 small-card-container pointer">
+
+                      <div className="mx-2 small-card-container pointer">
                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.original_title} loading="lazy" />
                         <div className="small-card-overlay text-white px-2 pb-4 pt-3 bottom-0 rounded-bottom d-flex justify-content-center align-items-center">
                           <div className="">
@@ -57,6 +54,12 @@ const Recommendations = ({ movieId, accessTkns }) => {
                             </h5>
                           </div>
                         </div>
+                      </div>
+                      <div className="d-flex justify-content-center align-items-center">
+                        <h5 className="text-capitalize fs-6">
+                          <span className='text-decoration-none text-dark'>{el.title || el.original_title}
+                          </span>
+                        </h5>
                       </div>
                     </div>
                   )
