@@ -1,23 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
+import { DetailsContext } from './Details';
 
+export default function MovieReviews() {
+    const pageContext = useContext(DetailsContext);
 
-export default function MovieReviews({ movieId, accessTkns}) { 
     const [reviews, setReviews] = useState([])
     const [currentIdx, setCurrentIdx] = useState(0)
+
 
     const getReviews = () => {
         const options = {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: `Bearer ${accessTkns}`
+                Authorization: `Bearer ${pageContext.access_token}`
             }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/reviews?language=en-US&page=1`, options)
             .then(response => response.json())
-            .then(data => { 
+            .then(data => {
                 setReviews(data.results)
             })
             .catch(err => console.error(err));
@@ -48,7 +51,7 @@ export default function MovieReviews({ movieId, accessTkns}) {
                     <div className='d-flex align-items-center justify-content-center mt-3' style={{}}>
 
                         <div className="w-100">
-                            <div className="card m-xl-4 border-0 shadow w-90">
+                            <div className="card m-xl-4 border-0 shadow w-100">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center py-3">
                                         <div className="symbol">
@@ -64,7 +67,7 @@ export default function MovieReviews({ movieId, accessTkns}) {
                             </div>
                             {
                                 reviews.length > 1 &&
-                                <div className="d-flex align-items-center justify-content-end w-90 my-3 my-xl-0">
+                                <div className="d-flex align-items-center justify-content-end w-100 my-3 my-xl-0">
                                     <span onClick={prev} className='d-flex align-items-center pointer me-4'><box-icon name='left-arrow-alt'></box-icon> Previous</span>
                                     {/* <span className='mx-4 fs-5 d-flex align-items-center pt-2'>{currentIdx}</span> */}
                                     <span onClick={next} className='d-flex align-items-center pointer'>Next <box-icon name='right-arrow-alt' color=""></box-icon> </span>
