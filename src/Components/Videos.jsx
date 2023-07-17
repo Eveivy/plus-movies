@@ -6,8 +6,6 @@ import { DetailsContext } from './Details';
 export default function Videos() {
     const pageContext = useContext(DetailsContext)
     const [videos, setVideos] = useState([]);
-
-    console.log(pageContext)
    
     const getVideos = () => {
         const options = {
@@ -21,7 +19,7 @@ export default function Videos() {
         fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/videos?language=en-US`, options)
             .then(response => response.json())
             .then(data => {
-                console.log(data.results)
+                // console.log(data.results)
                 setVideos(data.results);
             })
             .catch(err => console.error(err));

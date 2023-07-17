@@ -1,5 +1,5 @@
 import { useEffect, useState, Suspense, lazy, createContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
 import PageNav from './NotLoggedIn/PageNav';
@@ -23,7 +23,13 @@ export default function Details() {
     const [prodCompanies, setProdCompanies] = useState([]);
     const [languages, setlanguages] = useState([]);
   
+    const navigate = useNavigate();
 
+    const getAnotherMovie = (id, title) => { 
+      navigate(`/${id}-${title}`);
+      window.location.reload();
+    };
+  
    
 
     const getMovieDetails = () => {
@@ -145,7 +151,7 @@ export default function Details() {
                     </div>
                 </Container >
               
-                <DetailsContext.Provider value={{id, access_token}}>
+                <DetailsContext.Provider value={{id, access_token, getAnotherMovie}}>
                     <Characters/>
                     <Videos />
                     <MovieReviews />

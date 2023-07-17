@@ -51,7 +51,7 @@ export default function MovieReviews() {
                     <div className='d-flex align-items-center justify-content-center mt-3' style={{}}>
 
                         <div className="w-100">
-                            <div className="card m-xl-4 border-0 shadow w-100">
+                            <div className="card my-xl-4 border-0 shadow w-100">
                                 <div className="card-body">
                                     <div className="d-flex align-items-center py-3">
                                         <div className="symbol">

@@ -22,8 +22,7 @@ const Recommendations = () => {
 
     fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/recommendations?language=en-US&page=1`, options)
       .then(response => response.json())
-      .then(data => {
-        console.log(data.results)
+      .then(data => { 
         setRMovies(data.results);
       })
       .catch(err => console.error(err));
@@ -50,7 +49,7 @@ const Recommendations = () => {
                   return (
                     <div className="rounded-3" key={el.id}>
 
-                      <div className="mx-2 small-card-container pointer">
+                      <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.id, el.title || el.original_title )}>
                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.original_title} loading="lazy" />
                         <div className="small-card-overlay text-white px-2 pb-4 pt-3 bottom-0 rounded-bottom d-flex justify-content-between align-items-end">
                           <div className="d-flex align-items-center">
