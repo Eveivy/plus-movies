@@ -22,6 +22,10 @@ function App() {
       element: <Explore />
     },
     {
+      path: "/overview",
+      element: <Overview />
+    },
+    {
       path: "/:id-:name",
       element: <Details />
     }
