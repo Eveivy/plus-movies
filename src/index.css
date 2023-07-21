@@ -34,9 +34,9 @@ body {
   background-color: #ff0088;
 }
 .search-input {
-  outline: none;
-  background-color: transparent;
-  border: none;
+  outline: none !important;
+  background-color: transparent !important;
+  border: none !important;
   color: #0f1432 !important;
 }
 .pointer{
@@ -55,7 +55,9 @@ body {
   background-color: transparent;
   border: 2px solid #ff0088;
 }
-
+.border-pink{
+  border: 2px solid #ff0088;
+}
 .btn-hot-pink-outline:hover {
   background-color: #ff0088;
   border: 2px solid #ff0088;
@@ -199,6 +201,9 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+}
+.w-500{
+  width: 500px;
 }
     
 @keyframes rotation {

@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
 import logo from '../../assets/Images/logo.png'
 
 export default function PageNav({ host, requestToken }) {
@@ -14,14 +15,13 @@ export default function PageNav({ host, requestToken }) {
             <span className='d-block font-main text-white' style={{ marginTop: '-13px' }}>Plus Movies</span>
           </Navbar.Brand>
         </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mx-auto">
-            <Link className='nav-link' to="/explore">
-              <span className="text-white" href="#movies">Movies</span>
-            </Link>
-            <Nav.Link className="text-white mx-xl-4" href="#tvshows">TV Shows</Nav.Link>
-            <Nav.Link className="text-white" href="#people">People</Nav.Link>
+          <Nav className="mx-auto d-none d-xl-block">
+            <div className="d-flex align-items-center bg-transparent py-2 ps-3 rounded-pill shadow pointer w-500 border-pink">
+              <span className="text-white pointer d-flex align-items-center me-1">
+                <box-icon size="23px" color="white" name='search-alt-2'></box-icon>
+              </span>
+                <span className='w-100 text-white fs-6 pe-5'>Search movies, tv shows....</span>
+            </div>
           </Nav>
           <Nav className="d-flex align-items-center">
             <Nav className="text-white">
@@ -29,11 +29,7 @@ export default function PageNav({ host, requestToken }) {
                 Log In
               </a>
             </Nav>
-            <span className="text-white pointer d-flex align-items-center">
-              <box-icon size="30px" color="white" name='search-alt-2'></box-icon>
-            </span>
-          </Nav>
-        </Navbar.Collapse>
+          </Nav> 
       </Container>
     </Navbar>
   );
