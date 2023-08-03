@@ -26,7 +26,7 @@ export default function Details() {
     const navigate = useNavigate();
 
     const getAnotherMovie = (id, title) => { 
-      navigate(`/${id}-${title}`);
+      navigate(`/movies/${id}-${title}`);
       window.location.reload();
     };
   

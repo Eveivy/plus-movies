@@ -77,7 +77,7 @@ export default function Trending() {
                                             </div>
                                             <div className="">
                                                 <h5 className="text-capitalize">
-                                                    <Link to={`/${movie.id}-${movie.title || movie.original_title || movie.original_name}`}
+                                                    <Link to={`/movies/${movie.id}-${movie.title || movie.original_title || movie.original_name}`}
                                                         className='text-decoration-none text-white text-hover-color'>{movie.title || movie.original_title || movie.original_name}</Link>
                                                 </h5>
                                                 <div className="d-flex align-items-start justify-content-between">
@@ -102,7 +102,7 @@ export default function Trending() {
                                                 </div>
                                                 <div className="">
                                                     <h5 className="text-capitalize">
-                                                        <Link to={`/${movie.id}-${movie.title || movie.original_title || movie.original_name}`}
+                                                        <Link to={`/movies/${movie.id}-${movie.title || movie.original_title || movie.original_name}`}
                                                             className='text-decoration-none text-white text-hover-color'>{movie.original_title || movie.original_name}
                                                         </Link></h5>
                                                     <div className="d-flex align-items-start justify-content-between">

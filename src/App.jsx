@@ -18,7 +18,7 @@ function App() {
       element: <LandingPage />
     },
     {
-      path: "/explore",
+      path: "/movies",
       element: <Explore />
     },
     {
@@ -26,7 +26,7 @@ function App() {
       element: <Overview />
     },
     {
-      path: "/:id-:name",
+      path: "/movies/:id-:name",
       element: <Details />
     }
   ]);
