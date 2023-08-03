@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
@@ -6,8 +7,26 @@ import Form from 'react-bootstrap/Form';
 import logo from '../../assets/Images/logo.png'
 
 export default function PageNav({ host, requestToken }) {
+
+  const [isNavFixed, setNavFixed] = useState(false);
+
+  useEffect(() => { 
+    const handleScroll = () => {
+      if (window.scrollY >= 2) {
+        setNavFixed(true);
+      } else {
+        setNavFixed(false);
+      }
+    }; 
+    window.addEventListener('scroll', handleScroll);
+ 
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <Navbar collapseOnSelect expand="lg" className='dark-bg text-white pb-0'>
+    <Navbar collapseOnSelect className={`dark-bg text-white pb-0 ${isNavFixed ? 'fixed-top' : ''} ${isNavFixed ? 'navbar-expand-lg' : ''}`}>
       <Container fluid className='mx-xl-4 d-xl-flex align-items-center justify-content-between'>
         <Link className='nav-link' to="/">
           <Navbar.Brand>

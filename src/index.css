@@ -21,6 +21,21 @@ body {
 .dark-bg { 
   background-color: #191f3ff7 !important;
 }
+.navbar.fixed-top {
+  background-color: #191f3fc1 !important; 
+  animation: fadeInDown 0.3s ease !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;  
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
 .text-dark-blue{
   color: #191f3ff7;
 }
