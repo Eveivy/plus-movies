@@ -22,8 +22,7 @@ const Recommendations = () => {
 
     fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/recommendations?language=en-US&page=1`, options)
       .then(response => response.json())
-      .then(data => {
-        console.log(data.results)
+      .then(data => { 
         setRMovies(data.results);
       })
       .catch(err => console.error(err));

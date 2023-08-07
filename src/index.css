@@ -194,7 +194,7 @@ body {
   width: 80%;
 }
 .w-90{
-  width: 90%;
+  width: 90% !important;
 }
 .loader {
   width: 48px;
@@ -220,7 +220,12 @@ body {
 .w-500{
   width: 500px;
 }
-    
+.modal-content{
+  background-color: black;
+}
+.modal-dialog{
+  width: 90% !important;
+}  
 @keyframes rotation {
   0% {
     transform: rotate(0deg);

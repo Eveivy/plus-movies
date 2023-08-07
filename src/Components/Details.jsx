@@ -25,6 +25,11 @@ export default function Details() {
   
     const navigate = useNavigate();
 
+    const [playTrailer, setPlayTrailer] = useState(false);
+
+    const handleClose = () => setPlayTrailer(false);
+    const handleShow = () => setPlayTrailer(true);
+
     const getAnotherMovie = (id, title) => { 
       navigate(`/movies/${id}-${title}`);
       window.location.reload();
@@ -45,11 +50,12 @@ export default function Details() {
         fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
             .then(response => response.json())
             .then(data => {
-                setDetails(data)
-                setGenres(data.genres)
-                setProdCountries(data.production_countries)
-                setProdCompanies(data.production_companies)
-                setlanguages(data.spoken_languages)
+                setDetails(data);
+                setGenres(data.genres);
+                setProdCountries(data.production_countries);
+                setProdCompanies(data.production_companies);
+                setlanguages(data.spoken_languages);
+              
             })
             .catch(err => console.error(err));
 
@@ -90,7 +96,7 @@ export default function Details() {
                                     <div className="ms-xl-5 w-xl">
                                         <h1 className='fs-2 mb-1 fw-bold'>{`${details.title} (${details.release_date ? details.release_date.substring(0, 4) : ""})`}</h1>
                                         <div className='d-flex flex-wrap align-items-center my-3 my-xl-0'>
-                                            <span className='border border-secondary px-1 text-white fs-6 mb-1 mb-xl-0'>R</span>
+                                            {details.status === "Released" && <span className='border border-secondary px-1 text-white fs-6 mb-1 mb-xl-0'>R</span>}
                                             <span className='text-white px-2 mb-1 mb-xl-0'>{moment(details.release_date).format('L')} ({
                                                 prodCountries.map(el => <span key={el.iso_3166_1}>{el.iso_3166_1}</span>)
                                             })</span>
@@ -110,7 +116,7 @@ export default function Details() {
                                                 <span title='Add to watchlist' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='bookmark' color="white" size="18px"></box-icon></span>
                                                 <span title='Rate it' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='star' color="white" size="18px"></box-icon></span>
                                             </div>
-                                            <div className="ms-xl-3 d-xl-flex align-items-center pointer pt-xl-1 d-none">
+                                            <div className="ms-xl-3 d-flex align-items-center pointer pt-xl-1" onClick={handleShow}>
                                                 <span className='d-flex align-items-center'><box-icon name='play' color="white" size="25px"></box-icon></span>
                                                 <span>Play Trailer</span>
                                             </div>
@@ -151,7 +157,7 @@ export default function Details() {
                     </div>
                 </Container >
               
-                <DetailsContext.Provider value={{id, access_token, getAnotherMovie}}>
+                <DetailsContext.Provider value={{id, access_token, getAnotherMovie, playTrailer, handleClose}}>
                     <Characters/>
                     <Videos />
                     <MovieReviews />
