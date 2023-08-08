@@ -100,9 +100,12 @@ export default function Details() {
         <>
             <PageNav />
             <Suspense fallback={<span className="loader"></span>}>
-                <div onClick={handleGoBack} className="d-flex align-items-center py-2 ps-3 text-dark-blue pointer">
-                    <box-icon name='arrow-back' size="1rem" color="#191f3ff7"></box-icon>
-                    <small className='fs-6 ps-1 pt-1'>Go back</small>
+                <div className="d-flex align-items-center justify-content-between">
+                    <div onClick={handleGoBack} className="d-flex align-items-center py-2 ps-3 text-dark-blue pointer">
+                        <box-icon name='arrow-back' size="1rem" color="#191f3ff7"></box-icon>
+                        <small className='fs-6 ps-1 pt-1'>Go back</small>
+                    </div>
+
                 </div>
                 <Container fluid className='p-0'>
                     <div className="" style={{
@@ -147,7 +150,7 @@ export default function Details() {
                                             </div>
                                             {
                                                 trailer &&
-                                                <div className="ms-xl-3 d-flex align-items-center pointer pt-xl-1" onClick={handleShow}>
+                                                <div className="ms-xl-3 d-flex align-items-center pointer pt-xl-1 mt-xl-0 mt-2" onClick={handleShow}>
                                                     <span className='d-flex align-items-center'><box-icon name='play' color="white" size="25px"></box-icon></span>
                                                     <span>Play Trailer</span>
                                                 </div>

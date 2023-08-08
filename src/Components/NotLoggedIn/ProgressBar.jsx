@@ -28,7 +28,7 @@ const RadialProgressBar = ({ percentage, rad, strokeW }) => {
         cy={radius ? radius : 0}
         style={{
           strokeDasharray: circumference,
-          strokeDashoffset: offset,
+          strokeDashoffset: offset ? offset : 0,
         }}
       />
       <text
