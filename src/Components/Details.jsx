@@ -25,6 +25,11 @@ export default function Details() {
   
     const navigate = useNavigate();
 
+
+    const handleGoBack = () => {
+        window.history.back(); 
+    };
+
     const [playTrailer, setPlayTrailer] = useState(false);
 
     const handleClose = () => setPlayTrailer(false);
@@ -33,9 +38,7 @@ export default function Details() {
     const getAnotherMovie = (id, title) => { 
       navigate(`/movies/${id}-${title}`);
       window.location.reload();
-    };
-  
-   
+    }; 
 
     const getMovieDetails = () => {
 
@@ -62,19 +65,45 @@ export default function Details() {
     };
 
   
+    const trailerNames = ["Official Trailer", "Trailer", "Main Trailer"];
 
+    const [trailer, setTrailer] = useState({});
+    const [videos, setVideos] = useState([]);
 
+    const getVideos = () => {
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${access_token}`
+            }
+        };
+
+        fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
+            .then(response => response.json())
+            .then(data => {
+                setVideos(data.results);
+                const trailerVideo = data.results.find(video => trailerNames.includes(video.name));
+                setTrailer(trailerVideo);  
+            })
+            .catch(err => console.error(err));
+
+    }; 
 
     useEffect(() => {
         getMovieDetails();
-    }, [id]);
+        getVideos();
+    }, [id]); 
 
-   
 
     return (
         <>
             <PageNav />
             <Suspense fallback={<span className="loader"></span>}>
+                <div onClick={handleGoBack} className="d-flex align-items-center py-2 ps-3 text-dark-blue pointer">
+                    <box-icon name='arrow-back' size="1rem" color="#191f3ff7"></box-icon>
+                    <small className='fs-6 ps-1 pt-1'>Go back</small>
+                </div>
                 <Container fluid className='p-0'>
                     <div className="" style={{
                         backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${details.backdrop_path})`,
@@ -116,10 +145,13 @@ export default function Details() {
                                                 <span title='Add to watchlist' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='bookmark' color="white" size="18px"></box-icon></span>
                                                 <span title='Rate it' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='star' color="white" size="18px"></box-icon></span>
                                             </div>
-                                            <div className="ms-xl-3 d-flex align-items-center pointer pt-xl-1" onClick={handleShow}>
-                                                <span className='d-flex align-items-center'><box-icon name='play' color="white" size="25px"></box-icon></span>
-                                                <span>Play Trailer</span>
-                                            </div>
+                                            {
+                                                trailer &&
+                                                <div className="ms-xl-3 d-flex align-items-center pointer pt-xl-1" onClick={handleShow}>
+                                                    <span className='d-flex align-items-center'><box-icon name='play' color="white" size="25px"></box-icon></span>
+                                                    <span>Play Trailer</span>
+                                                </div>
+                                            }
                                         </div>
                                         <div className="mt-3">
                                             <p className='text-muted'>{details.tagline}</p>
@@ -157,7 +189,7 @@ export default function Details() {
                     </div>
                 </Container >
               
-                <DetailsContext.Provider value={{id, access_token, getAnotherMovie, playTrailer, handleClose}}>
+                <DetailsContext.Provider value={{id, access_token, getAnotherMovie, playTrailer, handleClose, videos, trailer}}>
                     <Characters/>
                     <Videos />
                     <MovieReviews />

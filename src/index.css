@@ -39,6 +39,9 @@ body {
 .text-dark-blue{
   color: #191f3ff7;
 }
+.text-dark-blue:hover{
+  color: #191f3ff7;
+}
 .font-main {
   font-family: 'Lobster';
 } 

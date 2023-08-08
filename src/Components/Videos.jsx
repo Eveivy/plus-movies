@@ -6,35 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 
 export default function Videos() {
     const pageContext = useContext(DetailsContext)
-    const [videos, setVideos] = useState([]);
-
-    const trailerNames = ["Official Trailer", "Trailer", "Main Trailer"];
-
-    const [trailer, setTrailer] = useState({});
-
-    const getVideos = () => {
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${pageContext.access_token}`
-            }
-        };
-
-        fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/videos?language=en-US`, options)
-            .then(response => response.json())
-            .then(data => {
-                setVideos(data.results);
-                const trailerVideo = data.results.find(video => trailerNames.includes(video.name));
-                setTrailer(trailerVideo);
-            })
-            .catch(err => console.error(err));
-
-    };
-
-    useEffect(() => {
-        getVideos();
-    }, []);
+    const videos = pageContext.videos ? pageContext.videos : [];
+  
 
     return (
         <>
@@ -62,13 +35,17 @@ export default function Videos() {
                 </div>
             </Container>
             }
-            <TrailerModal playTrailer={pageContext.playTrailer} handleClose={pageContext.handleClose} trailer={trailer} />
+            {
+                videos.length > 0 &&
+                <TrailerModal playTrailer={pageContext.playTrailer} handleClose={pageContext.handleClose} trailer={pageContext.trailer} />
+            }
         </>
     )
 }
 
 
 const TrailerModal = ({ playTrailer, handleClose, trailer }) => {
+
     const [videoPlaying, setVideoPlaying] = useState(true);
 
     const handleVideoEnded = () => {
@@ -90,7 +67,7 @@ const TrailerModal = ({ playTrailer, handleClose, trailer }) => {
             <Modal.Body>
                 <div className="">
                     <ReactPlayer
-                        url={`https://www.youtube.com/watch?v=${trailer.key}`}
+                        url={`https://www.youtube.com/watch?v=${trailer && trailer.key}`}
                         controls
                         width="100%"
                         height="640px"
