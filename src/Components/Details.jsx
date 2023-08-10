@@ -65,7 +65,7 @@ export default function Details() {
     };
 
   
-    const trailerNames = ["Official Trailer", "Trailer", "Main Trailer"];
+    const trailerNames = ["Official Trailer", "Official US Trailer", "Trailer", "Main Trailer"];
 
     const [trailer, setTrailer] = useState({});
     const [videos, setVideos] = useState([]);

@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import logo from '../../assets/Images/logo.png'
 
-export default function PageNav({ host, requestToken }) {
+export default function PageNav({ host, requestToken, handleShowSB }) {
 
   const [isNavFixed, setNavFixed] = useState(false);
 
@@ -35,12 +35,12 @@ export default function PageNav({ host, requestToken }) {
           </Navbar.Brand>
         </Link>
           <Nav className="mx-auto d-none d-xl-block">
-            <div className="d-flex align-items-center bg-transparent py-2 ps-3 rounded-pill shadow pointer w-500 border-pink">
-              <span className="text-white pointer d-flex align-items-center me-1">
+            <button type='button' className="d-flex align-items-center bg-transparent py-2 ps-3 rounded-pill shadow pointer w-500 border-pink" onClick={handleShowSB}>
+              <span className="text-white d-flex align-items-center">
                 <box-icon size="23px" color="white" name='search-alt-2'></box-icon>
+                <span className='w-100 text-white fs-6 ms-2'>Search movies, tv shows....</span>
               </span>
-                <span className='w-100 text-white fs-6 pe-5'>Search movies, tv shows....</span>
-            </div>
+            </button>
           </Nav>
           <Nav className="d-flex align-items-center">
             <Nav className="text-white">
