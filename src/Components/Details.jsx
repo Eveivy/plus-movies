@@ -59,6 +59,7 @@ export default function Details() {
                 setProdCompanies(data.production_companies);
                 setlanguages(data.spoken_languages);
               
+                console.log(data)
             })
             .catch(err => console.error(err));
 

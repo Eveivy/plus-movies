@@ -4,19 +4,12 @@ import LandingPage from './Components/LandingPage';
 import Overview from './Components/Overview';
 import Explore from './Components/NotLoggedIn/Explore';
 import Details from './Components/Details';
-import SearchSection from './Components/SearchSection'
 
 export const AppContext = createContext(null)
 
 function App() {
   const [requestToken, setRequestToken] = useState("");
   const host = process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : 'https://plus-movies.onrender.com'
-
-  const [showSearchBar, setshowSearchBar] = useState(false);
-
-  const handleCloseSearchBar = () => setshowSearchBar(false);
-
-  const handleShowSearchBar = () => setshowSearchBar(true); 
 
   const router = createBrowserRouter([
     {
@@ -66,9 +59,8 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ requestToken, host, handleShowSearchBar}}>
+    <AppContext.Provider value={{ requestToken, host}}>
       <RouterProvider router={router} />
-      <SearchSection showSB={showSearchBar} handleCloseSB={handleCloseSearchBar}/>
     </AppContext.Provider>
   )
 }

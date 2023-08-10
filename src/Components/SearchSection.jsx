@@ -1,17 +1,17 @@
 // import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-const SearchSection = ({showSB, handleCloseSB}) => {
- 
+const SearchSection = ({ showSB, handleCloseSB }) => {
+
   return (
-    <> 
+    <>
       <Offcanvas show={showSB} onHide={handleCloseSB}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+        <Offcanvas.Header className='border-0 d-flex align-items-center justify-content-end dark-bg'>
+          <span className='pointer d-flex align-items-center' onClick={handleCloseSB}>
+            <box-icon name='x' size="30px" color="#ff0088" animation='burst-hover'></box-icon>
+          </span>
+        </Offcanvas.Header> 
+        <Offcanvas.Body className='dark-bg'> 
         </Offcanvas.Body>
       </Offcanvas>
     </>

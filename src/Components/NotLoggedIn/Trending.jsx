@@ -22,6 +22,7 @@ export default function Trending() {
             .then(response => response.json())
             .then(data => { 
                 setTodayMovies(data.results)
+                // console.log(data.results)
             }
             )
             .catch(err => console.error(err));
@@ -41,6 +42,7 @@ export default function Trending() {
             .then(response => response.json())
             .then(data => {
                 setThisWeekMovies(data.results)
+                // console.log(data.results)
             }
             )
             .catch(err => console.error(err));
@@ -77,8 +79,8 @@ export default function Trending() {
                                             </div>
                                             <div className="">
                                                 <h5 className="text-capitalize">
-                                                    <Link to={`/movies/${movie.id}-${movie.title || movie.original_title || movie.original_name}`}
-                                                        className='text-decoration-none text-white text-hover-color'>{movie.title || movie.original_title || movie.original_name}</Link>
+                                                    <Link to={`/movies/${movie.id}-${movie.name || movie.title || movie.original_title || movie.original_name}`}
+                                                        className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link>
                                                 </h5>
                                                 <div className="d-flex align-items-start justify-content-between">
                                                     <small>{movie.release_date ||movie.first_air_date}</small>
@@ -102,8 +104,8 @@ export default function Trending() {
                                                 </div>
                                                 <div className="">
                                                     <h5 className="text-capitalize">
-                                                        <Link to={`/movies/${movie.id}-${movie.title || movie.original_title || movie.original_name}`}
-                                                            className='text-decoration-none text-white text-hover-color'>{movie.original_title || movie.original_name}
+                                                        <Link to={`/movies/${movie.id}-${movie.name || movie.title || movie.original_title || movie.original_name}`}
+                                                            className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}
                                                         </Link></h5>
                                                     <div className="d-flex align-items-start justify-content-between">
                                                         <small>{movie.release_date || movie.first_air_date}</small>

@@ -23,7 +23,7 @@ const Recommendations = () => {
 
     fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/recommendations?language=en-US&page=1`, options)
       .then(response => response.json())
-      .then(data => { 
+      .then(data => {
         setRMovies(data.results);
         console.log(data.results);
       })
@@ -47,17 +47,17 @@ const Recommendations = () => {
           <div className='d-flex align-items-center scroll-container mb-5' style={{ height: "250px" }}>
             <div className="d-flex justify-content-between align-items-center">
               {
-                rMovies.map(el => { 
+                rMovies.map(el => {
                   return (
                     <div className="rounded-3" key={el.id}>
 
-                      <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.id, el.title || el.original_title )}>
+                      <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.id, el.title || el.original_title)}>
                         {
-                          el.poster_path ? 
-                          <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.original_title} loading="lazy" />
-                          : <div className='bg-dark w-100 h-100 rounded-3 d-flex align-items-center justify-content-center'>
-                            <img src={emptyImage} alt="image not found" />
-                          </div>
+                          el.poster_path ?
+                            <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.original_title} loading="lazy" />
+                            : <div className='bg-dark w-100 h-100 rounded-3 d-flex align-items-center justify-content-center'>
+                              <img src={emptyImage} alt="image not found" />
+                            </div>
                         }
                         <div className="small-card-overlay text-white px-2 pb-4 pt-3 bottom-0 rounded-bottom d-flex justify-content-between align-items-end">
                           <div className="d-flex align-items-center">
@@ -72,7 +72,11 @@ const Recommendations = () => {
                       </div>
                       <div className="px-2 d-flex justify-content-between align-items-center text-dark-blue fs-7 pointer">
                         <h5 className="text-capitalize fs-7 mb-0">
-                          <span className='text-decoration-none text-nowrap'>{el.title.length || el.original_title.length > 15 ? el.title.substring(0, 15 - 3) + '...' || el.original_title.substring(0, 15 - 3) + '...' : el.title || el.original_title}</span>
+                          <span className='text-decoration-none text-nowrap'>
+                            {el.title.length > 25 || el.original_title.length > 25
+                              ? (el.title || el.original_title).substring(0, 25 - 3) + '...'
+                              : el.title || el.original_title}
+                          </span>
                         </h5>
                         <span className="d-block">{Math.floor(el.vote_average * 10)}%</span>
                       </div>

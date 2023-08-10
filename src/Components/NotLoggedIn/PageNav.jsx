@@ -5,10 +5,17 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import logo from '../../assets/Images/logo.png'
+import SearchSection from '../SearchSection';
 
-export default function PageNav({ host, requestToken, handleShowSB }) {
+export default function PageNav({ host, requestToken }) {
 
   const [isNavFixed, setNavFixed] = useState(false);
+
+  const [showSearchBar, setshowSearchBar] = useState(false);
+
+  const handleCloseSearchBar = () => setshowSearchBar(false);
+
+  const handleShowSearchBar = () => setshowSearchBar(true); 
 
   useEffect(() => { 
     const handleScroll = () => {
@@ -26,6 +33,7 @@ export default function PageNav({ host, requestToken, handleShowSB }) {
   }, []);
 
   return (
+    <>
     <Navbar collapseOnSelect className={`dark-bg text-white pb-0 ${isNavFixed ? 'fixed-top' : ''} ${isNavFixed ? 'navbar-expand-lg' : ''}`}>
       <Container fluid className='mx-xl-4 d-xl-flex align-items-center justify-content-between'>
         <Link className='nav-link' to="/">
@@ -35,7 +43,7 @@ export default function PageNav({ host, requestToken, handleShowSB }) {
           </Navbar.Brand>
         </Link>
           <Nav className="mx-auto d-none d-xl-block">
-            <button type='button' className="d-flex align-items-center bg-transparent py-2 ps-3 rounded-pill shadow pointer w-500 border-pink" onClick={handleShowSB}>
+            <button type='button' className="d-flex align-items-center bg-transparent py-2 ps-3 rounded-pill shadow pointer w-500 border-pink" onClick={handleShowSearchBar}>
               <span className="text-white d-flex align-items-center">
                 <box-icon size="23px" color="white" name='search-alt-2'></box-icon>
                 <span className='w-100 text-white fs-6 ms-2'>Search movies, tv shows....</span>
@@ -51,6 +59,9 @@ export default function PageNav({ host, requestToken, handleShowSB }) {
           </Nav> 
       </Container>
     </Navbar>
+    <SearchSection showSB={showSearchBar} handleCloseSB={handleCloseSearchBar}/>
+    </>
+    
   );
 }
 

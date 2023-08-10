@@ -20,6 +20,7 @@ body {
 }
 .dark-bg { 
   background-color: #191f3ff7 !important;
+  color: white;
 }
 .navbar.fixed-top {
   background-color: #191f3fc1 !important; 
