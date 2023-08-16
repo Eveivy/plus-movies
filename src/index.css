@@ -37,10 +37,10 @@ body {
     transform: translateY(0);
   }
 }
-.text-dark-blue{
+.text-main{
   color: #191f3ff7;
 }
-.text-dark-blue:hover{
+.text-main:hover{
   color: #191f3ff7;
 }
 .font-main {
@@ -61,11 +61,23 @@ body {
 .pointer{
   cursor: pointer;
 }
+.outline-0{
+  outline: none;
+}
 .btn-hot-pink {
   background-color: #ff0088;
   border: 2px solid #ff0088;
 }
-
+.btn-pink {
+  background-color: #ff0088;
+  border: 2px solid #ff0088;
+  color: white;
+}
+.btn-pink:hover {
+  background-color: #ff0088;
+  border: 2px solid #ff0088;
+  color: white;
+}
 .btn-hot-pink:hover {
   background-color: transparent;
   border: 2px solid #ff0088;
@@ -92,18 +104,30 @@ body {
   overflow-x: scroll;  
   overflow-y: hidden; 
 } 
- 
-.scroll-container::-webkit-scrollbar {
-  width: 8px; 
+
+.bg-hover:hover{
+  background-color: #191f3f0a;
+  border-radius: 3px;
+}
+
+/* For WebKit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px;  
   height: 6px;
 }
-.scroll-container::-webkit-scrollbar-thumb {
-  background: #dbdbdb;  
+
+::-webkit-scrollbar-track {
+  background: white; 
+}
+::-webkit-scrollbar-thumb {
+  background: #efeeee;  
   border-radius: 10px;  
-} 
-.scroll-container::-webkit-scrollbar-thumb:hover {
-  background: #ebdddd; 
-} 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #efeeee;   
+}
+
 .img {
   width: 100%;
   height: 100%;

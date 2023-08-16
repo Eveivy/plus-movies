@@ -25,7 +25,7 @@ const Recommendations = () => {
       .then(response => response.json())
       .then(data => {
         setRMovies(data.results);
-        console.log(data.results);
+        // console.log(data.results);
       })
       .catch(err => console.error(err));
 
@@ -42,7 +42,7 @@ const Recommendations = () => {
         rMovies.length &&
         <Container className='p-xl-4 w-100 mb-4'>
           <div className="d-flex align-items-center justify-content-between mb-5">
-            <h4 className='text-dark-blue font-main'> Recommendations</h4>
+            <h4 className='text-main font-main'> Recommendations</h4>
           </div>
           <div className='d-flex align-items-center scroll-container mb-5' style={{ height: "250px" }}>
             <div className="d-flex justify-content-between align-items-center">
@@ -70,7 +70,7 @@ const Recommendations = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="px-2 d-flex justify-content-between align-items-center text-dark-blue fs-7 pointer">
+                      <div className="px-2 d-flex justify-content-between align-items-center text-main fs-7 pointer">
                         <h5 className="text-capitalize fs-7 mb-0">
                           <span className='text-decoration-none text-nowrap'>
                             {el.title.length > 25 || el.original_title.length > 25

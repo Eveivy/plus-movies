@@ -19,7 +19,7 @@ export default function PageNav({ host, requestToken }) {
 
   useEffect(() => { 
     const handleScroll = () => {
-      if (window.scrollY >= 2) {
+      if (window.scrollY >= 1) {
         setNavFixed(true);
       } else {
         setNavFixed(false);

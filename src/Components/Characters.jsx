@@ -42,7 +42,7 @@ const Characters = () => {
         <>
             <Container className='p-xl-4 w-100 my-3 my-xl-0'>
                 <div className="d-flex align-items-center justify-content-between">
-                    <h4 className='text-dark-blue font-main'>Cast</h4>
+                    <h4 className='text-main font-main'>Cast</h4>
                 </div>
                 <div className='d-flex align-items-center scroll-container mb-5' style={{}}>
                     <div className="d-flex justify-content-between align-items-center">
@@ -65,7 +65,7 @@ const Characters = () => {
             </Container>
             <Container className='p-xl-4 w-100 my-3 my-xl-0'>
                 <div className="d-flex align-items-center justify-content-between">
-                    <h4 className='text-dark-blue font-main'>Crew</h4>
+                    <h4 className='text-main font-main'>Crew</h4>
                 </div>
                 <div className='d-flex align-items-center scroll-container mb-5' style={{}}>
                     <div className="d-flex justify-content-between align-items-center">
