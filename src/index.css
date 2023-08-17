@@ -196,7 +196,9 @@ body {
   color: white;
   border-radius: 50rem;
 }
- 
+.selected{
+  background-color: #191f3f19 !important;
+}
 .radial-progress-background {
   transition: stroke-dashoffset 0.35s;
 }
