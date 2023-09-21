@@ -15,11 +15,11 @@ export default function Header({ requestToken, host }) {
                         <span className='d-block font-main text-white' style={{ marginTop: '-13px' }}>Plus Movies</span>
                     </Navbar.Brand>
                 </Link>
-                <Nav className='ms-auto d-flex align-items-center justify-content-between'>
+                {/* <Nav className='ms-auto d-flex align-items-center justify-content-between'>
                     <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}/overview`} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-xl-4 text-white'>
                         Log In
                     </a>
-                </Nav>
+                </Nav> */}
             </Container>
         </Navbar>
     );

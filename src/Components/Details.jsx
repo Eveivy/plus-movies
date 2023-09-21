@@ -2,8 +2,8 @@ import { useEffect, useState, Suspense, lazy, createContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
-import PageNav from './NotLoggedIn/PageNav';
-import RadialProgressBar from './NotLoggedIn/ProgressBar';
+import PageNav from './PageNav';
+import RadialProgressBar from './ProgressBar';
 import Characters from './Characters';
 
 export const DetailsContext = createContext(null)
@@ -105,8 +105,7 @@ export default function Details() {
                     <div onClick={handleGoBack} className="d-flex align-items-center py-2 ps-3 text-main pointer">
                         <box-icon name='arrow-back' size="1rem" color="#191f3ff7"></box-icon>
                         <small className='fs-6 ps-1 pt-1'>Go back</small>
-                    </div>
-
+                    </div> 
                 </div>
                 <Container fluid className='p-0'>
                     <div className="" style={{

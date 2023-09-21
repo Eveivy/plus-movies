@@ -26,7 +26,7 @@ export default function LandingPage() {
                     </Col>
                 </Row>
             </Container>
-            <Container fluid className='p-xl-5 pb-xl-0' style={{ background: 'linear-gradient(to bottom, #191f3f, black)' }} >
+            {/* <Container fluid className='p-xl-5 pb-xl-0' style={{ background: 'linear-gradient(to bottom, #191f3f, black)' }} >
                 <Row>
                     <Col xl={6} className="container gradient-border">
                         <Container className='p-xl-5 text-white d-flex flex-column align-items-center justify-content-center'>
@@ -41,7 +41,7 @@ export default function LandingPage() {
                         </Container>
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
 
         </>
     );

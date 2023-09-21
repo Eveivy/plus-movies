@@ -2,7 +2,7 @@ import { useState, useEffect, createContext } from 'react';
 import { createBrowserRouter, RouterProvider, Route, Routes, useParams } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 import Overview from './Components/Overview';
-import Explore from './Components/NotLoggedIn/Explore';
+import Explore from './Components/Explore';
 import Details from './Components/Details';
 
 export const AppContext = createContext(null)

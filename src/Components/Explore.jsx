@@ -1,5 +1,5 @@
 import { useState, useContext, Suspense, lazy } from 'react';
-import { AppContext } from "../../App"
+import { AppContext } from "../App"
 import PageNav from './PageNav';
 
 const Trending = lazy(() => import('./Trending'));

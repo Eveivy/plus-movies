@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
-import logo from '../../assets/Images/logo.png'
-import SearchSection from '../SearchSection';
+import logo from '../assets/Images/logo.png'
+import SearchSection from './SearchSection';
 
 export default function PageNav({ host, requestToken }) {
 
@@ -50,13 +50,13 @@ export default function PageNav({ host, requestToken }) {
               </span>
             </button>
           </Nav>
-          <Nav className="d-flex align-items-center">
+          {/* <Nav className="d-flex align-items-center">
             <Nav className="text-white">
               <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}/overview`} size='md' className='btn rounded-pill btn-hot-pink-outline py-2 px-3 me-xl-4 text-white'>
                 Log In
               </a>
             </Nav>
-          </Nav> 
+          </Nav>  */}
       </Container>
     </Navbar>
     <SearchSection showSB={showSearchBar} handleCloseSB={handleCloseSearchBar}/>
