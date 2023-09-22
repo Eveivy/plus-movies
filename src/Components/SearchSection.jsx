@@ -12,7 +12,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
   const [keywordResult, setKeywordResult] = useState([])
 
   const getFullDetails = (id, title) => {
-    navigate(`/movies/${id}-${title}`);
+    navigate(`/movie/${id}&${title}`);
     window.location.reload();
   };
 
@@ -50,7 +50,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
       fetch(`https://api.themoviedb.org/3/search/multi?query=${keyword}&include_adult=true&language=en-US&page=1`, options)
         .then(response => response.json())
         .then(data => {
-          // setKeywordResult(data.results);
+          setKeywordResult(data.results);
           // console.log(data.results)
         })
         .catch(err => console.error(err));

@@ -5,20 +5,20 @@ import moment from 'moment';
 import PageNav from './PageNav';
 
 
-export default function Details() {
+export default function CharacterDetails() {
     const access_token = import.meta.env.VITE_ACCESS_TOKEN;
     const { id } = useParams();
     const [details, setDetails] = useState({});
 
     const navigate = useNavigate();
 
-
+    console.log(id)
     const handleGoBack = () => {
         window.history.back();
     };
 
     const getAnotherMovie = (id, title) => {
-        navigate(`/movies/${id}-${title}`);
+        navigate(`/movie/${id}&${title}`);
         window.location.reload();
     };
 
@@ -34,7 +34,9 @@ export default function Details() {
 
         fetch(`https://api.themoviedb.org/3/person/${id}?language=en-US`, options)
             .then(response => response.json())
-            .then(response => console.log(response))
+            .then(data => {
+                console.log(data)
+            })
             .catch(err => console.error(err));
     };
 

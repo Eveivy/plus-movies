@@ -21,7 +21,7 @@ export default function LandingPage() {
                         <p className='lead'>Plus movies utilizes the expansive library of TMDb to provide users with access to a vast collection
                             of movies and TV shows. It features search and browse functionalities, personalized recommendations, user reviews, and watchlists. This app is a one-stop-shop for all things film and television.</p>
                         <div className='my-3'>
-                            <Link className='nav-link' to="/movies"> <Button className='btn-hot-pink px-5 py-3 rounded-pill'>Explore Movies</Button></Link>
+                            <Link className='nav-link' to="/all-categories"> <Button className='btn-hot-pink px-5 py-3 rounded-pill'>Explore Movies</Button></Link>
                         </div>
                     </Col>
                 </Row>

@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import maleProfile from '../assets/Images/no-profile-male.jpg'
 import femaleProfile from '../assets/Images/no-profile-female.jpg'
@@ -48,7 +49,7 @@ const Characters = () => {
                     <div className="d-flex justify-content-between align-items-center">
                         {
                             sortedCharacters.map(el => {
-                                return <div key={el.id} className="card bg-white shadow mx-2 border-0 rounded-3 p-2 my-5 h-100 pointer" style={{ width: "18rem" }}>
+                                return <Link to={`/person/${el.id}&${el.name}`} key={el.id} className="text-decoration-none text-main card bg-white shadow mx-2 border-0 rounded-3 p-2 my-5 h-100" style={{ width: "18rem" }}>
                                     <div className="d-flex align-items-center justify-content-center" >
                                         <img style={{ height: "250px" }} src={el.profile_path ? `https://image.tmdb.org/t/p/original/${el.profile_path}` : el.gender === 2 ? maleProfile : femaleProfile} className="rounded-3" alt={el.name} />
                                     </div>
@@ -57,7 +58,7 @@ const Characters = () => {
                                         <span className='text-muted d-block my-0 fs-7'>{el.character || "-"}</span>
                                         <small className='text-muted fs-7'>{el.known_for_department || "-"}</small>
                                     </div>
-                                </div>
+                                </Link>
                             })
                         }
                     </div>

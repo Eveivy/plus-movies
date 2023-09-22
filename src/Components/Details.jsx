@@ -36,7 +36,7 @@ export default function Details() {
     const handleShow = () => setPlayTrailer(true);
 
     const getAnotherMovie = (id, title) => { 
-      navigate(`/movies/${id}-${title}`);
+      navigate(`/movie/${id}&${title}`);
       window.location.reload();
     }; 
 

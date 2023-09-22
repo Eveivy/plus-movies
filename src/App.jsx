@@ -4,6 +4,7 @@ import LandingPage from './Components/LandingPage';
 import Overview from './Components/Overview';
 import Explore from './Components/Explore';
 import Details from './Components/Details';
+import CharacterDetails from './Components/CharacterDetails';
 
 export const AppContext = createContext(null)
 
@@ -17,7 +18,7 @@ function App() {
       element: <LandingPage />
     },
     {
-      path: "/movies",
+      path: "/all-categories",
       element: <Explore />
     },
     {
@@ -25,8 +26,12 @@ function App() {
       element: <Overview />
     },
     {
-      path: "/movies/:id-:name",
+      path: "/movie/:id&:name",
       element: <Details />
+    },
+    {
+      path: "/person/:id&:name",
+      element: <CharacterDetails />
     }
   ]);
 
