@@ -12,7 +12,6 @@ export default function CharacterDetails() {
 
     const navigate = useNavigate();
 
-    console.log(id)
     const handleGoBack = () => {
         window.history.back();
     };
@@ -36,6 +35,7 @@ export default function CharacterDetails() {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
+                setDetails(data)
             })
             .catch(err => console.error(err));
     };
@@ -58,6 +58,39 @@ export default function CharacterDetails() {
                     </div>
 
                 </div>
+                <Container className='p-xl-4 w-100 my-3 my-xl-0'>
+                    <div className="d-flex align-items-center ms-xl-3">
+                        <div className="d-xl-inline d-none" style={{ height: "500px", width: "350px", overflow: "hidden" }}>
+                            <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${details.profile_path}`} alt="" />
+                        </div>
+                        <div className="ms-xl-5 w-xl">
+                            <div className=''>
+                                <h1 className='fs-2 mb-0 fw-semibold'>{`${details.name}`}</h1>
+                                <span className='text-muted'>{details.birthday}{details.deathday && ` - ${details.deathday}`}</span>
+                            </div>
+                            <div className="mt-3">
+                                <h5 className='font-main fw-bold mb-3'>Biography</h5>
+                                <p className='mb-0 text-main'>{details.biography}</p>
+
+                                <div className="d-flex flex-wrap align-items-start text-main mt-3">
+                                    <div className="d-flex flex-column justify-content-center">
+                                        <span className='mb-0 fw-bold font-main fs-6'>Known For</span>
+                                        <small className='text-muted'>{details.known_for_department || "-"}</small>
+                                    </div>
+                                    <div className="d-flex flex-column justify-content-center">
+                                        <span className='mb-0 fw-bold font-main fs-6'>Popularity</span>
+                                        <small className='text-muted'>{details.known_for_department || "-"}</small>
+                                    </div>
+                                </div>
+                                {details.homepage &&
+                                    <span className='text-muted fs-6 mt-3 d-block'>Website:
+                                        <span onClick={() => window.open(`${details.homepage}`, '_blank')} href={details.homepage} className='pointer text-pink'> {details.homepage}</span>
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                    </div> 
+                </Container>
 
             </Suspense>
         </>

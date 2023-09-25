@@ -133,7 +133,7 @@ export default function Details() {
                                                 prodCountries.map(el => <span key={el.iso_3166_1}>{el.iso_3166_1}</span>)
                                             })</span>
                                             <span>| {genres.map((el) => {
-                                                return <span key={el.id} className='px-1 text-hot-pink mb-1 mb-xl-0'>{el.name} <span className='text-white'>*</span></span>
+                                                return <span key={el.id} className='px-1 text-pink mb-1 mb-xl-0'>{el.name} <span className='text-white'>*</span></span>
                                             })}</span>
                                             <span className='mx-xl-2'> |  {Math.floor(details.runtime / 60)}h {details.runtime % 60}m</span>
                                         </div>

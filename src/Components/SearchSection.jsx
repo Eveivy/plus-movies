@@ -84,7 +84,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
             <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} />
           </div>
           <div className="">
-            <span className='d-block fs-7 fw-bold'>{el.title || el.name || el.original_title} <small className='text-hot-pink fs-7'>({el.original_language})</small> </span>
+            <span className='d-block fs-7 fw-bold'>{el.title || el.name || el.original_title} <small className='text-pink fs-7'>({el.original_language})</small> </span>
             <small className='text-muted fs-7'>{el.overview.length > 80 ? (el.overview).substring(0, 80 - 3) + '...' : el.overview}</small>
           </div>
         </Link>
@@ -100,7 +100,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
             <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} />
           </div>
           <div className="">
-            <span className='d-block fs-7 fw-bold'>{el.title || el.name || el.original_title} <small className='text-hot-pink fs-7'>({el.original_language})</small> </span>
+            <span className='d-block fs-7 fw-bold'>{el.title || el.name || el.original_title} <small className='text-pink fs-7'>({el.original_language})</small> </span>
             <small className='text-muted fs-7'>{el.overview && el.overview.length > 80 ? (el.overview).substring(0, 80 - 3) + '...' : el.overview}</small>
           </div>
         </Link>
