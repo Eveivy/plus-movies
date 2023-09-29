@@ -16,18 +16,18 @@ const Recommendations = lazy(() => import('./Recommendations'));
 
 export default function Details() {
     const access_token = import.meta.env.VITE_ACCESS_TOKEN;
-    const { id } = useParams();
+    const { id, mediaType } = useParams();
     const [details, setDetails] = useState({});
     const [genres, setGenres] = useState([]);
     const [prodCountries, setProdCountries] = useState([]);
     const [prodCompanies, setProdCompanies] = useState([]);
     const [languages, setlanguages] = useState([]);
-  
+
     const navigate = useNavigate();
 
 
     const handleGoBack = () => {
-        window.history.back(); 
+        window.history.back();
     };
 
     const [playTrailer, setPlayTrailer] = useState(false);
@@ -35,37 +35,61 @@ export default function Details() {
     const handleClose = () => setPlayTrailer(false);
     const handleShow = () => setPlayTrailer(true);
 
-    const getAnotherMovie = (id, title) => { 
-      navigate(`/movie/${id}&${title}`);
-      window.location.reload();
-    }; 
-
+    const getAnotherMovie = (id, title) => {
+        navigate(`/movie/${id}&${title}`);
+        window.location.reload();
+    };
+ 
     const getMovieDetails = () => {
 
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${access_token}`
-            }
-        };
+        if (mediaType === "movie") {
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: `Bearer ${access_token}`
+                }
+            };
 
-        fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
-            .then(response => response.json())
-            .then(data => {
-                setDetails(data);
-                setGenres(data.genres);
-                setProdCountries(data.production_countries);
-                setProdCompanies(data.production_companies);
-                setlanguages(data.spoken_languages);
-              
-                // console.log(data)
-            })
-            .catch(err => console.error(err));
+            fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
+                .then(response => response.json())
+                .then(data => {
+                    setDetails(data);
+                    setGenres(data.genres);
+                    setProdCountries(data.production_countries);
+                    setProdCompanies(data.production_companies);
+                    setlanguages(data.spoken_languages);
+
+                    // console.log(data)
+                })
+                .catch(err => console.error(err));
+
+        } else if (mediaType === "tv") {
+
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: `Bearer ${access_token}`
+                }
+            };
+
+            fetch(`https://api.themoviedb.org/3/tv/${id}?language=en-US`, options)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    setDetails(data);
+                    setGenres(data.genres);
+                    setProdCountries(data.production_countries);
+                    setProdCompanies(data.production_companies);
+                    setlanguages(data.spoken_languages);
+                })
+                .catch(err => console.error(err));
+        }
 
     };
 
-  
+
     const trailerNames = ["Official Trailer", "Official US Trailer", "Trailer", "Main Trailer"];
 
     const [trailer, setTrailer] = useState({});
@@ -85,16 +109,16 @@ export default function Details() {
             .then(data => {
                 setVideos(data.results);
                 const trailerVideo = data.results.find(video => trailerNames.includes(video.name));
-                setTrailer(trailerVideo);  
+                setTrailer(trailerVideo);
             })
             .catch(err => console.error(err));
 
-    }; 
+    };
 
     useEffect(() => {
         getMovieDetails();
         getVideos();
-    }, [id]); 
+    }, [id]);
 
 
     return (
@@ -105,7 +129,7 @@ export default function Details() {
                     <div onClick={handleGoBack} className="d-flex align-items-center py-2 ps-3 text-main pointer">
                         <box-icon name='arrow-back' size="1rem" color="#191f3ff7"></box-icon>
                         <small className='fs-6 ps-1 pt-1'>Go back</small>
-                    </div> 
+                    </div>
                 </div>
                 <Container fluid className='p-0'>
                     <div className="" style={{
@@ -126,7 +150,7 @@ export default function Details() {
                                         <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} alt="" />
                                     </div>
                                     <div className="ms-xl-5 w-xl">
-                                        <h1 className='fs-2 mb-1 fw-bold'>{`${details.title} (${details.release_date ? details.release_date.substring(0, 4) : ""})`}</h1>
+                                        <h1 className='fs-2 mb-1 fw-bold'>{`${details.title || details.original_name || details.name} ${mediaType === "movie" ? details.release_date && `(${details.release_date.substring(0, 4)})` : details.first_air_date && `(${details.first_air_date.substring(0, 4)})`}`}</h1>
                                         <div className='d-flex flex-wrap align-items-center my-3 my-xl-0'>
                                             {details.status === "Released" && <span className='border border-secondary px-1 text-white fs-6 mb-1 mb-xl-0'>R</span>}
                                             <span className='text-white px-2 mb-1 mb-xl-0'>{moment(details.release_date).format('L')} ({
@@ -135,7 +159,7 @@ export default function Details() {
                                             <span>| {genres.map((el) => {
                                                 return <span key={el.id} className='px-1 text-pink mb-1 mb-xl-0'>{el.name} <span className='text-white'>*</span></span>
                                             })}</span>
-                                            <span className='mx-xl-2'> |  {Math.floor(details.runtime / 60)}h {details.runtime % 60}m</span>
+                                            <span className='mx-xl-2'> {details.runtime && `| ${Math.floor(details.runtime / 60)}h ${details.runtime % 60}m`}</span>
                                         </div>
                                         <div className="mt-3 d-flex flex-wrap align-items-center">
                                             <div className="d-flex align-items-center">
@@ -191,14 +215,14 @@ export default function Details() {
 
                     </div>
                 </Container >
-              
-                <DetailsContext.Provider value={{id, access_token, getAnotherMovie, playTrailer, handleClose, videos, trailer}}>
-                    <Characters/>
+
+                <DetailsContext.Provider value={{ id, mediaType, access_token, getAnotherMovie, playTrailer, handleClose, videos, trailer }}>
+                    <Characters />
                     <Videos />
                     <MovieReviews />
-                    <Recommendations/>
+                    <Recommendations />
                 </DetailsContext.Provider>
-
+                
             </Suspense>
         </>
 

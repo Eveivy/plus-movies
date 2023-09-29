@@ -42,7 +42,7 @@ export default function Trending() {
             .then(response => response.json())
             .then(data => {
                 setThisWeekMovies(data.results)
-                // console.log(data.results)
+                // console.log(data)
             }
             )
             .catch(err => console.error(err));
@@ -79,7 +79,7 @@ export default function Trending() {
                                             </div>
                                             <div className="">
                                                 <h5 className="text-capitalize">
-                                                    <Link to={`/movie/${movie.id}&${movie.name || movie.title || movie.original_title || movie.original_name}`}
+                                                    <Link to={`/${movie.media_type}/${movie.id}&${movie.name || movie.title || movie.original_title || movie.original_name}`}
                                                         className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link>
                                                 </h5>
                                                 <div className="d-flex align-items-start justify-content-between">
@@ -104,7 +104,7 @@ export default function Trending() {
                                                 </div>
                                                 <div className="">
                                                     <h5 className="text-capitalize">
-                                                        <Link to={`/movie/${movie.id}&${movie.name || movie.title || movie.original_title || movie.original_name}`}
+                                                        <Link to={`/${movie.media_type}/${movie.id}&${movie.name || movie.title || movie.original_title || movie.original_name}`}
                                                             className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}
                                                         </Link></h5>
                                                     <div className="d-flex align-items-start justify-content-between">

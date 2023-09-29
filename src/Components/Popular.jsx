@@ -119,7 +119,7 @@ export default function Popular() {
                                                 <RadialProgressBar percentage={Math.floor(movie.vote_average * 10)} rad={30} strokeW={5}/>
                                             </div>
                                             <div className="">
-                                                <h5 className="text-capitalize"><Link to={`/movie/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`}
+                                                <h5 className="text-capitalize"><Link to={`/${movie.media_type}/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`}
                                                 className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link></h5>
                                                 <div className="d-flex align-items-start justify-content-between">
                                                     <small>{movie.release_date}</small>
@@ -140,7 +140,7 @@ export default function Popular() {
                                                 <RadialProgressBar percentage={Math.floor(movie.vote_average * 10)} rad={30} strokeW={5}/>
                                             </div>
                                             <div className="">
-                                                <h5 className="text-capitalize"><Link to={`/movie/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link></h5>
+                                                <h5 className="text-capitalize"><Link to={`/${movie.media_type}/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link></h5>
                                                 <div className="d-flex align-items-start justify-content-between">
                                                     <small>{movie.release_date}</small>
                                                 </div>
@@ -160,7 +160,7 @@ export default function Popular() {
                                                 <RadialProgressBar percentage={Math.floor(movie.vote_average * 10)} rad={30} strokeW={5}/>
                                             </div>
                                             <div className="">
-                                                <h5 className="text-capitalize"><Link to={`/movie/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link></h5>
+                                                <h5 className="text-capitalize"><Link to={`/${movie.media_type}/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`} className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link></h5>
                                                 <div className="d-flex align-items-start justify-content-between">
                                                     <small>{movie.release_date}</small>
                                                 </div>
@@ -181,7 +181,7 @@ export default function Popular() {
                                             </div>
                                             <div className="">
                                                 <h5 className="text-capitalize">
-                                                    <Link to={`/movie/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`} 
+                                                    <Link to={`/${movie.media_type}/${movie.id}&${movie.name|| movie.title || movie.original_title || movie.original_name}`} 
                                                     className='text-decoration-none text-white text-hover-color'>{movie.name|| movie.title || movie.original_title || movie.original_name}</Link></h5>
                                                 <div className="d-flex align-items-start justify-content-between">
                                                     <small>{movie.release_date}</small>

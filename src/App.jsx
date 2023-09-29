@@ -26,7 +26,7 @@ function App() {
       element: <Overview />
     },
     {
-      path: "/movie/:id&:name",
+      path: "/:mediaType/:id&:name",
       element: <Details />
     },
     {

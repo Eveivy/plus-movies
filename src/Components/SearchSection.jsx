@@ -51,7 +51,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
         .then(response => response.json())
         .then(data => {
           setKeywordResult(data.results);
-          // console.log(data.results)
+          // console.log(data)
         })
         .catch(err => console.error(err));
     } else {
