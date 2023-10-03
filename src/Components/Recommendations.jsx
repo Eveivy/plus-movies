@@ -39,7 +39,7 @@ const Recommendations = () => {
   return (
     <>
       {
-        rMovies.length &&
+        rMovies.length > 0 &&
         <Container className='p-xl-4 w-100 mb-4'>
           <div className="d-flex align-items-center justify-content-between mb-5">
             <h4 className='text-main font-main'> Recommendations</h4>

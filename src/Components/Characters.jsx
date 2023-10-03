@@ -46,7 +46,7 @@ const Characters = () => {
               fetch(`https://api.themoviedb.org/3/tv/${id}/aggregate_credits?language=en-US`, options)
                 .then(response => response.json())
                 .then(data =>{ 
-                    console.log(data)
+                    // console.log(data)
                     setCasts(data.cast);
                     setCrews(data.crew);
                 })
@@ -78,7 +78,7 @@ const Characters = () => {
                                     </div>
                                     <div className="py-2 text-center">
                                         <p className='fw-bold mb-0'>{el.name || "-"}</p>
-                                        <span className='text-muted d-block my-0 fs-7'>{el.character || el.roles[0].character || "-"}</span>
+                                        <span className='text-muted d-block my-0 fs-7'>{el.character || el.roles && el.roles[0].character || "-"}</span>
                                         {
                                             mediaType === "movie" ? 
                                             <small className='text-muted fs-7 d-block'>{el.known_for_department || "-"}</small>

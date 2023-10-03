@@ -147,19 +147,19 @@ export default function Details() {
                             <div className="inner-content text-white ms-xl-5">
                                 <div className="d-flex align-items-center ms-xl-3">
                                     <div className="d-xl-inline d-none" style={{ height: "500px", width: "350px", overflow: "hidden" }}>
-                                        <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} alt="" />
+                                        <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} alt='' />
                                     </div>
                                     <div className="ms-xl-5 w-xl">
                                         <h1 className='fs-2 mb-1 fw-bold'>{`${details.title || details.original_name || details.name} ${mediaType === "movie" ? details.release_date && `(${details.release_date.substring(0, 4)})` : details.first_air_date && `(${details.first_air_date.substring(0, 4)})`}`}</h1>
                                         <div className='d-flex flex-wrap align-items-center my-3 my-xl-0'>
                                             {details.status === "Released" && <span className='border border-secondary px-1 text-white fs-6 mb-1 mb-xl-0'>R</span>}
-                                            <span className='text-white px-2 mb-1 mb-xl-0'>{moment(details.release_date).format('L')} ({
+                                            <span className='text-white px-2 mb-1 mb-xl-0'>{details.release_date && moment(details.release_date).format('L')} ({
                                                 prodCountries.map(el => <span key={el.iso_3166_1}>{el.iso_3166_1}</span>)
                                             })</span>
                                             <span>| {genres.map((el) => {
                                                 return <span key={el.id} className='px-1 text-pink mb-1 mb-xl-0'>{el.name} <span className='text-white'>*</span></span>
                                             })}</span>
-                                            <span className='mx-xl-2'> {details.runtime && `| ${Math.floor(details.runtime / 60)}h ${details.runtime % 60}m`}</span>
+                                            <span className='mx-xl-2'>{details.runtime && `| ${Math.floor(details.runtime / 60)}h ${details.runtime % 60}m`}</span>
                                         </div>
                                         <div className="mt-3 d-flex flex-wrap align-items-center">
                                             <div className="d-flex align-items-center">

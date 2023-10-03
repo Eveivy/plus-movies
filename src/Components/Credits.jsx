@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import RadialProgressBar from "./ProgressBar";
+import placeholderImg from '../assets/Images/null-state-image.png'
 import { Link } from "react-router-dom";
 
 const Credits = ({ id }) => {
@@ -16,10 +17,10 @@ const Credits = ({ id }) => {
             }
         };
 
-        fetch(`https://api.themoviedb.org/3/person/${id}/movie_credits?language=en-US`, options)
+        fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits?language=en-US`, options)
             .then(response => response.json())
             .then(data => {
-                // console.log(data)
+                console.log(data)
                 setCredits(data.cast)
             })
             .catch(err => console.error(err));
@@ -39,8 +40,8 @@ const Credits = ({ id }) => {
                         credits.map(movie => {
                             return (
                                 <div className="rounded-3" key={movie.id}>
-                                    <div className="mx-2 mb-5 image-container">
-                                        <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title
+                                    <div className={`mx-2 mb-5 image-container ${!movie.poster_path && 'd-flex flex-column align-items-center justify-content-end'}`}>
+                                        <img className={`${movie.poster_path ? 'img' : 'img-fluid'} rounded-3`} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : placeholderImg } alt={movie.original_title
                                         } loading="lazy" />
                                         <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-between align-items-start">
                                             <div className='mt-5 d-flex align-items-center justify-content-end w-100'>
@@ -48,7 +49,7 @@ const Credits = ({ id }) => {
                                             </div>
                                             <div className="">
                                                 <h5 className="text-capitalize">
-                                                    <Link to={`/movie/${movie.id}&${movie.name || movie.title || movie.original_title || movie.original_name}`}
+                                                    <Link to={`/${movie.media_type || 'movie'}/${movie.id}&${movie.name || movie.title || movie.original_title || movie.original_name}`}
                                                         className='text-decoration-none text-white text-hover-color'>{movie.name || movie.title || movie.original_title || movie.original_name}</Link>
                                                 </h5>
                                                 <div className="d-flex align-items-start justify-content-between">
@@ -69,4 +70,4 @@ const Credits = ({ id }) => {
     )
 }
 
-export default Credits
+export default Credits;
