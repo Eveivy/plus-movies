@@ -9,6 +9,7 @@ export default function CharacterDetails() {
     const access_token = import.meta.env.VITE_ACCESS_TOKEN;
     const { id } = useParams();
     const [details, setDetails] = useState({});
+    const [externalProfiles, setExternalProfiles] = useState({});
     const [age, setAge] = useState(null);
 
     const navigate = useNavigate();
@@ -41,20 +42,39 @@ export default function CharacterDetails() {
             .catch(err => console.error(err));
     };
 
+    const getExternalIds = () => {
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${access_token}`
+            }
+        };
+
+        fetch(`https://api.themoviedb.org/3/person/${id}/external_ids`, options)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setExternalProfiles(data)
+            })
+            .catch(err => console.error(err));
+    }
+
     useEffect(() => {
         getCharacterDetails();
+        getExternalIds();
     }, [id]);
 
     useEffect(() => {
         if (details && details.birthday) {
-          const currentDate = moment(); // Current date
-          const birthdate = moment(details.birthday, 'YYYY-MM-DD'); // Parse birthdate
-    
-          const ageInYears = currentDate.diff(birthdate, 'years');
-    
-          setAge(ageInYears);
+            const currentDate = moment();
+            const birthdate = moment(details.birthday, 'YYYY-MM-DD');
+
+            const ageInYears = currentDate.diff(birthdate, 'years');
+
+            setAge(ageInYears);
         }
-      }, [details]);
+    }, [details]);
 
     return (
         <>
@@ -74,7 +94,7 @@ export default function CharacterDetails() {
                         </div>
                         <div className="ms-xl-5 w-xl">
                             <div className=''>
-                                <h1 className='fs-2 mb-0 fw-semibold'>{`${details.name}`}</h1>
+                                <h1 className='fs-2 mb-0 fw-semibold'>{details.name}</h1>
                                 {
                                     details.birthday &&
                                     <span className='text-muted'>{details.birthday}{details.deathday && ` - ${details.deathday}`} ({age} years old)</span>
@@ -83,21 +103,34 @@ export default function CharacterDetails() {
                             <div className="mt-3">
                                 <h5 className='font-main fw-bold mb-3'>Biography</h5>
                                 {
-                                    details.biography ? 
+                                    details.biography ?
                                         <p className='mb-0 text-main'>{details.biography}</p>
                                         : <p className='mb-0 text-info fs-7'>There is no biography for {details.name}.</p>
-                                    
-                                } 
+
+                                }
                                 {details.homepage &&
                                     <span className='text-muted fs-6 mt-3 d-block'>Website:
                                         <span onClick={() => window.open(`${details.homepage}`, '_blank')} href={details.homepage} className='pointer text-pink'> {details.homepage}</span>
                                     </span>
                                 }
+                                <div className="d-flex align-items-center">
+                                // •  Twitter: [https://twitter.com/odessazion]
+
+                                // •  Instagram: [https://www.instagram.com/odessaazion/]
+
+                                // •  YouTube: [https://www.youtube.com/channel/UCyYQ8Z3Z4JfZ7y0l0g7xXjw]
+
+                                // •  TikTok: [https://www.tiktok.com/@odessaazion]
+
+                                // •  Facebook: [https://www.facebook.com/OdessaAdlon/]
+
+                                // •  IMDb: [https://www.imdb.com/name/nm5813149/]
+                                </div>
                             </div>
                         </div>
                     </div>
                 </Container>
-                <Credits id={id}/>
+                <Credits id={id} />
             </Suspense>
         </>
 

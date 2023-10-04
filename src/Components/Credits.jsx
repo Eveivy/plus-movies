@@ -20,7 +20,7 @@ const Credits = ({ id }) => {
         fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits?language=en-US`, options)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setCredits(data.cast)
             })
             .catch(err => console.error(err));
