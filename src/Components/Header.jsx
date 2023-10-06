@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../assets/Images/logo.png'
+import logo from '../assets/images/logo.png'
 import 'boxicons'
 
 export default function Header({ requestToken, host }) {

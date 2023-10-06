@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import RadialProgressBar from "./ProgressBar";
-import placeholderImg from '../assets/Images/null-state-image.png'
+import placeholderImg from '../assets/images/null-state-image.png'
 import { Link } from "react-router-dom";
 
 const Credits = ({ id }) => {

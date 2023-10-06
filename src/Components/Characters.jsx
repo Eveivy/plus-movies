@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import maleProfile from '../assets/Images/no-profile-male.jpg'
-import femaleProfile from '../assets/Images/no-profile-female.jpg'
+import maleProfile from '../assets/images/no-profile-male.jpg'
+import femaleProfile from '../assets/images/no-profile-female.jpg'
 import { DetailsContext } from './Details';
 
 

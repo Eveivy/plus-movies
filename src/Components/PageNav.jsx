@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
-import logo from '../assets/Images/logo.png'
+import logo from '../assets/images/logo.png'
 import SearchSection from './SearchSection';
 
 export default function PageNav({ host, requestToken }) {

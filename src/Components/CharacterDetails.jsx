@@ -1,6 +1,12 @@
 import { useEffect, useState, Suspense, lazy, createContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+import facebookIcon from '../assets/images/facebook.png'
+import imdbIcon from '../assets/images/imdb.png'
+import instagramIcon from '../assets/images/instagram.png'
+import tiktokIcon from '../assets/images/tik-tok.png'
+import xIcon from '../assets/images/twitterx.png'
+import youtubeIcon from '../assets/images/youtube.png'
 import moment from 'moment';
 import PageNav from './PageNav';
 import Credits from './Credits';
@@ -109,22 +115,48 @@ export default function CharacterDetails() {
 
                                 }
                                 {details.homepage &&
-                                    <span className='text-muted fs-6 mt-3 d-block'>Website:
-                                        <span onClick={() => window.open(`${details.homepage}`, '_blank')} href={details.homepage} className='pointer text-pink'> {details.homepage}</span>
+                                    <span className='text-muted fs-6 mt-4 d-block'>Website:
+                                        <a href={details.homepage} target='_blank' className='pointer text-pink'> {details.homepage}</a>
                                     </span>
                                 }
-                                <div className="d-flex align-items-center">
-                                // •  Twitter: [https://twitter.com/odessazion]
-
-                                // •  Instagram: [https://www.instagram.com/odessaazion/]
-
-                                // •  YouTube: [https://www.youtube.com/channel/UCyYQ8Z3Z4JfZ7y0l0g7xXjw]
-
-                                // •  TikTok: [https://www.tiktok.com/@odessaazion]
-
-                                // •  Facebook: [https://www.facebook.com/OdessaAdlon/]
-
-                                // •  IMDb: [https://www.imdb.com/name/nm5813149/]
+                                <div className="d-flex align-items-center mt-4">
+                                    {
+                                        externalProfiles.twitter_id && 
+                                        <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
+                                            <img src={xIcon} alt="" className='img-fluid'/>
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.instagram_id && 
+                                        <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}`} target='_blank'>
+                                            <img src={instagramIcon} alt="" className='img-fluid'/>
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.youtube_id && 
+                                        <a className='w-45px me-3' href={`https://www.youtube.com/channel/${externalProfiles.youtube_id}`} target='_blank'>
+                                            <img src={youtubeIcon} alt="" className='img-fluid'/>
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.tiktok_id && 
+                                        <a className='w-45px me-3' href={`https://www.tiktok.com/@${externalProfiles.tiktok_id}`} target='_blank'>
+                                            <img src={tiktokIcon} alt="" className='img-fluid'/>
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.facebook_id && 
+                                        <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
+                                            <img src={facebookIcon} alt="" className='img-fluid'/>
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.imdb_id && 
+                                        <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
+                                            <img src={imdbIcon} alt="" className='img-fluid'/>
+                                        </a>
+                                    }
+  
                                 </div>
                             </div>
                         </div>
