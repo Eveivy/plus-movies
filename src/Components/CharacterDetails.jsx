@@ -128,7 +128,7 @@ export default function CharacterDetails() {
                                     }
                                     {
                                         externalProfiles.instagram_id && 
-                                        <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}`} target='_blank'>
+                                        <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} target='_blank'>
                                             <img src={instagramIcon} alt="" className='img-fluid'/>
                                         </a>
                                     }

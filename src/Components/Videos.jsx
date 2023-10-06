@@ -11,7 +11,7 @@ export default function Videos() {
 
     return (
         <>
-            {videos.length > 0 && <Container className='p-xl-4 w-100 mb-4'>
+            {videos && videos.length > 0 && <Container className='p-xl-4 w-100 mb-4'>
                 <div className="d-flex align-items-center justify-content-between">
                     <h4 className='text-main font-main'> Videos</h4>
                 </div>

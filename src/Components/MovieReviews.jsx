@@ -43,7 +43,7 @@ export default function MovieReviews() {
     return (
         <>
             {
-                reviews.length > 0 &&
+                reviews && reviews.length > 0 &&
                 <Container className='p-xl-4 w-100 my-4'>
                     <div className="d-flex align-items-center justify-content-between">
                         <h4 className='text-main font-main'> Reviews</h4>
