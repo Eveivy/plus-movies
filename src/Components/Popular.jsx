@@ -99,7 +99,7 @@ export default function Popular() {
         <Container className='p-xl-4 w-100'>
             <div className="d-xl-flex align-items-center justify-content-between mb-4">
                 <h3 className='font-main text-main py-3 py-xl-0'>What's Popular</h3>
-                <div className="d-flex align-items-center justify-content-between border px-2 px-xl-0 rounded-pill ">
+                <div className="d-flex align-items-center justify-content-between border px-2 px-xl-0 rounded-pill nav-control">
                     <span onClick={() => setNumber(0)} className={`pointer px-xl-3 px-2 py-2 fs-8 ${number === 0 && "active"}`}>Now Playing</span>
                     <span onClick={() => setNumber(1)} className={`pointer px-xl-3 px-2 py-2 fs-8 ${number === 1 && "active"}`}>Top Rated</span>
                     <span onClick={() => setNumber(2)} className={`pointer px-xl-3 px-2 py-2 fs-8 ${number === 2 && "active"}`}>Most Watched</span>

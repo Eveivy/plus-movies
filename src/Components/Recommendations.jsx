@@ -51,7 +51,7 @@ const Recommendations = () => {
                   return (
                     <div className="rounded-3" key={el.id}>
 
-                      <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.id, el.title || el.original_title)}>
+                      <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.media_type, el.id, el.title || el.original_title)}>
                         {
                           el.poster_path ?
                             <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.original_title} loading="lazy" />

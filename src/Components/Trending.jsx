@@ -59,7 +59,7 @@ export default function Trending() {
         <Container className='p-xl-4 w-100 mb-4'>
             <div className="d-xl-flex align-items-center justify-content-between mb-4">
                 <h3 className='font-main text-main py-3 py-xl-0'>Trending</h3>
-                <div className="d-flex align-items-center justify-content-between border rounded-pill p-2 p-xl-0">
+                <div className="d-flex align-items-center justify-content-between border rounded-pill p-2 p-xl-0 nav-control">
                     <span onClick={() => setShowThisWeekMovies(false)} className={`pointer px-3 py-2 fs-8 ${!showThisWeekMovies && "active"}`}>Today</span>
                     <span onClick={() => setShowThisWeekMovies(true)} className={`pointer px-3 py-2 fs-8 ${showThisWeekMovies && "active"}`}>This Week</span>
                 </div>

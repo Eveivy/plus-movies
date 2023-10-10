@@ -11,8 +11,8 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
   const { id } = useParams();
   const [keywordResult, setKeywordResult] = useState([])
 
-  const getFullDetails = (id, title) => {
-    navigate(`/movie/${id}&${title}`);
+  const getFullDetails = (mediaType, id, title) => {
+    navigate(`/${mediaType}/${id}&${title}`);
     window.location.reload();
   };
 
@@ -51,7 +51,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
         .then(response => response.json())
         .then(data => {
           setKeywordResult(data.results);
-          // console.log(data)
+          // console.log(data.results)
         })
         .catch(err => console.error(err));
     } else {
@@ -79,7 +79,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
   const movie = trending.map((el) => {
     return (
       <div key={el.id} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
-        <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.id, el.title || el.name || el.original_title)}>
+        <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.media_type, el.id, el.title || el.name || el.original_title)}>
           <div className="me-2" style={{ height: "100px", width: "170px", overflow: "hidden" }}>
             <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} />
           </div>
@@ -95,7 +95,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
   const result = keywordResult.map((el) => {
     return (
       <div key={el.id} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
-        <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.id, el.title || el.name || el.original_title)}>
+        <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.media_type, el.id, el.title || el.name || el.original_title)}>
           <div className="me-2" style={{ height: "100px", width: "170px", overflow: "hidden" }}>
             <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} />
           </div>

@@ -35,8 +35,8 @@ export default function Details() {
     const handleClose = () => setPlayTrailer(false);
     const handleShow = () => setPlayTrailer(true);
 
-    const getAnotherMovie = (id, title) => {
-        navigate(`/movie/${id}&${title}`);
+    const getAnotherMovie = (mediaType, id, title) => {
+        navigate(`/${mediaType}/${id}&${title}`);
         window.location.reload();
     };
 
@@ -77,7 +77,7 @@ export default function Details() {
             fetch(`https://api.themoviedb.org/3/tv/${id}?language=en-US`, options)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setDetails(data);
                     setGenres(data.genres);
                     setProdCountries(data.production_countries);
@@ -117,7 +117,9 @@ export default function Details() {
 
     useEffect(() => {
         getMovieDetails();
-        getVideos();
+        if(mediaType === 'movie'){
+            getVideos();
+        }
     }, [id]);
 
 
