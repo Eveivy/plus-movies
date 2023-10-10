@@ -20,7 +20,7 @@ const RadialProgressBar = ({ percentage, rad, strokeW }) => {
       />
       <circle
         className="radial-progress-bar"
-        stroke={percentage < 70 ? "#dc3545" :"#ff0088d4"}
+        stroke={percentage < 70 ? "#dc3545" : "#ff0088d4"}
         strokeWidth={strokeWidth}
         fill="transparent"
         r={normalizedRadius}

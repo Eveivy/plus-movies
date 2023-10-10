@@ -9,8 +9,9 @@
 }
 
 body {
-  font-family: 'Neue Machina'; 
-} 
+  font-family: 'Neue Machina';
+}
+
 .hero-section {
   background-image: linear-gradient(0deg, #191f3ff7, #191f3f75), url(/src/assets/images/hero-bg.jpg);
   background-position: center;
@@ -18,39 +19,52 @@ body {
   background-repeat: no-repeat;
   height: 100vh;
 }
-.dark-bg { 
+
+.dark-bg {
   background-color: #191f3ff7 !important;
   color: white;
 }
+
 .navbar.fixed-top {
-  background-color: #191f3fc1 !important; 
+  background-color: #191f3fc1 !important;
   animation: fadeInDown 0.3s ease !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
+
 @keyframes fadeInDown {
   from {
     opacity: 1;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 0;
     transform: translateY(0);
   }
 }
-.text-main{
+
+.text-main {
   color: #191f3ff7;
 }
-.text-main:hover{
+
+.text-main:hover {
   color: #191f3ff7;
 }
+
 .font-main {
   font-family: 'Lobster';
-} 
+}
+
 .text-pink {
   color: #ff0088;
 }
-.bg-hot-pink{
+
+.bg-hot-pink {
   background-color: #ff0088;
+}
+
+.bg-light-pink{
+  background-color: #ff00889d;
 }
 .search-input {
   outline: none !important;
@@ -58,74 +72,85 @@ body {
   border: none !important;
   color: #0f1432 !important;
 }
-.pointer{
+
+.pointer {
   cursor: pointer;
 }
-.outline-0{
+
+.outline-0 {
   outline: none;
 }
+
 .btn-hot-pink {
   background-color: #ff0088;
   border: 2px solid #ff0088;
 }
+
 .btn-pink {
   background-color: #ff0088;
   border: 2px solid #ff0088;
   color: white;
 }
+
 .btn-pink:hover {
   background-color: #ff0088;
   border: 2px solid #ff0088;
   color: white;
 }
+
 .btn-hot-pink:hover {
   background-color: transparent;
   border: 2px solid #ff0088;
-} 
+}
+
 .btn-hot-pink-outline {
   background-color: transparent;
   border: 2px solid #ff0088;
 }
-.border-pink{
+
+.border-pink {
   border: 2px solid #ff0088;
 }
+
 .btn-hot-pink-outline:hover {
   background-color: #ff0088;
   border: 2px solid #ff0088;
 }
-  
-.gradient-border { 
+
+.gradient-border {
   border-right: 3px solid;
   border-image: linear-gradient(to bottom, #ff0088, #820e21) 1 100%;
-} 
-.scroll-container {
-  width:  100%; 
-  height: 400px;  
-  overflow-x: scroll;  
-  overflow-y: hidden; 
-} 
+}
 
-.bg-hover:hover{
+.scroll-container {
+  width: 100%;
+  height: 400px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.bg-hover:hover {
   background-color: #191f3f0a;
   border-radius: 3px;
 }
 
 /* For WebKit-based browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
-  width: 8px;  
+  width: 8px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: white; 
+  background: white;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #efeeee;  
-  border-radius: 10px;  
+  background: #efeeee;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #efeeee;   
+  background: #efeeee;
 }
 
 .img {
@@ -133,25 +158,41 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.577);
   object-fit: cover;
-} 
+}
 
 .image-container {
   position: relative;
   display: inline-block;
-  height: 400px; 
+  height: 400px;
   width: 250px;
-  overflow: hidden; 
+  overflow: hidden;
 }
-.symbol{
+
+.symbol {
   display: inline-block;
-  height: 60px; 
+  height: 60px;
   width: 60px;
   border-radius: 50%;
 }
-.w-45px{
+
+.w-45px {
   width: 45px;
   height: 45px;
 }
+
+.h-250px {
+  height: 250px;
+}
+
+.hw-1 {
+  width: 350px;
+  height: 200px;
+}
+
+.mt-20 {
+  margin-top: 14rem;
+}
+
 .overlay {
   position: absolute;
   bottom: 0;
@@ -163,13 +204,15 @@ body {
   background: linear-gradient(to bottom, #191f3f97, #191f3f);
   color: #fff;
 }
+
 .small-card-container {
   position: relative;
   display: inline-block;
-  height: 200px; 
+  height: 200px;
   width: 330px;
-  overflow: hidden; 
+  overflow: hidden;
 }
+
 .small-card-overlay {
   position: absolute;
   bottom: 0;
@@ -181,35 +224,43 @@ body {
   background: linear-gradient(to bottom, #020410c1, #191f3f);
   color: #fff;
 }
-.bg-lighter-pink{
+
+.bg-lighter-pink {
   background-color: #ff008891;
   color: white;
 }
-.image-container:hover .overlay, .small-card-container:hover .small-card-overlay{
-  opacity: 1;  
+
+.image-container:hover .overlay,
+.small-card-container:hover .small-card-overlay {
+  opacity: 1;
 }
-.fs-7{
-  font-size: 0.8rem ;
+
+.fs-7 {
+  font-size: 0.8rem;
 }
-.text-hover-color:hover{
+
+.text-hover-color:hover {
   color: #ff0088d4 !important;
   transition: all 0.2s;
 }
-.active{
+
+.active {
   background-color: #191f3f;
   color: white;
   border-radius: 50rem;
 }
-.selected{
+
+.selected {
   background-color: #191f3f19 !important;
 }
+
 .radial-progress-background {
   transition: stroke-dashoffset 0.35s;
 }
 
 .radial-progress-bar {
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.35s; 
+  transition: stroke-dashoffset 0.35s;
 }
 
 .radial-progress-text {
@@ -218,18 +269,22 @@ body {
   fill: white;
   font-family: sans-serif;
 }
-.inner-content{
+
+.inner-content {
   width: 100%;
   padding: 30px 40px;
   z-index: 0;
   box-sizing: border-box;
 }
-.w-xl{
+
+.w-xl {
   width: 80%;
 }
-.w-90{
+
+.w-90 {
   width: 90% !important;
 }
+
 .loader {
   width: 48px;
   height: 48px;
@@ -240,8 +295,9 @@ body {
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 .loader::after {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   position: absolute;
   left: 4px;
@@ -251,38 +307,52 @@ body {
   height: 12px;
   border-radius: 50%;
 }
-.w-500{
+
+.w-500 {
   width: 500px;
 }
-.modal-content{
+
+.modal-content {
   background-color: black;
 }
-.modal-dialog{
+
+.modal-dialog {
   width: 90% !important;
-}  
+}
+
+.bg-radient {
+  background: linear-gradient(180deg, #fffdfd00 45%, #191f3fe3 100%);
+}
+ 
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 
-@media (max-width: 650px){
-  .fs-8{
-    font-size: 0.8rem ;
+@media (max-width: 650px) {
+  .fs-8 {
+    font-size: 0.8rem;
   }
-  .w-xl{
+
+  .w-xl {
     width: 100%;
   }
-  .inner-content{
+
+  .inner-content {
     padding: 30px 10px;
   }
-  .w-75{
+
+  .w-75 {
     width: 100% !important;
   }
-  .w-90{
+
+  .w-90 {
     width: 100%;
   }
 }

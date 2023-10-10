@@ -39,7 +39,7 @@ export default function Details() {
         navigate(`/movie/${id}&${title}`);
         window.location.reload();
     };
- 
+
     const getMovieDetails = () => {
 
         if (mediaType === "movie") {
@@ -185,6 +185,7 @@ export default function Details() {
                                             <div className="mb-4">
                                                 <h2 className='fs-5 fw-bold'>Overview</h2>
                                                 <p className=''>{details.overview}</p>
+                                               
                                             </div>
                                             <div className="d-flex flex-wrap align-items-start justify-content-between w-75">
                                                 <div className="">
@@ -222,7 +223,7 @@ export default function Details() {
                     <MovieReviews />
                     <Recommendations />
                 </DetailsContext.Provider>
-                
+
             </Suspense>
         </>
 

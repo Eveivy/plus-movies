@@ -31,7 +31,7 @@ const Credits = ({ id }) => {
     }, [id])
 
     return (
-        <Container className='p-xl-4 w-100 mb-4'>
+        <Container className='p-xl-4 w-100 mb-4 mt-4'>
             <h3 className='font-main text-main py-3 py-xl-0'>Features In</h3>
 
             <div className='d-flex scroll-container'>
