@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import Container from 'react-bootstrap/Container';
+import { Modal } from 'react-bootstrap';
 import facebookIcon from '../assets/images/facebook.png'
 import imdbIcon from '../assets/images/imdb.png'
 import instagramIcon from '../assets/images/instagram.png'
@@ -21,15 +22,22 @@ export default function CharacterDetails() {
     const [age, setAge] = useState(null);
     const [readMore, setReadMore] = useState(false);
     const [images, setImages] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [openModal, setOpenModal] = useState(null)
     const handleGoBack = () => {
         window.history.back();
     };
     const properties = {
-        prevArrow:  <span className='d-flex align-items-center rounded pointer bg-light-pink'><box-icon size="30px" color='white' name='chevrons-left' type='solid' ></box-icon></span>,
-        nextArrow:  <span className='d-flex align-items-center rounded pointer bg-light-pink'><box-icon size="30px" color='white' name='chevrons-right' type='solid' ></box-icon></span>
+        prevArrow: <span className={`d-flex align-items-center rounded pointer bg-light-pink d-none`}><box-icon size="30px" color='white' name='chevrons-left' type='solid' ></box-icon></span>,
+        nextArrow: <span className={`d-flex align-items-center rounded pointer bg-light-pink ${images.length === 3 && 'd-none'}`}><box-icon size="30px" color='white' name='chevrons-right' type='solid' ></box-icon></span>
 
     }
 
+    const handleOpenModal = (url) => {
+        setOpenModal(url);
+        setShowModal(true);
+        console.log(url)
+    }
 
     const getCharacterDetails = () => {
 
@@ -144,91 +152,163 @@ export default function CharacterDetails() {
                                         : <p className='mb-0 text-info fs-7'>There is no biography for {details.name}.</p>
 
                                 }
+                                {
+                                    images.length <= 2 &&
+                                    <div className="d-flex flex-column mt-5">
+                                        <div className="d-flex align-items-start">
+                                            {
+                                                details.gender &&
+                                                <div className="d-flex flex-column">
+                                                    <span className='fs-7 text-muted'>Gender</span>
+                                                    <span className='text-main'>{details.gender == 1 ? 'Female' : 'Male'}</span>
+                                                </div>
+                                            }
+                                            {
+                                                details.place_of_birth &&
+                                                <div className="d-flex flex-column ms-5">
+                                                    <span className='fs-7 text-muted'>Place of Birth</span>
+                                                    <span className='text-main text-wrap'>{details.place_of_birth}</span>
+                                                </div>
+                                            }
+                                            {
+                                                details.popularity &&
+                                                <div className="d-flex flex-column ms-5">
+                                                    <span className='fs-7 text-muted'>Popularity</span>
+                                                    <span className='text-main'>{details.popularity}</span>
+                                                </div>
+                                            }
+
+                                        </div>
+                                        {details.homepage &&
+                                            <span className='text-muted fs-6 mt-4 d-block'>Website:
+                                                <a href={details.homepage} target='_blank' className='pointer text-pink'> {details.homepage}</a>
+                                            </span>
+                                        }
+                                        <div className="d-flex align-items-center mt-4">
+                                            {
+                                                externalProfiles.twitter_id &&
+                                                <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
+                                                    <img src={xIcon} alt="" className='img-fluid' />
+                                                </a>
+                                            }
+                                            {
+                                                externalProfiles.instagram_id &&
+                                                <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} target='_blank'>
+                                                    <img src={instagramIcon} alt="" className='img-fluid' />
+                                                </a>
+                                            }
+                                            {
+                                                externalProfiles.youtube_id &&
+                                                <a className='w-45px me-3' href={`https://www.youtube.com/channel/${externalProfiles.youtube_id}`} target='_blank'>
+                                                    <img src={youtubeIcon} alt="" className='img-fluid' />
+                                                </a>
+                                            }
+                                            {
+                                                externalProfiles.tiktok_id &&
+                                                <a className='w-45px me-3' href={`https://www.tiktok.com/@${externalProfiles.tiktok_id}`} target='_blank'>
+                                                    <img src={tiktokIcon} alt="" className='img-fluid' />
+                                                </a>
+                                            }
+                                            {
+                                                externalProfiles.facebook_id &&
+                                                <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
+                                                    <img src={facebookIcon} alt="" className='img-fluid' />
+                                                </a>
+                                            }
+                                            {
+                                                externalProfiles.imdb_id &&
+                                                <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
+                                                    <img src={imdbIcon} alt="" className='img-fluid' />
+                                                </a>
+                                            }
+
+                                        </div>
+                                    </div>
+                                }
 
                             </div>
                         </div>
                     </div>
                 </Container>
-                <Container className={`p-xl-4 w-100 mb-4 ${readMore && 'mt-20'} bg-radient`}>
-                    <div className="row pb-4">
-                        <div className="col-xl-5 d-flex flex-column ">
-                            <div className="border-bottom w-75 pb-4 mt-2">
-                                {
-                                    details.gender &&
-                                    <div className="d-flex flex-column">
-                                        <span className='fs-7 text-muted'>Gender</span>
-                                        <span className='text-main'>{details.gender == 1 ? 'Female' : 'Male'}</span>
-                                    </div>
-                                }
-                                {
-                                    details.place_of_birth &&
-                                    <div className="d-flex flex-column mt-3">
-                                        <span className='fs-7 text-muted'>Place of Birth</span>
-                                        <span className='text-main'>{details.place_of_birth}</span>
-                                    </div>
-                                }
-                                {
-                                    details.popularity &&
-                                    <div className="d-flex flex-column mt-3">
-                                        <span className='fs-7 text-muted'>Popularity</span>
-                                        <span className='text-main'>{details.popularity}</span>
-                                    </div>
-                                }
+                {
+                    images.length > 2 &&
+                    <Container className={`p-xl-4 w-100 mb-4 ${readMore && 'mt-20'} bg-radient`}>
+                        <div className={`row pb-4 gy-5 ${!readMore ? 'mt-5' : 'mt-0'} `}>
+                            <div className="col-xl-5 d-flex flex-column ">
+                                <div className="border-bottom w-75 pb-4 mt-xl-2">
+                                    {
+                                        details.gender &&
+                                        <div className="d-flex flex-column">
+                                            <span className='fs-7 text-muted'>Gender</span>
+                                            <span className='text-main'>{details.gender == 1 ? 'Female' : 'Male'}</span>
+                                        </div>
+                                    }
+                                    {
+                                        details.place_of_birth &&
+                                        <div className="d-flex flex-column mt-3">
+                                            <span className='fs-7 text-muted'>Place of Birth</span>
+                                            <span className='text-main'>{details.place_of_birth}</span>
+                                        </div>
+                                    }
+                                    {
+                                        details.popularity &&
+                                        <div className="d-flex flex-column mt-3">
+                                            <span className='fs-7 text-muted'>Popularity</span>
+                                            <span className='text-main'>{details.popularity}</span>
+                                        </div>
+                                    }
 
-                            </div>
-                            {details.homepage &&
-                                <span className='text-muted fs-6 mt-4 d-block'>Website:
-                                    <a href={details.homepage} target='_blank' className='pointer text-pink'> {details.homepage}</a>
-                                </span>
-                            }
-                            <div className="d-flex align-items-center mt-4">
-                                {
-                                    externalProfiles.twitter_id &&
-                                    <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
-                                        <img src={xIcon} alt="" className='img-fluid' />
-                                    </a>
+                                </div>
+                                {details.homepage &&
+                                    <span className='text-muted fs-6 mt-4 d-block'>Website:
+                                        <a href={details.homepage} target='_blank' className='pointer text-pink'> {details.homepage}</a>
+                                    </span>
                                 }
-                                {
-                                    externalProfiles.instagram_id &&
-                                    <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} target='_blank'>
-                                        <img src={instagramIcon} alt="" className='img-fluid' />
-                                    </a>
-                                }
-                                {
-                                    externalProfiles.youtube_id &&
-                                    <a className='w-45px me-3' href={`https://www.youtube.com/channel/${externalProfiles.youtube_id}`} target='_blank'>
-                                        <img src={youtubeIcon} alt="" className='img-fluid' />
-                                    </a>
-                                }
-                                {
-                                    externalProfiles.tiktok_id &&
-                                    <a className='w-45px me-3' href={`https://www.tiktok.com/@${externalProfiles.tiktok_id}`} target='_blank'>
-                                        <img src={tiktokIcon} alt="" className='img-fluid' />
-                                    </a>
-                                }
-                                {
-                                    externalProfiles.facebook_id &&
-                                    <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
-                                        <img src={facebookIcon} alt="" className='img-fluid' />
-                                    </a>
-                                }
-                                {
-                                    externalProfiles.imdb_id &&
-                                    <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
-                                        <img src={imdbIcon} alt="" className='img-fluid' />
-                                    </a>
-                                }
+                                <div className="d-flex align-items-center mt-4">
+                                    {
+                                        externalProfiles.twitter_id &&
+                                        <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
+                                            <img src={xIcon} alt="" className='img-fluid' />
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.instagram_id &&
+                                        <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} target='_blank'>
+                                            <img src={instagramIcon} alt="" className='img-fluid' />
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.youtube_id &&
+                                        <a className='w-45px me-3' href={`https://www.youtube.com/channel/${externalProfiles.youtube_id}`} target='_blank'>
+                                            <img src={youtubeIcon} alt="" className='img-fluid' />
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.tiktok_id &&
+                                        <a className='w-45px me-3' href={`https://www.tiktok.com/@${externalProfiles.tiktok_id}`} target='_blank'>
+                                            <img src={tiktokIcon} alt="" className='img-fluid' />
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.facebook_id &&
+                                        <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
+                                            <img src={facebookIcon} alt="" className='img-fluid' />
+                                        </a>
+                                    }
+                                    {
+                                        externalProfiles.imdb_id &&
+                                        <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
+                                            <img src={imdbIcon} alt="" className='img-fluid' />
+                                        </a>
+                                    }
 
+                                </div>
                             </div>
-                        </div>
-                        {
-                            images.length > 2 && 
+
                             <div className="col-xl-7">
-                                {/* <div > */}
-
                                 <Slide {...properties} arrows={images.length < 3 ? false : true} className="w-100 d-flex align-items-center justify-content-end bg-smoke" slidesToScroll={3} slidesToShow={3} indicators={false} autoplay={false}>
                                     {
-                                        images.map((el, idx) => <div className='mx-3' key={`img_${idx}`}>
+                                        images.map((el, idx) => <div className='mx-3 pointer' key={`img_${idx}`} onClick={() => handleOpenModal(el.file_path)}>
                                             <div className="w-100">
                                                 <img src={`https://image.tmdb.org/t/p/w500/${el.file_path}`} alt={`image ${idx}`} className='img rounded-3' />
                                             </div>
@@ -237,15 +317,30 @@ export default function CharacterDetails() {
 
                                 </Slide>
 
-                                {/* </div> */}
-
                             </div>
-                        }
-                    </div>
-                </Container>
+                        </div>
+                    </Container>}
                 <Credits id={id} />
             </Suspense>
+            <ImageModal showModal={showModal} setShowModal={setShowModal} />
         </>
 
     )
 };
+
+const ImageModal = ({ showModal, setShowModal }) => {
+    const handleClose = () => setShowModal(false)
+
+    return (
+        <Modal show={showModal} onHide={handleClose} backdrop="static" keyboard={false} size='xl'>
+            <Modal.Header className='border-0 d-flex align-items-center justify-content-end'>
+                <span className='pointer d-flex align-items-center' onClick={handleClose}>
+                    <box-icon name='x' size="30px" color="#ff0088" animation='burst-hover'></box-icon>
+                </span>
+            </Modal.Header>
+            <Modal.Body>
+
+            </Modal.Body>
+        </Modal>
+    );
+}
