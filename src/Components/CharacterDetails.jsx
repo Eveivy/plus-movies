@@ -23,7 +23,7 @@ export default function CharacterDetails() {
     const [readMore, setReadMore] = useState(false);
     const [images, setImages] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [openModal, setOpenModal] = useState(null)
+    const [imageProps, setImageProps] = useState({})
     const handleGoBack = () => {
         window.history.back();
     };
@@ -33,10 +33,9 @@ export default function CharacterDetails() {
 
     }
 
-    const handleOpenModal = (url) => {
-        setOpenModal(url);
+    const handleOpenModal = (props) => {
+        setImageProps(props);
         setShowModal(true);
-        console.log(url)
     }
 
     const getCharacterDetails = () => {
@@ -306,9 +305,17 @@ export default function CharacterDetails() {
                             </div>
 
                             <div className="col-xl-7">
-                                <Slide {...properties} arrows={images.length < 3 ? false : true} className="w-100 d-flex align-items-center justify-content-end bg-smoke" slidesToScroll={3} slidesToShow={3} indicators={false} autoplay={false}>
+                                <Slide {...properties} arrows={images.length < 3 ? false : true} className="w-100 d-flex align-items-center justify-content-end bg-smoke"
+                                    slidesToScroll={3} slidesToShow={3} indicators={false} autoplay={false} responsive={[
+                                        {
+                                            breakpoint: 500,
+                                            settings: {
+                                                slidesToShow: 4,
+                                                slidesToScroll: 4
+                                            }
+                                        }]}>
                                     {
-                                        images.map((el, idx) => <div className='mx-3 pointer' key={`img_${idx}`} onClick={() => handleOpenModal(el.file_path)}>
+                                        images.map((el, idx) => <div className='mx-3 pointer' key={`img_${idx}`} onClick={() => handleOpenModal({ 'url': el.file_path, 'height': el.height, 'width': el.width })}>
                                             <div className="w-100">
                                                 <img src={`https://image.tmdb.org/t/p/w500/${el.file_path}`} alt={`image ${idx}`} className='img rounded-3' />
                                             </div>
@@ -322,14 +329,15 @@ export default function CharacterDetails() {
                     </Container>}
                 <Credits id={id} />
             </Suspense>
-            <ImageModal showModal={showModal} setShowModal={setShowModal} />
+            <ImageModal showModal={showModal} setShowModal={setShowModal} imageProps={imageProps} />
         </>
 
     )
 };
 
-const ImageModal = ({ showModal, setShowModal }) => {
-    const handleClose = () => setShowModal(false)
+const ImageModal = ({ showModal, setShowModal, imageProps }) => {
+    const handleClose = () => setShowModal(false);
+    console.log(imageProps)
 
     return (
         <Modal show={showModal} onHide={handleClose} backdrop="static" keyboard={false} size='xl'>
@@ -338,7 +346,10 @@ const ImageModal = ({ showModal, setShowModal }) => {
                     <box-icon name='x' size="30px" color="#ff0088" animation='burst-hover'></box-icon>
                 </span>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="d-flex align-items-center justify-content-center" >
+                <div className="d-flex align-items-center justify-content-center" style={{height: `${imageProps.height}px`, width: `${imageProps.width}px`}} >
+                    <img src={`https://image.tmdb.org/t/p/w500/${imageProps.url}`} alt={`image`} className='img-fluid' />
+                </div>
 
             </Modal.Body>
         </Modal>
