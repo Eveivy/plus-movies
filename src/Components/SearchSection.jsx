@@ -35,7 +35,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
 
   };
 
-
+console.log(trending)
   const getSearchResult = () => {
 
     if (keyword.trim() !== '') {
