@@ -42,13 +42,16 @@ export default function PageNav({ host, requestToken }) {
             <span className='d-block font-main text-white' style={{ marginTop: '-13px' }}>Plus Movies</span>
           </Navbar.Brand>
         </Link>
-          <Nav className="mx-auto">
-            <button type='button' className="d-flex align-items-center bg-transparent py-2 ps-3 rounded-pill shadow pointer w-500 border-pink" onClick={handleShowSearchBar}>
+          <Nav className="mx-xl-auto">
+            <button type='button' className="d-md-flex d-none align-items-center bg-transparent py-2 ps-3 rounded-pill shadow pointer w-500 border-pink" onClick={handleShowSearchBar}>
               <span className="text-white d-flex align-items-center">
                 <box-icon size="23px" color="white" name='search-alt-2'></box-icon>
                 <span className='w-100 text-white fs-6 ms-2'>Search movies, tv shows....</span>
               </span>
             </button>
+            <span className="text-white d-md-none d-flex align-items-center pointer" onClick={handleShowSearchBar}>
+                <box-icon size="23px" color="#ff0088" name='search-alt-2'></box-icon> 
+              </span>
           </Nav>
           {/* <Nav className="d-flex align-items-center">
             <Nav className="text-white">

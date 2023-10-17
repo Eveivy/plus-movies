@@ -29,7 +29,7 @@ export default function CharacterDetails() {
     };
     const properties = {
         prevArrow: <span className={`d-flex align-items-center rounded pointer bg-light-pink d-none`}><box-icon size="30px" color='white' name='chevrons-left' type='solid' ></box-icon></span>,
-        nextArrow: <span className={`d-flex align-items-center rounded pointer bg-light-pink ${images.length === 3 && 'd-none'}`}><box-icon size="30px" color='white' name='chevrons-right' type='solid' ></box-icon></span>
+        nextArrow: <span className={`d-flex align-items-center rounded pointer bg-light-pink ${images.length === 4 && 'd-none'}`}><box-icon size="30px" color='white' name='chevrons-right' type='solid' ></box-icon></span>
 
     }
 
@@ -92,6 +92,7 @@ export default function CharacterDetails() {
             })
             .catch(err => console.error(err));
     }
+ 
 
     useEffect(() => {
         getCharacterDetails();
@@ -122,11 +123,11 @@ export default function CharacterDetails() {
 
                 </div>
                 <Container className='p-xl-4 w-100 my-3 my-xl-0'>
-                    <div className="d-flex align-items-center">
-                        <div className="d-xl-inline d-none" style={{ height: "500px", width: "350px", overflow: "hidden" }}>
+                    <div className="d-flex flex-column flex-xl-row justify-content-center align-items-md-center">
+                        <div className="d-xl-inline order-2 order-xl-1 mt-5 mt-xl-0 ms-5 ms-xl-0" style={{ height: "500px", width: "350px", overflow: "hidden" }}>
                             <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${details.profile_path}`} alt="" />
                         </div>
-                        <div className="ms-xl-5 w-xl">
+                        <div className="ms-md-5 w-xl order-1 order-xl-2">
                             <div className=''>
                                 <h1 className='fs-2 mb-0 fw-semibold'>{details.name}</h1>
                                 {
@@ -134,15 +135,15 @@ export default function CharacterDetails() {
                                     <span className='text-muted'>{details.birthday}{details.deathday && ` - ${details.deathday}`} ({age} years old)</span>
                                 }
                             </div>
-                            <div className="mt-3 h-250px">
+                            <div className="mt-3">
                                 <h5 className='font-main fw-bold mb-3'>Biography</h5>
                                 {
                                     details.biography ?
                                         <p className="mb-0 text-main">{
-                                            details.biography.length > 900 ? <>
+                                            details.biography.length > 800 ? <>
                                                 {
                                                     readMore ? details.biography :
-                                                        `${details.biography.substring(0, 900 - 3)}...`
+                                                        `${details.biography.substring(0, 800 - 3)}...`
                                                 }
                                                 <span className='text-pink pointer fs-7' onClick={() => setReadMore((prev) => !prev)}> Read {readMore ? 'Less' : 'More'}</span>
                                             </>
@@ -233,8 +234,8 @@ export default function CharacterDetails() {
                     images.length > 2 &&
                     <Container className={`p-xl-4 w-100 mb-4 ${readMore && 'mt-20'} bg-radient`}>
                         <div className={`row pb-4 gy-5 ${!readMore ? 'mt-5' : 'mt-0'} `}>
-                            <div className="col-xl-5 d-flex flex-column ">
-                                <div className="border-bottom w-75 pb-4 mt-xl-2">
+                            <div className="col-xl-5 d-flex align-items-center flex-column">
+                                <div className="border-bottom d-flex d-xl-block align-items-center justify-content-between w-75 pb-4 mt-xl-2">
                                     {
                                         details.gender &&
                                         <div className="d-flex flex-column">
@@ -244,14 +245,14 @@ export default function CharacterDetails() {
                                     }
                                     {
                                         details.place_of_birth &&
-                                        <div className="d-flex flex-column mt-3">
+                                        <div className="d-flex flex-column mt-xl-3">
                                             <span className='fs-7 text-muted'>Place of Birth</span>
                                             <span className='text-main'>{details.place_of_birth}</span>
                                         </div>
                                     }
                                     {
                                         details.popularity &&
-                                        <div className="d-flex flex-column mt-3">
+                                        <div className="d-flex flex-column mt-xl-3">
                                             <span className='fs-7 text-muted'>Popularity</span>
                                             <span className='text-main'>{details.popularity}</span>
                                         </div>
@@ -347,10 +348,10 @@ const ImageModal = ({ showModal, setShowModal, imageProps }) => {
                 </span>
             </Modal.Header>
             <Modal.Body className="d-flex align-items-center justify-content-center" >
-                <div className="d-flex align-items-center justify-content-center" style={{height: `${imageProps.height}px`, width: `${imageProps.width}px`}} >
+                <div className="d-flex align-items-center justify-content-center" >
                     <img src={`https://image.tmdb.org/t/p/w500/${imageProps.url}`} alt={`image`} className='img-fluid' />
                 </div>
-
+                {/* style={{height: `${imageProps.height}px`, width: `${imageProps.width}px`}} */}
             </Modal.Body>
         </Modal>
     );

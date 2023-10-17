@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import emptyImage from '../assets/images/image-empty.png'
 import Form from 'react-bootstrap/Form';
 
 const SearchSection = ({ showSB, handleCloseSB }) => {
@@ -81,7 +82,7 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
       <div key={el.id} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
         <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.media_type, el.id, el.title || el.name || el.original_title)}>
           <div className="me-2" style={{ height: "100px", width: "170px", overflow: "hidden" }}>
-            <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} />
+              <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} /> 
           </div>
           <div className="">
             <span className='d-block fs-7 fw-bold'>{el.title || el.name || el.original_title} <small className='text-pink fs-7'>({el.original_language})</small> </span>
@@ -96,8 +97,12 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
     return (
       <div key={el.id} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
         <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.media_type, el.id, el.title || el.name || el.original_title)}>
-          <div className="me-2" style={{ height: "100px", width: "170px", overflow: "hidden" }}>
-            <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} />
+          <div className="me-2 d-flex align-items-center justify-content-center" style={{ height: "100px", width: "170px", overflow: "hidden" }}>
+            {
+              el.poster_path ? 
+              <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} />
+              : <img src={emptyImage} alt="image not found" />
+            }
           </div>
           <div className="">
             <span className='d-block fs-7 fw-bold'>{el.title || el.name || el.original_title} <small className='text-pink fs-7'>({el.original_language})</small> </span>
