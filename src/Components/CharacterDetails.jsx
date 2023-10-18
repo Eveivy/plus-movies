@@ -4,7 +4,7 @@ import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import Container from 'react-bootstrap/Container';
 import { Modal } from 'react-bootstrap';
-import facebookIcon from '../assets/images/facebook.png'
+// import facebookIcon from '../assets/images/facebook.png'
 import imdbIcon from '../assets/images/imdb.png'
 import instagramIcon from '../assets/images/instagram.png'
 import tiktokIcon from '../assets/images/tik-tok.png'
@@ -209,12 +209,12 @@ export default function CharacterDetails() {
                                                     <img src={tiktokIcon} alt="" className='img-fluid' />
                                                 </a>
                                             }
-                                            {
+                                            {/* {
                                                 externalProfiles.facebook_id &&
                                                 <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
                                                     <img src={facebookIcon} alt="" className='img-fluid' />
                                                 </a>
-                                            }
+                                            } */}
                                             {
                                                 externalProfiles.imdb_id &&
                                                 <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
@@ -289,12 +289,12 @@ export default function CharacterDetails() {
                                             <img src={tiktokIcon} alt="" className='img-fluid' />
                                         </a>
                                     }
-                                    {
+                                    {/* {
                                         externalProfiles.facebook_id &&
                                         <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
                                             <img src={facebookIcon} alt="" className='img-fluid' />
                                         </a>
-                                    }
+                                    } */}
                                     {
                                         externalProfiles.imdb_id &&
                                         <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
