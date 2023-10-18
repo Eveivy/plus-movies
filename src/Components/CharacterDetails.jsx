@@ -4,12 +4,12 @@ import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import Container from 'react-bootstrap/Container';
 import { Modal } from 'react-bootstrap';
-// import facebookIcon from '../assets/images/facebook.png'
-// import imdbIcon from '../assets/images/imdb.png'
-// import instagramIcon from '../assets/images/instagram.png'
-// import tiktokIcon from '../assets/images/tik-tok.png'
-// import xIcon from '../assets/images/twitterx.png'
-// import youtubeIcon from '../assets/images/youtube.png'
+import facebookIcon from '../assets/images/facebook.png'
+import imdbIcon from '../assets/images/imdb.png'
+import instagramIcon from '../assets/images/instagram.png'
+import tiktokIcon from '../assets/images/tik-tok.png'
+import xIcon from '../assets/images/twitterx.png'
+import youtubeIcon from '../assets/images/youtube.png'
 import moment from 'moment';
 import PageNav from './PageNav';
 import Credits from './Credits';
@@ -184,7 +184,7 @@ export default function CharacterDetails() {
                                                 <a href={details.homepage} target='_blank' className='pointer text-pink'> {details.homepage}</a>
                                             </span>
                                         }
-                                        {/* <div className="d-flex align-items-center mt-4">
+                                        <div className="d-flex align-items-center mt-4">
                                             {
                                                 externalProfiles.twitter_id &&
                                                 <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
@@ -222,7 +222,7 @@ export default function CharacterDetails() {
                                                 </a>
                                             }
 
-                                        </div> */}
+                                        </div>
                                     </div>
                                 }
 
@@ -264,7 +264,7 @@ export default function CharacterDetails() {
                                         <a href={details.homepage} target='_blank' className='pointer text-pink'> {details.homepage}</a>
                                     </span>
                                 }
-                                {/* <div className="d-flex align-items-center mt-4">
+                                <div className="d-flex align-items-center mt-4">
                                     {
                                         externalProfiles.twitter_id &&
                                         <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
@@ -302,7 +302,7 @@ export default function CharacterDetails() {
                                         </a>
                                     }
 
-                                </div> */}
+                                </div>
                             </div>
 
                             <div className="col-xl-7">
