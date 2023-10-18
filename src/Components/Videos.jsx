@@ -58,7 +58,7 @@ const TrailerModal = ({ playTrailer, handleClose, trailer }) => {
     };
 
     return (
-        <Modal show={playTrailer} onHide={handleCloseModal} backdrop="static" keyboard={false} size='xl'>
+        <Modal centered fullscreen="sm-down" show={playTrailer} onHide={handleCloseModal} backdrop="static" keyboard={false} size='xl'>
             <Modal.Header className='border-0 d-flex align-items-center justify-content-end'>
                 <span className='pointer d-flex align-items-center' onClick={handleCloseModal}>
                     <box-icon name='x' size="30px" color="#ff0088" animation='burst-hover'></box-icon>

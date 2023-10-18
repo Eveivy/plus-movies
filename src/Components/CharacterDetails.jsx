@@ -124,7 +124,7 @@ export default function CharacterDetails() {
                 </div>
                 <Container className='p-xl-4 w-100 my-3 my-xl-0'>
                     <div className="d-flex flex-column flex-xl-row justify-content-center align-items-md-center">
-                        <div className="d-xl-inline order-2 order-xl-1 mt-5 mt-xl-0 ms-5 ms-xl-0" style={{ height: "500px", width: "350px", overflow: "hidden" }}>
+                        <div className="d-xl-inline order-2 order-xl-1 mt-5 mt-xl-0 ms-3 ms-xl-0" style={{ height: "500px", width: "350px", overflow: "hidden" }}>
                             <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${details.profile_path}`} alt="" />
                         </div>
                         <div className="ms-md-5 w-xl order-1 order-xl-2">
@@ -160,21 +160,21 @@ export default function CharacterDetails() {
                                                 details.gender &&
                                                 <div className="d-flex flex-column">
                                                     <span className='fs-7 text-muted'>Gender</span>
-                                                    <span className='text-main'>{details.gender == 1 ? 'Female' : 'Male'}</span>
+                                                    <span className='text-main fs-7'>{details.gender == 1 ? 'Female' : 'Male'}</span>
                                                 </div>
                                             }
                                             {
                                                 details.place_of_birth &&
                                                 <div className="d-flex flex-column ms-5">
                                                     <span className='fs-7 text-muted'>Place of Birth</span>
-                                                    <span className='text-main text-wrap'>{details.place_of_birth}</span>
+                                                    <span className='text-main text-wrap fs-7'>{details.place_of_birth}</span>
                                                 </div>
                                             }
                                             {
                                                 details.popularity &&
                                                 <div className="d-flex flex-column ms-5">
                                                     <span className='fs-7 text-muted'>Popularity</span>
-                                                    <span className='text-main'>{details.popularity}</span>
+                                                    <span className='text-main fs-7'>{details.popularity}</span>
                                                 </div>
                                             }
 
@@ -341,7 +341,7 @@ const ImageModal = ({ showModal, setShowModal, imageProps }) => {
     console.log(imageProps)
 
     return (
-        <Modal show={showModal} onHide={handleClose} backdrop="static" keyboard={false} size='xl'>
+        <Modal centered fullscreen="sm-down" show={showModal} onHide={handleClose} backdrop="static" keyboard={false} size='xl'>
             <Modal.Header className='border-0 d-flex align-items-center justify-content-end'>
                 <span className='pointer d-flex align-items-center' onClick={handleClose}>
                     <box-icon name='x' size="30px" color="#ff0088" animation='burst-hover'></box-icon>
