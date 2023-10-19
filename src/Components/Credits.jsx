@@ -37,7 +37,7 @@ const Credits = ({ id }) => {
             <div className='d-flex scroll-container'>
                 <div className="d-flex justify-content-between align-items-center">
                     {
-                        credits.map(movie => {
+                       credits && credits.map(movie => {
                             return (
                                 <div className="rounded-3" key={movie.id}>
                                     <div className={`mx-2 mb-5 image-container ${!movie.poster_path && 'd-flex flex-column align-items-center justify-content-end'}`}>

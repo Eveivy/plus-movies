@@ -24,6 +24,7 @@ export default function CharacterDetails() {
     const [images, setImages] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [imageProps, setImageProps] = useState({})
+    const [currentIdx, setCurrentIdx] = useState(null);
     const handleGoBack = () => {
         window.history.back();
     };
@@ -33,9 +34,9 @@ export default function CharacterDetails() {
 
     }
 
-    const handleOpenModal = (props) => {
-        setImageProps(props);
+    const handleOpenModal = (idx) => { 
         setShowModal(true);
+        setCurrentIdx(idx);
     }
 
     const getCharacterDetails = () => {
@@ -88,11 +89,11 @@ export default function CharacterDetails() {
             .then(response => response.json())
             .then(data => {
                 setImages(data.profiles)
-                console.log(data.profiles)
+                // console.log(data.profiles)
             })
             .catch(err => console.error(err));
     }
- 
+
 
     useEffect(() => {
         getCharacterDetails();
@@ -316,7 +317,7 @@ export default function CharacterDetails() {
                                             }
                                         }]}>
                                     {
-                                        images.map((el, idx) => <div className='mx-3 pointer' key={`img_${idx}`} onClick={() => handleOpenModal({ 'url': el.file_path, 'height': el.height, 'width': el.width })}>
+                                        images.map((el, idx) => <div className='mx-3 pointer' key={`img_${idx}`} onClick={() => handleOpenModal(idx)}>
                                             <div className="w-100">
                                                 <img src={`https://image.tmdb.org/t/p/w500/${el.file_path}`} alt={`image ${idx}`} className='img rounded-3' />
                                             </div>
@@ -330,28 +331,46 @@ export default function CharacterDetails() {
                     </Container>}
                 <Credits id={id} />
             </Suspense>
-            <ImageModal showModal={showModal} setShowModal={setShowModal} imageProps={imageProps} />
+            <ImageModal showModal={showModal} setShowModal={setShowModal} images={images} currentIdx={currentIdx} setCurrentIdx={setCurrentIdx}/>
         </>
 
     )
 };
 
-const ImageModal = ({ showModal, setShowModal, imageProps }) => {
+const ImageModal = ({ showModal, setShowModal, images, currentIdx, setCurrentIdx }) => {
     const handleClose = () => setShowModal(false);
-    console.log(imageProps)
+
+    function prevSlide() {
+        const newIdx = currentIdx === 0 ? images.length - 1 : currentIdx - 1;
+        setCurrentIdx(newIdx);
+    }
+
+    function nextSlide() {
+        const newIdx = currentIdx === images.length - 1 ? 0 : currentIdx + 1;
+        setCurrentIdx(newIdx);
+    }
+
+
 
     return (
         <Modal centered fullscreen="sm-down" show={showModal} onHide={handleClose} backdrop="static" keyboard={false} size='xl'>
-            <Modal.Header className='border-0 d-flex align-items-center justify-content-end'>
+            <Modal.Header className='border-0 d-flex align-items-center justify-content-end pb-0'>
                 <span className='pointer d-flex align-items-center' onClick={handleClose}>
                     <box-icon name='x' size="30px" color="#ff0088" animation='burst-hover'></box-icon>
                 </span>
             </Modal.Header>
-            <Modal.Body className="d-flex align-items-center justify-content-center" >
-                <div className="d-flex align-items-center justify-content-center" >
-                    <img src={`https://image.tmdb.org/t/p/w500/${imageProps.url}`} alt={`image`} className='img-fluid' />
+            <Modal.Body className="d-flex align-items-center justify-content-center position-relative" >
+                <div onClick={prevSlide} className={`pointer position-absolute ${currentIdx === 0 && 'd-none'}`}>
+                    <box-icon color="white" name="chevron-left" size="lg"></box-icon>
                 </div>
-                {/* style={{height: `${imageProps.height}px`, width: `${imageProps.width}px`}} */}
+                <div className="d-flex align-items-center justify-content-center" style={{ height: '530px' }}>
+                    <img src={`https://image.tmdb.org/t/p/w500/${ images[currentIdx] && images[currentIdx].file_path}`} alt={`image`} className="h-90" />
+                </div>
+
+
+                <div onClick={nextSlide} className={`pointer position-absolute ${currentIdx >= images.length - 1 && 'd-none'}`}>
+                    <box-icon color="white" name="chevron-right" size="lg"></box-icon>
+                </div>
             </Modal.Body>
         </Modal>
     );

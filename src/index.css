@@ -280,6 +280,9 @@ body {
 .w-90 {
   width: 90% !important;
 }
+.h-90{
+  height: 90%;
+}
 
 .loader {
   width: 48px;
