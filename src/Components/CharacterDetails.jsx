@@ -360,15 +360,14 @@ const ImageModal = ({ showModal, setShowModal, images, currentIdx, setCurrentIdx
                 </span>
             </Modal.Header>
             <Modal.Body className="d-flex align-items-center justify-content-center position-relative" >
-                <div onClick={prevSlide} className={`pointer position-absolute ${currentIdx === 0 && 'd-none'}`}>
+                <div onClick={prevSlide} className={`ms-xl-5 pointer position-absolute start-0 bottom-50 ${currentIdx === 0 && 'd-none'}`}>
                     <box-icon color="white" name="chevron-left" size="lg"></box-icon>
                 </div>
                 <div className="d-flex align-items-center justify-content-center" style={{ height: '530px' }}>
-                    <img src={`https://image.tmdb.org/t/p/w500/${ images[currentIdx] && images[currentIdx].file_path}`} alt={`image`} className="h-90" />
+                    <img src={`https://image.tmdb.org/t/p/w500/${images[currentIdx] && images[currentIdx].file_path}`} alt={`image`} className="h-90" />
                 </div>
 
-
-                <div onClick={nextSlide} className={`pointer position-absolute ${currentIdx >= images.length - 1 && 'd-none'}`}>
+                <div onClick={nextSlide} className={`me-xl-5 pointer position-absolute end-0 bottom-50 ${currentIdx >= images.length - 1 && 'd-none'}`}>
                     <box-icon color="white" name="chevron-right" size="lg"></box-icon>
                 </div>
             </Modal.Body>
