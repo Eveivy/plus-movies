@@ -4,7 +4,7 @@ import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import Container from 'react-bootstrap/Container';
 import { Modal } from 'react-bootstrap';
-import facebookIcon from '%PUBLIC%/facebook.png'
+import facebookIcon from '../assets/images/download.png'
 import imdbIcon from '../assets/images/imdb.png'
 import instagramIcon from '../assets/images/instagram.png'
 import tiktokIcon from '../assets/images/tik-tok.png'
