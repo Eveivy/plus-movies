@@ -1,9 +1,8 @@
 {
-  "name": "plus_movies",
+  "name": "vite-temp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "src/main.jsx",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
