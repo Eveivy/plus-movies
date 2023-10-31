@@ -4,7 +4,7 @@ import LandingPage from './Components/LandingPage';
 import Overview from './Components/Overview';
 import Explore from './Components/Explore';
 import Details from './Components/Details';
-// import CharacterDetails from './Components/CharacterDetails';
+import CharacterDetails from './Components/CharacterDetails';
 
 export const AppContext = createContext(null)
 
@@ -29,10 +29,10 @@ function App() {
       path: "/:mediaType/:id&:name",
       element: <Details />
     },
-    // {
-    //   path: "/person/:id&:name",
-    //   element: <CharacterDetails />
-    // }
+    {
+      path: "/person/:id&:name",
+      element: <CharacterDetails />
+    }
   ]);
 
   const getRequestToken = async () => {
