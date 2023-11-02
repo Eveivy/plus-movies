@@ -77,7 +77,7 @@ export default function Details() {
             fetch(`https://api.themoviedb.org/3/tv/${id}?language=en-US`, options)
                 .then(response => response.json())
                 .then(data => {
-                    // console.log(data)
+                    console.log(data)
                     setDetails(data);
                     setGenres(data.genres);
                     setProdCountries(data.production_countries);
@@ -117,7 +117,7 @@ export default function Details() {
 
     useEffect(() => {
         getMovieDetails();
-        if(mediaType === 'movie'){
+        if (mediaType === 'movie') {
             getVideos();
         }
     }, [id]);
@@ -156,10 +156,10 @@ export default function Details() {
                                         <div className='d-flex flex-wrap align-items-center my-3 my-xl-0'>
                                             {details.status === "Released" && <span className='border border-secondary px-1 text-white fs-6 mb-1 mb-xl-0'>R</span>}
                                             <span className='text-white px-2 mb-1 mb-xl-0'>{details.release_date && moment(details.release_date).format('L')} ({
-                                                prodCountries.map(el => <span key={el.iso_3166_1}>{el.iso_3166_1}</span>)
+                                                prodCountries.map((el, idx) => <span key={`${el.iso_3166_1}_${idx}`}>{el.iso_3166_1}</span>)
                                             })</span>
-                                            <span>| {genres.map((el) => {
-                                                return <span key={el.id} className='px-1 text-pink mb-1 mb-xl-0'>{el.name} <span className='text-white'>*</span></span>
+                                            <span>| {genres.map((el, idx) => {
+                                                return <span key={`${el.id}_${idx}`} className='px-1 text-pink mb-1 mb-xl-0'>{el.name} <span className='text-white'>*</span></span>
                                             })}</span>
                                             <span className='mx-xl-2'>{details.runtime && `| ${Math.floor(details.runtime / 60)}h ${details.runtime % 60}m`}</span>
                                         </div>
@@ -187,28 +187,40 @@ export default function Details() {
                                             <div className="mb-4">
                                                 <h2 className='fs-5 fw-bold'>Overview</h2>
                                                 <p className=''>{details.overview}</p>
-                                               
+
                                             </div>
                                             <div className="d-flex flex-wrap align-items-start justify-content-between w-75">
-                                                <div className="">
-                                                    <p className='mb-0'>Status</p>
-                                                    <small className='d-block text-muted'>{details.status || "-"}</small>
-                                                </div>
-                                                <div className="mx-3 mx-xl-0">
-                                                    <p className='mb-0'>Languages</p>
-                                                    {
-                                                        languages.map(lng => <small key={lng.iso_639_1} className='d-block text-muted'>*{lng.english_name}</small>)
-                                                    }
-
-                                                </div>
-                                                <div className="mx-3 mx-xl-0">
-                                                    <p className='mb-0'>Budget</p>
-                                                    <small className='d-block text-muted'>{details.budget ? `$${details.budget.toLocaleString()}` : "-"}</small>
-                                                </div>
-                                                <div className="">
-                                                    <p className='mb-0'>Revenue</p>
-                                                    <small className='d-block text-muted'>{details.revenue ? `$${details.revenue.toLocaleString()}` : "-"}</small>
-                                                </div>
+                                                {
+                                                    details.status &&
+                                                    <div className="">
+                                                        <p className='mb-0'>Status</p>
+                                                        <small className='d-block text-muted'>{details.status}</small>
+                                                    </div>
+                                                }
+                                                {
+                                                    languages.length > 0 &&
+                                                    <div className="mx-3 mx-xl-0">
+                                                        <p className='mb-0'>Languages</p>
+                                                        {
+                                                            languages.map((lng, idx) => <small key={`${lng.iso_639_1}_${idx}`} className='d-block text-muted'>*{lng.english_name}</small>)
+                                                        }
+                                                    </div>
+                                                }
+                                                {
+                                                    details.budget &&
+                                                    <div className="mx-3 mx-xl-0">
+                                                        <p className='mb-0'>Budget</p>
+                                                        <small className='d-block text-muted'>{`$${details.budget.toLocaleString()}`}</small>
+                                                    </div>
+                                                }
+                                                {
+                                                    details.revenue &&
+                                                    <div className="">
+                                                        <p className='mb-0'>Revenue</p>
+                                                        <small className='d-block text-muted'>{`$${details.revenue.toLocaleString()}`}</small>
+                                                    </div>
+                                                }
+                                                
                                             </div>
                                         </div>
                                     </div>

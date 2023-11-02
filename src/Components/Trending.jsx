@@ -67,9 +67,9 @@ export default function Trending() {
             <div className='d-flex scroll-container'>
                 <div className="d-flex justify-content-between align-items-center">
                     {
-                        showThisWeekMovies ? thisWeekMovies.map(movie => {
+                        showThisWeekMovies ? thisWeekMovies.map((movie, idx) => {
                             return (
-                                <div className="rounded-3" key={movie.id}>
+                                <div className="rounded-3" key={`${movie.id}_${idx}`}>
                                     <div className="mx-2 mb-5 image-container">
                                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title
                                         } loading="lazy" />
@@ -92,9 +92,9 @@ export default function Trending() {
                             )
 
                         }) :
-                            todayMovies.map(movie => {
+                            todayMovies.map((movie, idx) => {
                                 return (
-                                    <div className="rounded-3" key={movie.id}>
+                                    <div className="rounded-3" key={`${movie.id}_${idx}`}>
                                         <div className="mx-2 mb-5 image-container">
                                             <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title
                                             } loading="lazy" />

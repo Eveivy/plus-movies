@@ -22,8 +22,7 @@ const Credits = ({ id, role }) => {
             .then(response => response.json())
             .then(data => { 
                 setCredits(data)
-                // setcredits.crew(data.crew)
-                console.log(data)
+                // console.log(data)
             })
             .catch(err => console.error(err));
         }
@@ -32,6 +31,12 @@ const Credits = ({ id, role }) => {
             getCredits();
         }, [id])
         
+        const fcast = credits.cast && credits.cast.filter((el, idx) => {
+            return el.id === credits.cast[idx].id
+        })
+        const fcrew = credits.crew && credits.crew.filter((el, idx) => {
+            return el.id === credits.crew[idx].id
+        })
         // console.log(credits.crew.length)
     return (
         <Container className='p-xl-4 w-100 mb-4 mt-4'>
@@ -49,9 +54,9 @@ const Credits = ({ id, role }) => {
                 <div className="d-flex justify-content-between align-items-center">
                     {
                         showCastRoles ?
-                            credits.cast && credits.cast.map(movie => {
+                            credits.cast && fcast.map((movie, idx) => {
                                 return (
-                                    <div className="rounded-3" key={movie.id}>
+                                    <div className="rounded-3" key={`${movie.credit_id}_${idx}`}>
                                         <div className={`mx-2 mb-5 image-container ${!movie.poster_path && 'd-flex flex-column align-items-center justify-content-end'}`}>
                                             <img className={`${movie.poster_path ? 'img' : 'img-fluid'} rounded-3`} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : placeholderImg} alt={movie.original_title
                                             } loading="lazy" />
@@ -74,9 +79,9 @@ const Credits = ({ id, role }) => {
                                 )
 
                             })
-                            : credits.crew && credits.crew.map(movie => {
+                            : credits.crew && fcrew.map((movie, idx) => {
                                 return (
-                                    <div className="rounded-3" key={movie.id}>
+                                    <div className="rounded-3" key={`${movie.credit_id}_${idx}`}>
                                         <div className={`mx-2 mb-5 image-container ${!movie.poster_path && 'd-flex flex-column align-items-center justify-content-end'}`}>
                                             <img className={`${movie.poster_path ? 'img' : 'img-fluid'} rounded-3`} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : placeholderImg} alt={movie.original_title
                                             } loading="lazy" />

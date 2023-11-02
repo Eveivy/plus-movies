@@ -18,8 +18,8 @@ export default function Videos() {
                 <div className='d-flex align-items-center scroll-container' style={{}}>
                     <div className="d-flex justify-content-between align-items-center">
                         {
-                            videos.map(el => {
-                                return <div key={el.id} className='me-5'>
+                            videos.map((el, idx) => {
+                                return <div key={`${el.id}_${idx}`} className='me-5'>
                                     {videos.length > 0 && (
                                         <ReactPlayer
                                             url={`https://www.youtube.com/watch?v=${el.key}`}

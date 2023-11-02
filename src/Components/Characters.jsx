@@ -49,6 +49,7 @@ const Characters = () => {
                     // console.log(data)
                     setCasts(data.cast);
                     setCrews(data.crew);
+                    console.log(data)
                 })
                 .catch(err => console.error(err));
         }
@@ -72,8 +73,8 @@ const Characters = () => {
                 <div className='d-flex align-items-center pscroll-container mb-5'>
                     <div className="d-flex justify-content-between align-items-center">
                         {
-                            sortedCharacters.map(el => {
-                                return <Link key={el.id} to={`/person/${el.id}&${el.name}`} className="text-decoration-none text-main card border-0 rounded-3 p-2 me-2">
+                            sortedCharacters.map((el, idx) => {
+                                return <Link key={`${el.id}_${idx}`} to={`/person/${el.id}&${el.name}`} className="text-decoration-none text-main card border-0 rounded-3 p-2 me-2">
                                     <div className="d-flex align-items-center justify-content-center" style={{ height: '150px', width: '150px' }}>
                                         <img src={el.profile_path ? `https://image.tmdb.org/t/p/original/${el.profile_path}` : el.gender === 2 ? maleProfile : femaleProfile} className="img rounded-circle border-0" alt={el.name} />
                                     </div>
@@ -81,8 +82,7 @@ const Characters = () => {
                                         <p className='fw-bold mb-0 fs-7'>{el.name || "-"}</p>
                                         <span className='text-muted d-block my-0 fs-7'>{el.character || el.roles && el.roles[0].character || "-"}</span>
                                         {
-                                            mediaType === "movie" ?
-                                                <small className='text-muted fs-7 d-block'>{el.known_for_department || "-"}</small>
+                                            mediaType === "movie" ? ''
                                                 : el.total_episode_count && <span className='text-muted fs-7 d-block'>{el.total_episode_count || "-"} Episode{el.total_episode_count > 1 && 's'}</span>
 
                                         }
@@ -101,8 +101,8 @@ const Characters = () => {
                 <div className='d-flex align-items-center pscroll-container mb-5' style={{}}>
                     <div className="d-flex justify-content-between align-items-center">
                         {
-                            crews.map(el => {
-                                return <Link to={`/person/${el.id}&${el.name}`} key={el.credit_id} className="text-decoration-none text-main card border-0 rounded-3 p-2 me-2">
+                            crews.map((el, idx) => {
+                                return <Link to={`/person/${el.id}&${el.name}`} key={`${el.id}_${idx}`} className="text-decoration-none text-main card border-0 rounded-3 p-2 me-2">
                                     <div className="d-flex align-items-center justify-content-center" style={{ height: '150px', width: '150px' }}>
                                         <img src={el.profile_path ? `https://image.tmdb.org/t/p/original/${el.profile_path}` : el.gender === 2 ? maleProfile : femaleProfile} className="img rounded-circle border-0" alt={el.name} />
                                     </div>

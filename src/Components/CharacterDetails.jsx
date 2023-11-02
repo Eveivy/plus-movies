@@ -363,7 +363,8 @@ const ImageModal = ({ showModal, setShowModal, images, currentIdx, setCurrentIdx
 
     return (
         <Modal centered fullscreen="sm-down" show={showModal} onHide={handleClose} backdrop="static" keyboard={false} size='xl'>
-            <Modal.Header className='border-0 d-flex align-items-center justify-content-end pb-0'>
+            <Modal.Header className='border-0 d-flex align-items-center justify-content-between pb-0'>
+                <span className='text-white'>Showing <span className='text-pink'>{currentIdx + 1}</span> of {images.length}</span>
                 <span className='pointer d-flex align-items-center' onClick={handleClose}>
                     <box-icon name='x' size="30px" color="#ff0088" animation='burst-hover'></box-icon>
                 </span>

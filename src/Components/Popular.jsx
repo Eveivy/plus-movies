@@ -109,9 +109,9 @@ export default function Popular() {
             <div className='d-flex scroll-container'>
                 <div className="d-flex justify-content-between align-items-center">
                     {number === 0 ?
-                        nowPlaying.map(movie => {
+                        nowPlaying.map((movie, idx) => {
                             return (
-                                <div className="rounded-3" key={movie.id}>
+                                <div className="rounded-3" key={`${movie.id}_${idx}`}>
                                     <div className="mx-2 mb-5 image-container">
                                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} loading="lazy" />
                                         <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-between align-items-start">
@@ -130,9 +130,9 @@ export default function Popular() {
                                 </div>
                             )
 
-                        }) : number === 1 ? topRated.map(movie => {
+                        }) : number === 1 ? topRated.map((movie, idx) => {
                             return (
-                                <div className="rounded-3" key={movie.id}>
+                                <div className="rounded-3" key={`${movie.id}_${idx}`}>
                                     <div className="mx-2 mb-5 image-container">
                                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} loading="lazy" />
                                         <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-between align-items-start">
@@ -150,9 +150,9 @@ export default function Popular() {
                                 </div>
                             )
 
-                        }) : number === 2 ? mostWatched.map(movie => {
+                        }) : number === 2 ? mostWatched.map((movie, idx) => {
                             return (
-                                <div className="rounded-3" key={movie.id}>
+                                <div className="rounded-3" key={`${movie.id}_${idx}`}>
                                     <div className="mx-2 mb-5 image-container">
                                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} loading="lazy" />
                                         <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-between align-items-start">
@@ -170,9 +170,9 @@ export default function Popular() {
                                 </div>
                             )
 
-                        }) : upcoming.map(movie => {
+                        }) : upcoming.map((movie, idx) => {
                             return (
-                                <div className="rounded-3" key={movie.id}>
+                                <div className="rounded-3" key={`${movie.id}_${idx}`}>
                                     <div className="mx-2 mb-5 image-container">
                                         <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} loading="lazy" />
                                         <div className="overlay text-white px-2 pb-4 bottom-0 rounded-bottom d-flex flex-column justify-content-between align-items-start">

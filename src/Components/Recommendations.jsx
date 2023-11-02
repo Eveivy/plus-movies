@@ -47,9 +47,9 @@ const Recommendations = () => {
           <div className='d-flex align-items-center scroll-container mb-5' style={{ height: "250px" }}>
             <div className="d-flex justify-content-between align-items-center">
               {
-                rMovies.map(el => {
+                rMovies.map((el, idx) => {
                   return (
-                    <div className="rounded-3" key={el.id}>
+                    <div className="rounded-3" key={`${el.id}_${idx}`}>
 
                       <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.media_type, el.id, el.title || el.original_title)}>
                         {

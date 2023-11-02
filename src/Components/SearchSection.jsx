@@ -76,9 +76,9 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
 
   // console.log(keywordResult)
 
-  const movie = trending.map((el) => {
+  const movie = trending.map((el, idx) => {
     return (
-      <div key={el.id} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
+      <div key={`${el.id}_${idx}`} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
         <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.media_type, el.id, el.title || el.name || el.original_title)}>
           <div className="me-2" style={{ height: "100px", width: "170px", overflow: "hidden" }}>
               <img className='img rounded-3' src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.title} /> 
@@ -92,9 +92,9 @@ const SearchSection = ({ showSB, handleCloseSB }) => {
     );
   })
 
-  const result = keywordResult.map((el) => {
+  const result = keywordResult.map((el, idx) => {
     return (
-      <div key={el.id} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
+      <div key={`${el.id}_${idx}`} className={`mb-3 border-bottom p-2 bg-hover ${id == el.id && "selected"}`}>
         <Link className='text-decoration-none text-main d-flex align-items-center' onClick={() => getFullDetails(el.media_type, el.id, el.title || el.name || el.original_title)}>
           <div className="me-2 d-flex align-items-center justify-content-center" style={{ height: "100px", width: "170px", overflow: "hidden" }}>
             {
