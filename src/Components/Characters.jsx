@@ -49,7 +49,7 @@ const Characters = () => {
                     // console.log(data)
                     setCasts(data.cast);
                     setCrews(data.crew);
-                    console.log(data)
+                    // console.log(data)
                 })
                 .catch(err => console.error(err));
         }

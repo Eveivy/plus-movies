@@ -4,12 +4,6 @@ import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import Container from 'react-bootstrap/Container';
 import { Modal } from 'react-bootstrap';
-import facebookIcon from '../assets/images/facebook.png'
-import imdbIcon from '../assets/images/imdb.png'
-import instagramIcon from '../assets/images/instagram.png'
-import tiktokIcon from '../assets/images/tik-tok.png'
-import xIcon from '../assets/images/twitterx.png'
-import youtubeIcon from '../assets/images/youtube.png'
 import maleProfile from '../assets/images/no-profile-male.jpg'
 import femaleProfile from '../assets/images/no-profile-female.jpg'
 import nodataImg from '../assets/images/null-state-image.png'
@@ -72,7 +66,7 @@ export default function CharacterDetails() {
         fetch(`https://api.themoviedb.org/3/person/${id}/external_ids`, options)
             .then(response => response.json())
             .then(data => {
-                // console.log(data)
+                console.log(data)
                 setExternalProfiles(data)
             })
             .catch(err => console.error(err));
@@ -196,40 +190,45 @@ export default function CharacterDetails() {
                                                         {
                                                             externalProfiles.twitter_id &&
                                                             <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
-                                                                <img src={xIcon} alt="" className='img-fluid' />
+                                                                <box-icon name='twitter' type='logo' size="35px"></box-icon>
                                                             </a>
                                                         }
                                                         {
                                                             externalProfiles.instagram_id &&
                                                             <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} target='_blank'>
-                                                                <img src={instagramIcon} alt="" className='img-fluid' />
+                                                                <box-icon name='instagram' type='logo' size="35px"></box-icon>
                                                             </a>
                                                         }
                                                         {
                                                             externalProfiles.youtube_id &&
                                                             <a className='w-45px me-3' href={`https://www.youtube.com/channel/${externalProfiles.youtube_id}`} target='_blank'>
-                                                                <img src={youtubeIcon} alt="" className='img-fluid' />
+                                                                <box-icon name='youtube' type='logo' size="35px"></box-icon>
                                                             </a>
                                                         }
                                                         {
                                                             externalProfiles.tiktok_id &&
                                                             <a className='w-45px me-3' href={`https://www.tiktok.com/@${externalProfiles.tiktok_id}`} target='_blank'>
-                                                                <img src={tiktokIcon} alt="" className='img-fluid' />
+                                                                <box-icon name='tiktok' type='logo' size="35px" ></box-icon>
                                                             </a>
                                                         }
                                                         {
                                                             externalProfiles.facebook_id &&
                                                             <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
-                                                                <img src={facebookIcon} alt="" className='img-fluid' />
+                                                                <box-icon name='facebook' type='logo' size="35px"></box-icon>
                                                             </a>
                                                         }
                                                         {
                                                             externalProfiles.imdb_id &&
                                                             <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
-                                                                <img src={imdbIcon} alt="" className='img-fluid' />
+                                                                <box-icon type='logo' color="" name='imdb' size="35px"> </box-icon>
                                                             </a>
                                                         }
-
+                                                        {
+                                                            externalProfiles.wikidata_id &&
+                                                            <a href={`https://www.wikidata.org/wiki/${externalProfiles.wikidata_id}`} className="mx-2" target='_blank'>
+                                                                <box-icon name='wikipedia' type='logo' size="35px"></box-icon>
+                                                            </a>
+                                                        }
                                                     </div>
                                                 </div>
                                             }
@@ -276,40 +275,46 @@ export default function CharacterDetails() {
                                                 {
                                                     externalProfiles.twitter_id &&
                                                     <a className='w-45px me-3' href={`https://twitter.com/${externalProfiles.twitter_id}`} target='_blank'>
-                                                        <img src={xIcon} alt="" className='img-fluid' />
+                                                        <box-icon name='twitter' type='logo' size="35px"></box-icon>
                                                     </a>
                                                 }
                                                 {
                                                     externalProfiles.instagram_id &&
                                                     <a className='w-45px me-3' href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} target='_blank'>
-                                                        <img src={instagramIcon} alt="" className='img-fluid' />
+                                                        <box-icon name='instagram' type='logo' size="35px"></box-icon>
                                                     </a>
                                                 }
                                                 {
                                                     externalProfiles.youtube_id &&
                                                     <a className='w-45px me-3' href={`https://www.youtube.com/channel/${externalProfiles.youtube_id}`} target='_blank'>
-                                                        <img src={youtubeIcon} alt="" className='img-fluid' />
+                                                        <box-icon name='youtube' type='logo' size="35px"></box-icon>
                                                     </a>
                                                 }
                                                 {
                                                     externalProfiles.tiktok_id &&
                                                     <a className='w-45px me-3' href={`https://www.tiktok.com/@${externalProfiles.tiktok_id}`} target='_blank'>
-                                                        <img src={tiktokIcon} alt="" className='img-fluid' />
+                                                        <box-icon name='tiktok' type='logo' size="35px" ></box-icon>
                                                     </a>
                                                 }
                                                 {
                                                     externalProfiles.facebook_id &&
                                                     <a className='w-45px me-3' href={`https://www.facebook.com/${externalProfiles.facebook_id}`} target='_blank'>
-                                                        <img src={facebookIcon} alt="" className='img-fluid' />
+                                                        <box-icon name='facebook' type='logo' size="35px"></box-icon>
+
                                                     </a>
                                                 }
                                                 {
                                                     externalProfiles.imdb_id &&
                                                     <a className='w-45px me-3' href={`https://www.imdb.com/name/${externalProfiles.imdb_id}`} target='_blank'>
-                                                        <img src={imdbIcon} alt="" className='img-fluid' />
+                                                        <box-icon type='logo' color="" name='imdb' size="35px"> </box-icon>
                                                     </a>
                                                 }
-
+                                                {
+                                                    externalProfiles.wikidata_id &&
+                                                    <a href={`https://www.wikidata.org/wiki/${externalProfiles.wikidata_id}`} className="mx-2" target='_blank'>
+                                                        <box-icon name='wikipedia' type='logo' size="35px"></box-icon>
+                                                    </a>
+                                                }
                                             </div>
                                         </div>
 
@@ -336,7 +341,7 @@ export default function CharacterDetails() {
                                         </div>
                                     </div>
                                 </Container>}
-                            <Credits id={id} role={details.known_for_department}/>
+                            <Credits id={id} role={details.known_for_department} />
                         </>
                 }
             </Suspense>

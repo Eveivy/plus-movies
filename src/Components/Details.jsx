@@ -5,7 +5,7 @@ import moment from 'moment';
 import PageNav from './PageNav';
 import RadialProgressBar from './ProgressBar';
 import Characters from './Characters';
-
+import TvShowDetails from './TvShowDetails';
 export const DetailsContext = createContext(null)
 
 
@@ -77,7 +77,7 @@ export default function Details() {
             fetch(`https://api.themoviedb.org/3/tv/${id}?language=en-US`, options)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setDetails(data);
                     setGenres(data.genres);
                     setProdCountries(data.production_countries);
@@ -190,37 +190,27 @@ export default function Details() {
 
                                             </div>
                                             <div className="d-flex flex-wrap align-items-start justify-content-between w-75">
-                                                {
-                                                    details.status &&
+                                               
                                                     <div className="">
                                                         <p className='mb-0'>Status</p>
-                                                        <small className='d-block text-muted'>{details.status}</small>
-                                                    </div>
-                                                }
-                                                {
-                                                    languages.length > 0 &&
+                                                        <small className='d-block text-muted'>{details.status || "-"}</small>
+                                                    </div>  
                                                     <div className="mx-3 mx-xl-0">
                                                         <p className='mb-0'>Languages</p>
                                                         {
-                                                            languages.map((lng, idx) => <small key={`${lng.iso_639_1}_${idx}`} className='d-block text-muted'>*{lng.english_name}</small>)
+                                                            languages.map((lng, idx) => <small key={`${lng.iso_639_1}_${idx}`} className='d-block text-muted'>* {lng.english_name || "-"}</small>)
                                                         }
-                                                    </div>
-                                                }
-                                                {
-                                                    details.budget &&
+                                                    </div>  
                                                     <div className="mx-3 mx-xl-0">
                                                         <p className='mb-0'>Budget</p>
-                                                        <small className='d-block text-muted'>{`$${details.budget.toLocaleString()}`}</small>
-                                                    </div>
-                                                }
-                                                {
-                                                    details.revenue &&
+                                                        <small className='d-block text-muted'>{details.budget && `$${details.budget.toLocaleString()}` || '-'}</small>
+                                                    </div> 
+                                                
                                                     <div className="">
                                                         <p className='mb-0'>Revenue</p>
-                                                        <small className='d-block text-muted'>{`$${details.revenue.toLocaleString()}`}</small>
-                                                    </div>
-                                                }
-                                                
+                                                        <small className='d-block text-muted'>{details.revenue && `$${details.revenue.toLocaleString()}` || '-'}</small>
+                                                    </div> 
+
                                             </div>
                                         </div>
                                     </div>
@@ -231,8 +221,11 @@ export default function Details() {
                     </div>
                 </Container >
 
-                <DetailsContext.Provider value={{ id, mediaType, access_token, getAnotherMovie, playTrailer, handleClose, videos, trailer }}>
+                <DetailsContext.Provider value={{ id, mediaType, access_token, getAnotherMovie, playTrailer, handleClose, videos, trailer, details }}>
                     <Characters />
+                    {
+                        mediaType === 'tv' && <TvShowDetails/>
+                    }
                     <Videos />
                     <MovieReviews />
                     <Recommendations />
