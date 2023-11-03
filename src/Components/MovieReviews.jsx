@@ -10,20 +10,39 @@ export default function MovieReviews() {
 
 
     const getReviews = () => {
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${pageContext.access_token}`
-            }
-        };
+        if(pageContext.mediaType === "movie"){
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: `Bearer ${pageContext.access_token}`
+                }
+            };
+    
+            fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/reviews?language=en-US&page=1`, options)
+                .then(response => response.json())
+                .then(data => {
+                    setReviews(data.results)
+                })
+                .catch(err => console.error(err));
 
-        fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/reviews?language=en-US&page=1`, options)
-            .then(response => response.json())
-            .then(data => {
-                setReviews(data.results)
-            })
-            .catch(err => console.error(err));
+        }else if(pageContext.mediaType === "tv"){
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: `Bearer ${pageContext.access_token}`
+                }
+            };
+              
+              fetch(`https://api.themoviedb.org/3/tv/${pageContext.id}/reviews?language=en-US&page=1`, options)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    setReviews(data.results)
+                })
+                .catch(err => console.error(err));
+        }
     }
 
     useEffect(() => {

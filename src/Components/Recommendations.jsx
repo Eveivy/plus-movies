@@ -13,21 +13,40 @@ const Recommendations = () => {
   const [rMovies, setRMovies] = useState([])
 
   const getRMovies = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${pageContext.access_token}`
-      }
-    };
+    if (pageContext.mediaType === "movie") {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${pageContext.access_token}`
+        }
+      };
 
-    fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/recommendations?language=en-US&page=1`, options)
-      .then(response => response.json())
-      .then(data => {
-        setRMovies(data.results);
-        // console.log(data.results);
-      })
-      .catch(err => console.error(err));
+      fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/recommendations?language=en-US&page=1`, options)
+        .then(response => response.json())
+        .then(data => {
+          setRMovies(data.results);
+          // console.log(data.results);
+        })
+        .catch(err => console.error(err));
+
+    } else if (pageContext.mediaType === "tv") {
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${pageContext.access_token}`
+        }
+      };
+
+      fetch(`https://api.themoviedb.org/3/tv/${pageContext.id}/recommendations?language=en-US&page=1`, options)
+        .then(response => response.json())
+        .then(data => {
+          setRMovies(data.results);
+          console.log(data)
+        })
+        .catch(err => console.error(err));
+    }
 
   }
 
@@ -39,7 +58,7 @@ const Recommendations = () => {
   return (
     <>
       {
-         rMovies && rMovies.length > 0 &&
+        rMovies && rMovies.length > 0 &&
         <Container className='p-xl-4 w-100 mb-4'>
           <div className="d-flex align-items-center justify-content-between mb-5">
             <h4 className='text-main font-main'> Recommendations</h4>

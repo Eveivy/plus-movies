@@ -96,30 +96,50 @@ export default function Details() {
     const [videos, setVideos] = useState([]);
 
     const getVideos = () => {
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${access_token}`
-            }
-        };
+        if (mediaType === "movie") {
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: `Bearer ${access_token}`
+                }
+            };
 
-        fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
-            .then(response => response.json())
-            .then(data => {
-                setVideos(data.results);
-                const trailerVideo = data.results.find(video => trailerNames.includes(video.name));
-                setTrailer(trailerVideo);
-            })
-            .catch(err => console.error(err));
+            fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options)
+                .then(response => response.json())
+                .then(data => {
+                    setVideos(data.results);
+                    const trailerVideo = data.results.find(video => trailerNames.includes(video.name));
+                    setTrailer(trailerVideo);
+                    console.log(data)
+                })
+                .catch(err => console.error(err));
+
+        } else if (mediaType === "tv") {
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: `Bearer ${access_token}`
+                }
+            };
+
+            fetch(`https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`, options)
+                .then(response => response.json())
+                .then(data => {
+                    setVideos(data.results);
+                    const trailerVideo = data.results.find(video => trailerNames.includes(video.name));
+                    setTrailer(trailerVideo)
+                    // console.log(data)
+                })
+                .catch(err => console.error(err));
+        }
 
     };
 
     useEffect(() => {
         getMovieDetails();
-        if (mediaType === 'movie') {
-            getVideos();
-        }
+        getVideos();
     }, [id]);
 
 
@@ -166,9 +186,9 @@ export default function Details() {
                                         <div className="mt-3 d-flex flex-wrap align-items-center">
                                             <div className="d-flex align-items-center">
                                                 <RadialProgressBar percentage={Math.floor(details.vote_average * 10)} rad={45} strokeW={7} />
-                                                <span className='pt-2 d-none d-xl-inline'>Movie <br /> Rating</span>
+                                                {/* <span className='pt-2 d-none d-xl-inline'>Movie <br /> Rating</span> */}
                                             </div>
-                                            <div className="d-flex align-items-center ms-xl-3">
+                                            <div className="d-flex align-items-center">
                                                 <span title='Add to list' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='list-plus' color="white" size="18px"></box-icon></span>
                                                 <span title='Add to favourite' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='heart' color="white" size="18px"></box-icon></span>
                                                 <span title='Add to watchlist' className='bg-lighter-pink rounded-circle p-3 d-flex align-items-center pointer ms-xl-3 ms-2'><box-icon name='bookmark' color="white" size="18px"></box-icon></span>
@@ -176,10 +196,10 @@ export default function Details() {
                                             </div>
                                             {
                                                 trailer &&
-                                                <div className="ms-xl-3 d-flex align-items-center pointer pt-xl-1 mt-xl-0 mt-2" onClick={handleShow}>
+                                                <button className="bg-transparent btn btn-hot-pink-outline btn-md rounded-pill ms-xl-4 d-flex align-items-center py-2 mt-xl-0 mt-2" onClick={handleShow}>
                                                     <span className='d-flex align-items-center'><box-icon name='play' color="white" size="25px"></box-icon></span>
-                                                    <span>Play Trailer</span>
-                                                </div>
+                                                    <span className='text-white'>Play Trailer</span>
+                                                </button>
                                             }
                                         </div>
                                         <div className="mt-3">
@@ -190,26 +210,26 @@ export default function Details() {
 
                                             </div>
                                             <div className="d-flex flex-wrap align-items-start justify-content-between w-75">
-                                               
-                                                    <div className="">
-                                                        <p className='mb-0'>Status</p>
-                                                        <small className='d-block text-muted'>{details.status || "-"}</small>
-                                                    </div>  
-                                                    <div className="mx-3 mx-xl-0">
-                                                        <p className='mb-0'>Languages</p>
-                                                        {
-                                                            languages.map((lng, idx) => <small key={`${lng.iso_639_1}_${idx}`} className='d-block text-muted'>* {lng.english_name || "-"}</small>)
-                                                        }
-                                                    </div>  
-                                                    <div className="mx-3 mx-xl-0">
-                                                        <p className='mb-0'>Budget</p>
-                                                        <small className='d-block text-muted'>{details.budget && `$${details.budget.toLocaleString()}` || '-'}</small>
-                                                    </div> 
-                                                
-                                                    <div className="">
-                                                        <p className='mb-0'>Revenue</p>
-                                                        <small className='d-block text-muted'>{details.revenue && `$${details.revenue.toLocaleString()}` || '-'}</small>
-                                                    </div> 
+
+                                                <div className="">
+                                                    <p className='mb-0'>Status</p>
+                                                    <small className='d-block text-muted'>{details.status || "-"}</small>
+                                                </div>
+                                                <div className="mx-3 mx-xl-0">
+                                                    <p className='mb-0'>Languages</p>
+                                                    {
+                                                        languages.map((lng, idx) => <small key={`${lng.iso_639_1}_${idx}`} className='d-block text-muted'>* {lng.english_name || "-"}</small>)
+                                                    }
+                                                </div>
+                                                <div className="mx-3 mx-xl-0">
+                                                    <p className='mb-0'>Budget</p>
+                                                    <small className='d-block text-muted'>{details.budget && `$${details.budget.toLocaleString()}` || '-'}</small>
+                                                </div>
+
+                                                <div className="">
+                                                    <p className='mb-0'>Revenue</p>
+                                                    <small className='d-block text-muted'>{details.revenue && `$${details.revenue.toLocaleString()}` || '-'}</small>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -224,7 +244,7 @@ export default function Details() {
                 <DetailsContext.Provider value={{ id, mediaType, access_token, getAnotherMovie, playTrailer, handleClose, videos, trailer, details }}>
                     <Characters />
                     {
-                        mediaType === 'tv' && <TvShowDetails/>
+                        mediaType === 'tv' && <TvShowDetails />
                     }
                     <Videos />
                     <MovieReviews />

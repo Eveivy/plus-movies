@@ -23,7 +23,7 @@ const TvShowDetails = () => {
     fetch(`https://api.themoviedb.org/3/tv/${context.id}/external_ids`, options)
       .then(response => response.json())
       .then(result => {
-        console.log(result)
+        // console.log(result)
         setExternalProfiles(result)
       })
       .catch(err => console.error(err));
