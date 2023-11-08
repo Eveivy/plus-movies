@@ -13,7 +13,7 @@ body {
 }
 
 .hero-section {
-  background-image: linear-gradient(0deg, #191f3ff7, #191f3f75), url(/src/assets/images/hero-bg.jpg);
+  background-image: linear-gradient(0deg, #191f3ff7, #191f3f75), url(/images/hero-bg.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

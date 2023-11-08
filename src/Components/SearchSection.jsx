@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import emptyImage from '../assets/images/image-empty.png'
+import emptyImage from '/images/image-empty.png'
 import Form from 'react-bootstrap/Form';
 
 const SearchSection = ({ showSB, handleCloseSB }) => {

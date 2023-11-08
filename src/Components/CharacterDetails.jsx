@@ -4,9 +4,9 @@ import 'react-slideshow-image/dist/styles.css';
 import { Slide } from 'react-slideshow-image';
 import Container from 'react-bootstrap/Container';
 import { Modal } from 'react-bootstrap';
-import maleProfile from '../assets/images/no-profile-male.jpg'
-import femaleProfile from '../assets/images/no-profile-female.jpg'
-import nodataImg from '../assets/images/null-state-image.png'
+import maleProfile from '/images/no-profile-male.png'
+import femaleProfile from '/images/no-profile-female.png'
+import nodataImg from '/images/null-state-image.png'
 import moment from 'moment';
 import PageNav from './PageNav';
 import Credits from './Credits';

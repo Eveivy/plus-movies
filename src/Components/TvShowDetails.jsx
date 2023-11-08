@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-import emptyImage from '../assets/images/image-empty.png'
+import emptyImage from '/images/image-empty.png'
 import { Link } from 'react-router-dom';
 import { DetailsContext } from './Details';
 
