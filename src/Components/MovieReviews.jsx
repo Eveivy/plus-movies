@@ -6,7 +6,8 @@ export default function MovieReviews() {
     const pageContext = useContext(DetailsContext);
 
     const [reviews, setReviews] = useState([])
-    const [currentIdx, setCurrentIdx] = useState(0)
+    const [currentIdx, setCurrentIdx] = useState(0);
+    const [readMore, setReadMore] = useState(false);
 
 
     const getReviews = () => {
@@ -38,7 +39,7 @@ export default function MovieReviews() {
               fetch(`https://api.themoviedb.org/3/tv/${pageContext.id}/reviews?language=en-US&page=1`, options)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setReviews(data.results)
                 })
                 .catch(err => console.error(err));
@@ -81,7 +82,17 @@ export default function MovieReviews() {
                                             <small className="text-muted">@{reviews[currentIdx].author_details.username}</small>
                                         </div>
                                     </div>
-                                    <p className="card-text">{reviews[currentIdx].content}</p>
+                                    <p className="card-text">{
+                                    
+                                    reviews[currentIdx].content.length > 1000 ? <>
+                                                            {
+                                                                readMore ? reviews[currentIdx].content :
+                                                                    `${reviews[currentIdx].content.substring(0, 800 - 3)}...`
+                                                            }
+                                                            <span className='text-pink pointer fs-7' onClick={() => setReadMore((prev) => !prev)}> Read {readMore ? 'Less' : 'More'}</span>
+                                                        </>
+                                                            : reviews[currentIdx].content
+                                    }</p>
                                 </div>
                             </div>
                             {

@@ -92,7 +92,7 @@ const Recommendations = () => {
                       <div className="px-2 d-flex justify-content-between align-items-center text-main fs-7 pointer">
                         <h5 className="text-capitalize fs-7 mb-0">
                           <span className='text-decoration-none text-nowrap'>
-                            {el.title.length > 25 || el.original_title.length > 25
+                            { el.title || el.name && el.title.length > 25 || el.name.length > 25 || el.original_title.length > 25 || el.original_name.length > 25
                               ? (el.title || el.original_title).substring(0, 25 - 3) + '...'
                               : el.title || el.original_title}
                           </span>

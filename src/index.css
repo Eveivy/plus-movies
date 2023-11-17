@@ -7,9 +7,16 @@
   font-family: 'Lobster';
   src: url(./assets/Font/Lobster-Regular.ttf);
 }
+@font-face {
+  font-family: 'Nunito';
+  src: url(./assets/Font/Nunito-Bold.ttf);
+}
 
 body {
   font-family: 'Neue Machina';
+}
+.nunito-font{
+  font-family: "Nunito";
 }
 
 .hero-section {
@@ -181,7 +188,18 @@ body {
   width: 60px;
   border-radius: 50%;
 }
-
+.season-poster{
+  display: block;
+  min-width: 130px;
+  width: 135px;
+  height: 195px;
+}
+.seasons-section{
+  height: 450px;
+  min-height: 400px; 
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 .w-45px {
   width: 45px;
   height: 45px;

@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Row, Col } from 'react-bootstrap';
-import emptyImage from '/images/image-empty.png'
+import { Row, Col } from 'react-bootstrap'; 
 import { Link } from 'react-router-dom';
 import { DetailsContext } from './Details';
 
@@ -36,8 +35,8 @@ const TvShowDetails = () => {
   return (
     <>
       <Container className='p-4 w-100 mb-4 border-top border-2'>
-        <Row>
-          <Col xl={5} sm={6}>
+        <Row className='g-5'>
+          <Col xl={5} sm={4}>
             <div className="d-flex align-items-center justify-content-between">
               <div className="d-flex flex-column justify-center">
                 <p className='fs-7 fw-bold mb-0'>Type</p>
@@ -85,11 +84,11 @@ const TvShowDetails = () => {
               }
               {
                 externalProfiles.instagram_id &&
-                <a  href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} className="mx-2" target='_blank'>
+                <a href={`https://www.instagram.com/${externalProfiles.instagram_id}/`} className="mx-2" target='_blank'>
                   <box-icon name='instagram' type='logo' size="35px"></box-icon>
                 </a>
               }
-              { 
+              {
                 externalProfiles.twitter_id &&
                 <a href={`https://twitter.com/${externalProfiles.twitter_id}`} className="mx-2" target='_blank'>
                   <box-icon name='twitter' type='logo' size="35px"></box-icon>
@@ -97,7 +96,7 @@ const TvShowDetails = () => {
               }
               {
                 externalProfiles.wikidata_id &&
-                <a  href={`https://www.wikidata.org/wiki/${externalProfiles.wikidata_id}`} className="mx-2" target='_blank'>
+                <a href={`https://www.wikidata.org/wiki/${externalProfiles.wikidata_id}`} className="mx-2" target='_blank'>
                   <box-icon name='wikipedia' type='logo' size="35px"></box-icon>
                 </a>
               }
@@ -108,7 +107,7 @@ const TvShowDetails = () => {
                 {
                   data.created_by && data.created_by.map((el, idx) => {
                     return <Link key={el.credit_id} to={`/person/${el.id}&${el.name}`} className="d-flex align-items-center text-decoration-none text-main">
-                      <div className="rounded-circle" style={{ width: "60px", height: '60px' }}>
+                      <div className="rounded-circle symbol">
                         <img className='border-pink rounded-circle img' key={`${el.credit_id}${idx}`} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt="" />
                       </div>
                       <div className="d-flex flex-column ms-3 mt-2">
@@ -122,7 +121,25 @@ const TvShowDetails = () => {
 
             </div>
           </Col>
-          <Col xl={7} sm={6}>
+          <Col xl={7} sm={8} className='seasons-section'>
+            <Row className='g-4'>
+              {
+                data.seasons && data.seasons.map((el, idx) => {
+                  console.log(el)
+                  return <Col xl={12} >
+                    <div className='d-flex align-items-center p-3 shadow rounded-3'>
+                      <div className="season-poster">
+                        <img className='img' key={`${el.id}${idx}`} src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt="" />
+                      </div>
+                      <div className="ms-4">
+                        <h4 className='nunito-font fs-5'>{el.name}</h4>
+                      </div>
+                    </div>
+                  </Col>
+                })
+              }
+
+            </Row>
           </Col>
         </Row>
       </Container>

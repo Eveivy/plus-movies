@@ -77,7 +77,7 @@ export default function Details() {
             fetch(`https://api.themoviedb.org/3/tv/${id}?language=en-US`, options)
                 .then(response => response.json())
                 .then(data => {
-                    // console.log(data)
+                    console.log(data)
                     setDetails(data);
                     setGenres(data.genres);
                     setProdCountries(data.production_countries);
@@ -111,7 +111,7 @@ export default function Details() {
                     setVideos(data.results);
                     const trailerVideo = data.results.find(video => trailerNames.includes(video.name));
                     setTrailer(trailerVideo);
-                    console.log(data)
+                    // console.log(data)
                 })
                 .catch(err => console.error(err));
 
@@ -178,8 +178,8 @@ export default function Details() {
                                             <span className='text-white px-2 mb-1 mb-xl-0'>{details.release_date && moment(details.release_date).format('L')} ({
                                                 prodCountries.map((el, idx) => <span key={`${el.iso_3166_1}_${idx}`}>{el.iso_3166_1}</span>)
                                             })</span>
-                                            <span>| {genres.map((el, idx) => {
-                                                return <span key={`${el.id}_${idx}`} className='px-1 text-pink mb-1 mb-xl-0'>{el.name} <span className='text-white'>*</span></span>
+                                            <span>| {genres.map((el, idx) => { 
+                                                return <span key={`${el.id}_${idx}`} className='px-1 text-pink mb-1 mb-xl-0'>{el.name} {idx + 1 !== genres.length && <span className='text-white'>*</span>}</span>
                                             })}</span>
                                             <span className='mx-xl-2'>{details.runtime && `| ${Math.floor(details.runtime / 60)}h ${details.runtime % 60}m`}</span>
                                         </div>
