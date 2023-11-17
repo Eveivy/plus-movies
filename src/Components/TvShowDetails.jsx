@@ -1,12 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
-<<<<<<< HEAD
 import { Row, Col } from 'react-bootstrap'; 
-=======
-import { Row, Col } from 'react-bootstrap';
-import emptyImage from '../assets/images/image-empty.png'
->>>>>>> parent of 57ea042 (fixing failed build at deployment)
 import { Link } from 'react-router-dom';
+import emptyImage from '../assets/images/image-empty.png'
 import { DetailsContext } from './Details';
 
 const TvShowDetails = () => {
