@@ -43,7 +43,7 @@ const Recommendations = () => {
         .then(response => response.json())
         .then(data => {
           setRMovies(data.results);
-          console.log(data)
+          // console.log(data)
         })
         .catch(err => console.error(err));
     }
@@ -67,10 +67,11 @@ const Recommendations = () => {
             <div className="d-flex justify-content-between align-items-center">
               {
                 rMovies.map((el, idx) => {
+                  let movieTitle = el.name || el.original_name || el.title || el.original_title;
                   return (
                     <div className="rounded-3" key={`${el.id}_${idx}`}>
 
-                      <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.media_type, el.id, el.title || el.original_title)}>
+                      <div className="mx-2 small-card-container pointer" onClick={() => pageContext.getAnotherMovie(el.media_type, el.id, movieTitle)}>
                         {
                           el.poster_path ?
                             <img className="img rounded-3" src={`https://image.tmdb.org/t/p/w500/${el.poster_path}`} alt={el.original_title} loading="lazy" />
@@ -92,9 +93,7 @@ const Recommendations = () => {
                       <div className="px-2 d-flex justify-content-between align-items-center text-main fs-7 pointer">
                         <h5 className="text-capitalize fs-7 mb-0">
                           <span className='text-decoration-none text-nowrap'>
-                            { el.title || el.name && el.title.length > 25 || el.name.length > 25 || el.original_title.length > 25 || el.original_name.length > 25
-                              ? (el.title || el.original_title).substring(0, 25 - 3) + '...'
-                              : el.title || el.original_title}
+                            { movieTitle && movieTitle.length > 25 ? (movieTitle).substring(0, 25 - 3) + '...' : movieTitle }
                           </span>
                         </h5>
                         <span className="d-block">{Math.floor(el.vote_average * 10)}%</span>

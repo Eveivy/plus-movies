@@ -10,6 +10,7 @@ const TvShowDetails = () => {
   const context = useContext(DetailsContext)
   const data = context.details;
   const [externalProfiles, setExternalProfiles] = useState({});
+  const filteredSeasons = data.seasons && data.seasons.filter(el =>  el.season_number !== 0)
 
   const socials = () => {
     const options = {
@@ -107,7 +108,7 @@ const TvShowDetails = () => {
               <div className="d-flex align-items-center">
                 {
                   data.created_by && data.created_by.map((el, idx) => {
-                    return <Link key={el.credit_id} to={`/person/${el.id}&${el.name}`} className="d-flex align-items-center text-decoration-none text-main">
+                    return <Link key={el.credit_id} to={`/person/${el.id}&${el.name}`} className="me-4 flex-wrap mb-4 d-flex align-items-center text-decoration-none text-main">
                       <div className="rounded-circle symbol">
                         <img className='border-pink rounded-circle img' key={`${el.credit_id}${idx}`} src={`https://image.tmdb.org/t/p/original/${el.profile_path}`} alt="" />
                       </div>
@@ -125,8 +126,7 @@ const TvShowDetails = () => {
           <Col xl={7} sm={8} className='seasons-section'>
             <Row className='g-4'>
               {
-                data.seasons && data.seasons.map((el, idx) => {
-                  console.log(el)
+               filteredSeasons && filteredSeasons.map((el, idx) => {
                   return <Col xl={12} >
                     <div className='d-flex align-items-center p-3 shadow rounded-3'>
                       <div className="season-poster">
@@ -134,6 +134,7 @@ const TvShowDetails = () => {
                       </div>
                       <div className="ms-4">
                         <h4 className='nunito-font fs-5'>{el.name}</h4>
+                        <p className='text-muted mb-0'>{el.overview}</p>
                       </div>
                     </div>
                   </Col>
