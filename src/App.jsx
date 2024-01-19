@@ -15,12 +15,12 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LandingPage />
-    },
-    {
-      path: "/all-categories",
       element: <Explore />
     },
+    // {
+    //   path: "/all-categories",
+    //   element: <Explore />
+    // },
     {
       path: "/overview",
       element: <Overview />
