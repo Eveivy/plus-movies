@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Row, Col } from 'react-bootstrap'; 
+import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import emptyImage from '../assets/images/image-empty.png'
 import { DetailsContext } from './Details';
@@ -10,7 +10,8 @@ const TvShowDetails = () => {
   const context = useContext(DetailsContext)
   const data = context.details;
   const [externalProfiles, setExternalProfiles] = useState({});
-  const filteredSeasons = data.seasons && data.seasons.filter(el =>  el.season_number !== 0)
+  const filteredSeasons = data.seasons && data.seasons.filter(el => el.season_number !== 0)
+  const [readMore, setReadMore] = useState(false);
 
   const socials = () => {
     const options = {
@@ -33,6 +34,8 @@ const TvShowDetails = () => {
   useEffect(() => {
     socials();
   }, [context.id]);
+
+  console.log(filteredSeasons)
 
   return (
     <>
@@ -126,15 +129,23 @@ const TvShowDetails = () => {
           <Col xl={7} sm={8} className='seasons-section'>
             <Row className='g-4'>
               {
-               filteredSeasons && filteredSeasons.map((el, idx) => {
-                  return <Col xl={12} >
+                filteredSeasons && filteredSeasons.map((el, idx) => {
+                  return <Col xl={12} key={`idx_${el.id}`}>
                     <div className='d-flex align-items-center p-3 shadow rounded-3'>
                       <div className="season-poster">
                         <img className='img' key={`${el.id}${idx}`} src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt="" />
                       </div>
                       <div className="ms-4">
                         <h4 className='nunito-font fs-5'>{el.name}</h4>
-                        <p className='text-muted mb-0'>{el.overview}</p>
+                        <p className={`text-muted mb-0 fs-7`}>{
+                          el.overview.length > 200 ? <>
+                            {
+                              readMore ? el.overview :
+                                `${el.overview.substring(0, 200 - 3)}...`
+                            }
+                            <span className='text-pink pointer fs-7' onClick={() => setReadMore((prev) => !prev)}> Read {readMore ? 'Less' : 'More'}</span>
+                          </> : el.overview
+                        }</p>
                       </div>
                     </div>
                   </Col>

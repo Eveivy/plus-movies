@@ -11,7 +11,7 @@ export default function MovieReviews() {
 
 
     const getReviews = () => {
-        if(pageContext.mediaType === "movie"){
+        if (pageContext.mediaType === "movie") {
             const options = {
                 method: 'GET',
                 headers: {
@@ -19,7 +19,7 @@ export default function MovieReviews() {
                     Authorization: `Bearer ${pageContext.access_token}`
                 }
             };
-    
+
             fetch(`https://api.themoviedb.org/3/movie/${pageContext.id}/reviews?language=en-US&page=1`, options)
                 .then(response => response.json())
                 .then(data => {
@@ -27,7 +27,7 @@ export default function MovieReviews() {
                 })
                 .catch(err => console.error(err));
 
-        }else if(pageContext.mediaType === "tv"){
+        } else if (pageContext.mediaType === "tv") {
             const options = {
                 method: 'GET',
                 headers: {
@@ -35,8 +35,8 @@ export default function MovieReviews() {
                     Authorization: `Bearer ${pageContext.access_token}`
                 }
             };
-              
-              fetch(`https://api.themoviedb.org/3/tv/${pageContext.id}/reviews?language=en-US&page=1`, options)
+
+            fetch(`https://api.themoviedb.org/3/tv/${pageContext.id}/reviews?language=en-US&page=1`, options)
                 .then(response => response.json())
                 .then(data => {
                     // console.log(data)
@@ -49,16 +49,17 @@ export default function MovieReviews() {
     useEffect(() => {
         getReviews();
     }, []);
-
-    function prev() {
-        const newIdx = currentIdx === 0 ? reviews.length - 1 : currentIdx;
+ 
+    function previous() {
+        const newIdx = currentIdx === 0 ? reviews.length - 1 : currentIdx - 1;
         setCurrentIdx(newIdx);
     }
-
+    
+    
     function next() {
         const newIdx = currentIdx === reviews.length - 1 ? 0 : currentIdx + 1;
         setCurrentIdx(newIdx);
-    }
+    } 
 
     return (
         <>
@@ -71,8 +72,8 @@ export default function MovieReviews() {
                     <div className='d-flex align-items-center justify-content-center mt-3' style={{}}>
 
                         <div className="w-100">
-                            <div className="card my-xl-4 border-0 shadow w-100">
-                                <div className="card-body">
+                            <div className="card my-xl-4 border-0 shadow w-100" style={{ height: '350px', overflowY: 'scroll' }}>
+                                <div className="card-body pb-4">
                                     <div className="d-flex align-items-center py-3">
                                         <div className="symbol">
                                             <img className='img rounded-circle' src={`https://image.tmdb.org/t/p/original/${reviews[currentIdx].author_details.avatar_path}`} alt="" />
@@ -83,24 +84,30 @@ export default function MovieReviews() {
                                         </div>
                                     </div>
                                     <p className="card-text">{
-                                    
-                                    reviews[currentIdx].content.length > 1000 ? <>
-                                                            {
-                                                                readMore ? reviews[currentIdx].content :
-                                                                    `${reviews[currentIdx].content.substring(0, 800 - 3)}...`
-                                                            }
-                                                            <span className='text-pink pointer fs-7' onClick={() => setReadMore((prev) => !prev)}> Read {readMore ? 'Less' : 'More'}</span>
-                                                        </>
-                                                            : reviews[currentIdx].content
+
+                                        reviews[currentIdx].content.length > 1000 ? <>
+                                            {
+                                                readMore ? reviews[currentIdx].content :
+                                                    `${reviews[currentIdx].content.substring(0, 800 - 3)}...`
+                                            }
+                                            <span className='text-pink pointer fs-7' onClick={() => setReadMore((prev) => !prev)}> Read {readMore ? 'Less' : 'More'}</span>
+                                        </>
+                                            : reviews[currentIdx].content
                                     }</p>
                                 </div>
                             </div>
                             {
                                 reviews.length > 1 &&
                                 <div className="d-flex align-items-center justify-content-end w-100 my-3 my-xl-0">
-                                    <span onClick={prev} className='d-flex align-items-center pointer me-4'><box-icon name='left-arrow-alt'></box-icon> Previous</span>
+                                    {
+                                        currentIdx > 0 &&
+                                        <span onClick={previous} className='d-flex align-items-center pointer me-4'><box-icon name='left-arrow-alt'></box-icon> Previous</span>
+                                    }
                                     {/* <span className='mx-4 fs-5 d-flex align-items-center pt-2'>{currentIdx}</span> */}
-                                    <span onClick={next} className='d-flex align-items-center pointer'>Next <box-icon name='right-arrow-alt' color=""></box-icon> </span>
+                                    {
+                                        reviews.length - 1 === currentIdx ? "" :
+                                            <span onClick={next} className='d-flex align-items-center pointer'>Next <box-icon name='right-arrow-alt' color=""></box-icon> </span>
+                                    }
                                 </div>
                             }
                         </div>

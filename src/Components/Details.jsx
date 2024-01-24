@@ -77,7 +77,7 @@ export default function Details() {
             fetch(`https://api.themoviedb.org/3/tv/${id}?language=en-US`, options)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setDetails(data);
                     setGenres(data.genres);
                     setProdCountries(data.production_countries);
