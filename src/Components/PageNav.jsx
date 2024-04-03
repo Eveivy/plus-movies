@@ -5,6 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import logo from '../assets/images/logo.png'
+import darkmodeIcon from '../assets/images/moon.png'
+import lightmodeIcon from '../assets/images/eclipse.png'
 import SearchSection from './SearchSection';
 
 export default function PageNav({ host, requestToken, setShowSearchResult }) {
@@ -64,8 +66,16 @@ export default function PageNav({ host, requestToken, setShowSearchResult }) {
               </span> */}
           </Nav>
           <Nav className="text-white">
+            <div className="bg-white me-2 rounded-pill d-flex align-items-center justify-content-between">
+             <span className=''>
+              <img src={lightmodeIcon} alt="star"  className='w-20 h-20'/>
+             </span>
+             <span className=''>
+              <img src={darkmodeIcon} alt="" className='w-20 h-20'/>
+             </span>
+            </div>
             <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}/overview`}  className='d-flex align-items-center'>
-              <box-icon name='log-in' color="#ff0088" size="35px"></box-icon>
+              <box-icon name='log-in' color="#ff0088" size="23px"></box-icon>
             </a>
           </Nav>
         </Container>

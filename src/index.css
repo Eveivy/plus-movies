@@ -204,6 +204,15 @@ body {
   width: 45px;
   height: 45px;
 }
+.w-65px{
+  width: 65px;
+}
+.w-20px{
+  width: 8px !important;
+}
+.h-20px{
+  height: 8px !important;
+}
 
 .hw-1 {
   width: 350px;
