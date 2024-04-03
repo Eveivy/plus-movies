@@ -77,7 +77,7 @@ body {
   outline: none !important;
   background-color: transparent !important;
   border: none !important;
-  color: #0f1432 !important;
+  /* color: #0f1432 ; */
 }
 
 .pointer {
