@@ -131,7 +131,7 @@ const TvShowDetails = () => {
               {
                 filteredSeasons && filteredSeasons.map((el, idx) => {
                   return <Col xl={12} key={`idx_${el.id}`}>
-                    <div className='d-flex align-items-center p-3 shadow rounded-3'>
+                    <div className='d-flex align-items-center p-3 border border-1 rounded-3'>
                       <div className="season-poster">
                         <img className='img' key={`${el.id}${idx}`} src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} alt="" />
                       </div>

@@ -94,7 +94,7 @@ const Characters = () => {
                     </div>
                 </div>
             </Container>
-            <Container className='p-xl-4 w-100 my-3 my-xl-0'>
+            {/* <Container className='p-xl-4 w-100 my-3 my-xl-0'>
                 <div className="d-flex align-items-center justify-content-between">
                     <h4 className='text-main font-main'>Crew</h4>
                 </div>
@@ -115,7 +115,7 @@ const Characters = () => {
                         }
                     </div>
                 </div>
-            </Container>
+            </Container> */}
         </>
     )
 }

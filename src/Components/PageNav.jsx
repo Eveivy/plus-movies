@@ -12,6 +12,7 @@ import SearchSection from './SearchSection';
 export default function PageNav({ host, requestToken, setShowSearchResult }) {
 
   const [isNavFixed, setNavFixed] = useState(false);
+  const [darkMode, setDarkMode] = useState(false)
 
   // const [showSearchBar, setshowSearchBar] = useState(false);
 
@@ -22,7 +23,7 @@ export default function PageNav({ host, requestToken, setShowSearchResult }) {
   console.log(setShowSearchResult)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 1) {
+      if (window.scrollY >= 0.5) {
         setNavFixed(true);
       } else {
         setNavFixed(false);
@@ -67,14 +68,25 @@ export default function PageNav({ host, requestToken, setShowSearchResult }) {
           </Nav>
           <Nav className="text-white">
             <div className="bg-white me-2 rounded-pill d-flex align-items-center justify-content-between">
-             <span className=''>
-              <img src={lightmodeIcon} alt="star"  className='w-20 h-20'/>
-             </span>
-             <span className=''>
-              <img src={darkmodeIcon} alt="" className='w-20 h-20'/>
-             </span>
+              <span className='pointer rounded-pill w-20px h-100 pe-2' onClick={() => setDarkMode(false)}>
+                {/* <img src={lightmodeIcon} alt="star" className='w-20px h-20px' /> */}
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="16.000000pt" height="19.000000pt" viewBox="0 0 16.000000 16.000000" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(0.000000,16.000000) scale(0.100000,-0.100000)" fill={!darkMode ? "#ff0088" : "#000000"} stroke="none">
+                    <path d="M52 108 c-23 -23 -7 -68 25 -68 11 0 11 5 3 20 -8 14 -8 26 0 40 8 15 8 20 -3 20 -7 0 -18 -5 -25 -12z" />
+                  </g>
+                </svg>
+              </span>
+              <span className='pointer rounded-pill ps-2 w-20px h-100' onClick={() => setDarkMode(true)}>
+                {/* <img src={darkmodeIcon} alt="" className='w-20px h-20px' /> */}
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="13.000000pt" height="13.000000pt" viewBox="0 0 16.000000 16.000000" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(0.000000,16.000000) scale(0.100000,-0.100000)" fill={darkMode ? "#ff0088" : "#000000"} stroke="none">
+                    <path d="M52 140 c-49 -20 -48 -101 3 -120 55 -21 106 30 85 85 -7 19 -50 49 -63 44 -1 0 -12 -4 -25 -9z m61 -29 c10 -10 -21 -71 -41 -78 -17 -7 -42 22 -42 49 0 11 5 15 15 12 8 -4 15 -1 15 5 0 6 -6 11 -12 11 -9 0 -8 4 2 10 15 9 48 5 63 -9z" />
+                    <path d="M50 65 c0 -8 7 -15 15 -15 8 0 15 7 15 15 0 8 -7 15 -15 15 -8 0 -15 -7 -15 -15z" />
+                  </g>
+                </svg>
+              </span>
             </div>
-            <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}/overview`}  className='d-flex align-items-center'>
+            <a href={`https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${host}/overview`} className='d-flex align-items-center'>
               <box-icon name='log-in' color="#ff0088" size="23px"></box-icon>
             </a>
           </Nav>

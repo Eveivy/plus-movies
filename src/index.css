@@ -7,6 +7,7 @@
   font-family: 'Lobster';
   src: url(./assets/Font/Lobster-Regular.ttf);
 }
+
 @font-face {
   font-family: 'Nunito';
   src: url(./assets/Font/Nunito-Bold.ttf);
@@ -15,7 +16,8 @@
 body {
   font-family: 'Neue Machina';
 }
-.nunito-font{
+
+.nunito-font {
   font-family: "Nunito";
 }
 
@@ -70,9 +72,10 @@ body {
   background-color: #ff0088;
 }
 
-.bg-light-pink{
+.bg-light-pink {
   background-color: #ff00889d;
 }
+
 .search-input {
   outline: none !important;
   background-color: transparent !important;
@@ -188,30 +191,36 @@ body {
   width: 60px;
   border-radius: 50%;
 }
-.season-poster{
+
+.season-poster {
   display: block;
   min-width: 130px;
   width: 135px;
   height: 195px;
 }
-.seasons-section{
+
+.seasons-section {
   height: 450px;
-  min-height: 400px; 
+  min-height: 400px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 .w-45px {
   width: 45px;
   height: 45px;
 }
-.w-65px{
-  width: 65px;
+
+.w-55px {
+  width: 55px;
 }
-.w-20px{
-  width: 8px !important;
+
+.w-20px {
+  width: 25px !important;
 }
-.h-20px{
-  height: 8px !important;
+
+.h-20px {
+  height: 25px !important;
 }
 
 .hw-1 {
@@ -314,11 +323,21 @@ body {
 .w-90 {
   width: 90% !important;
 }
-.h-90{
+
+.h-90 {
   height: 90%;
 }
 
-.loader {
+.loader-wrapper {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+/* .loader {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -339,6 +358,29 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+} */
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+   --c: linear-gradient(#de7d5dbd 0 0);
+   --m: radial-gradient(farthest-side,  #ff00889d 92%,#0000);
+  background: 
+    var(--c),var(--m),
+    var(--c),var(--m), 
+    var(--c),var(--m);
+  background-size: 8px 15px,8px 8px;
+  background-repeat: no-repeat;
+  animation: l14 1s infinite alternate;
+}
+@keyframes l14 {
+  0%,
+  10% {background-position: 0 0   ,0 100%,50% 0   ,50% 100%,100% 0   ,100% 100%}
+  33% {background-position: 0 100%,0 0   ,50% 0   ,50% 100%,100% 0   ,100% 100%}
+  66% {background-position: 0 100%,0 0   ,50% 100%,50% 0   ,100% 0   ,100% 100%}
+  90%,
+  100%{background-position: 0 100%,0 0   ,50% 100%,50% 0   ,100% 100%,100% 0   }
 }
 
 .w-500 {
@@ -360,7 +402,7 @@ body {
 /* .mt-6 {
   margin-top: 6rem !important;
 } */
- 
+
 
 @keyframes rotation {
   0% {
@@ -392,10 +434,12 @@ body {
   .w-90 {
     width: 100%;
   }
+
   .mt-6 {
     margin-top: 7rem !important;
   }
 }
+
 @media (max-width: 800px) {
   .mt-20 {
     margin-top: 2rem;
